@@ -1,11 +1,11 @@
 package game;
 import java.util.Random;
 public class Tabuleiro {
-    String [][] tabuleiro = new String[5][5];
-    String [] vetor = {"|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|"};
-    int contador = 0;
-    String porta = "|";
-    Random posicaoVirus = new Random();
+    String [][] tabuleiro = new String[5][5]; // Cria a matriz 5 X 5
+    String [] vetor = {"|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|"}; // Vetor criado para gerar os setores do tabuleiro
+    int contador = 0; // Contador usado durante o percorrimento dos setores
+    String porta = "|"; // paredes/portas
+    Random posicaoVirus = new Random(); // Aleatoriedade para posicionar o virus
     int posLinha = posicaoVirus.nextInt(5);
     int posColuna = posicaoVirus.nextInt(5);
     
