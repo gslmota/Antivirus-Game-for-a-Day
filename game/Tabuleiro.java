@@ -8,7 +8,7 @@ public class Tabuleiro {
     int posLinha = posicaoVirus.nextInt(5);
     int posColuna = posicaoVirus.nextInt(5);
     
-    public void gerarTabuleiro() {
+    public void gerarTabuleiroInicial() {
 
         System.out.println("-----------------------------");
         System.out.println("|    Antivírus por um dia    |");
