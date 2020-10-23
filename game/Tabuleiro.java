@@ -39,7 +39,7 @@ public class Tabuleiro {
                     System.out.print("    |             |");
                 }
                 if(coluna == 4 && linha == 3){
-                    System.out.print("    *      *      *");
+                    System.out.print("    *             *");
                 }
                 if(coluna == 4 && linha == 4){
                     System.out.print("    |  2/6    1/7 |");
