@@ -11,19 +11,12 @@ public class Tabuleiro {
         System.out.println("|    Antivírus por um dia    |");
         System.out.println("-----------------------------");
         System.out.println("       1   2   3   4   5      ");
-       /* for(int linha = 0; linha <= tabuleiro.length; linha ++){
-            for(int coluna = 0; coluna <= tabuleiro[linha].length; coluna ++){
-                System.out.print(tabuleiro[linha][coluna] + "");
-            }
-        }
-        System.out.print("\n");
-        */
+       
         for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
 
             for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++)     { 
                 tabuleiro[linha][coluna] = "-";
             }  
-            //System.out.println(" "); //muda de linha
           } 
 
         for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
@@ -35,7 +28,6 @@ public class Tabuleiro {
                     tabuleiro[3][2] = "*";
                 }
                 System.out.print("-" + tabuleiro[linha][coluna] + "-|");
-
             }  
             
             
