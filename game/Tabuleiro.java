@@ -1,11 +1,13 @@
 package game;
+import java.util.Random;
 public class Tabuleiro {
     String [][] tabuleiro = new String[5][5];
     String [] vetor = {"|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|"};
     String porta = "|";
-    int var = 0;
+    Random posicaoVirus = new Random();
+    int posLinha = posicaoVirus.nextInt(5);
+    int posColuna = posicaoVirus.nextInt(5);
     
-
     public void gerarTabuleiro() {
 
         System.out.println("-----------------------------");
@@ -44,17 +46,36 @@ public class Tabuleiro {
             }  
             System.out.println(" ");// Pula para próxima linha da matriz
             System.out.print(linha + 1 + "    ");// Gera o inicio da linha, o interior do tabuleiro
+            int contador = 0;
             for(int i = 0; i< vetor.length; i++){
                 // Esse IF gera o Centro do tabuleiro (* C *) e o restante
-                if(var == 2){
+                if(contador == 2){
                     String [] vetor = {"|", " ", " ", " ","|", " ", " ", " ","*", " ", "C", " ","*", " ", " ", " ","|", " ", " ", " ","|"};
                     System.out.print(vetor[i]);   
                 }
                 else{
                     // Esse IF Posiciona o vírus (X) na posição [5,2]
-                    if(var == 4){
-                        String [] vetor = {"|", " ", " ", " ","|", " ", "X", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|"};
-                        System.out.print(vetor[i]);
+                    if(contador == posLinha){
+                        if(posColuna == 0){
+                            String [] vetor = {"|", " ", "X", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|"};
+                            System.out.print(vetor[i]);
+                        }
+                        if(posColuna == 1){
+                            String [] vetor = {"|", " ", " ", " ","|", " ", "X", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|"};
+                            System.out.print(vetor[i]);
+                        }
+                        if(posColuna == 2){
+                            String [] vetor = {"|", " ", " ", " ","|", " ", " ", " ","|", " ", "X", " ","|", " ", " ", " ","|", " ", " ", " ","|"};
+                            System.out.print(vetor[i]);
+                        }
+                        if(posColuna == 3){
+                            String [] vetor = {"|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", "X", " ","|", " ", " ", " ","|"};
+                            System.out.print(vetor[i]);
+                        }
+                        if(posColuna == 4){
+                            String [] vetor = {"|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", " ", " ","|", " ", "X", " ","|"};
+                            System.out.print(vetor[i]);
+                        }
                     }
                     else{
                         System.out.print(vetor[i]);
@@ -63,10 +84,10 @@ public class Tabuleiro {
                     
                 }
             }
-            if(var == 0){
+            if(contador == 0){
                 System.out.print("      Setor [3,3]");
             } else{
-                if(var == 1 || var ==4){
+                if(contador == 1 || contador ==4){
                     System.out.print("    |------*------|");
                 } else{
                     if(linha == 2){
@@ -80,7 +101,7 @@ public class Tabuleiro {
                 }
             }
            System.out.println(""); //muda de linha
-           var ++;
+           contador ++;
         }
         System.out.print("     |---|---|---|---|---|"); // Cria a parede inferior do tabuleiro
     }
