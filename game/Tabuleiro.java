@@ -43,12 +43,8 @@ public class Tabuleiro {
                 }
                 
             }
-            
            System.out.println(""); //muda de linha
            var ++;
-           
-           //System.out.println(vetor[2]);
-            
         }
         System.out.print("     |---|---|---|---|---|");
     }
