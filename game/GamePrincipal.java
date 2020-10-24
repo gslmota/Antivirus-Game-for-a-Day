@@ -4,6 +4,6 @@ public class GamePrincipal {
         Tabuleiro jogo = new Tabuleiro();
         jogo.gerarTabuleiroInicial();
         // continuar e criar o tabuleiro do jogo
-        // 
+        // criar os metodos da classes restantes
     }
 }
