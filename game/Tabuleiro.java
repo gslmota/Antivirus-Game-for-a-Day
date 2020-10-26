@@ -129,4 +129,14 @@ public class Tabuleiro {
         }
         System.out.print("     |---|---|---|---|---|"); // Cria a parede inferior do tabuleiro
     }
+
+    public void gerarTabuleiroDeJogo() {
+        apagarTela();
+    }
+
+    public void apagarTela(){
+        for(int i = 0; i<=50; i++){
+            System.out.println("");
+        }
+    }
 }
