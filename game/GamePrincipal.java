@@ -11,7 +11,7 @@ public class GamePrincipal {
         if(key == 1){
             jogo.gerarTabuleiroDeJogo();
         } else{
-
+            System.exit(0);
         }
     }
 }
