@@ -9,7 +9,7 @@ public class Tabuleiro {
     
     public void gerarTabuleiroInicial() {
         int contador = 0; // Contador usado durante o percorrimento dos setores
-        String porta = "|"; // paredes/portas
+        //String porta = "|"; // paredes/portas
 
         System.out.println("-----------------------------");
         System.out.println("|    Antivírus por um dia    |");
