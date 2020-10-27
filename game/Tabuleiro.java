@@ -136,4 +136,8 @@ public class Tabuleiro {
             System.out.println("");
         }
     }
+
+    public void movimentaSetor(int linha, int coluna){
+        
+    }
 }
