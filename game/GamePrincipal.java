@@ -11,6 +11,7 @@ public class GamePrincipal {
         key = input.nextInt();
         if(key == 1){
             jogo.movimentaSetor(jogo.turno.movimentar());
+            // teste de programa em java
         } else{
             System.exit(0);
         }
