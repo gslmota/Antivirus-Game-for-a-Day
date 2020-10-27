@@ -4,10 +4,10 @@ public class Tabuleiro {
     String porta = "|"; // paredes/portas
     String [][] tabuleiro = new String[5][5]; // Cria a matriz 5 X 5
     String [] vetor = {"|", " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ","|"}; // Vetor criado para gerar os setores do tabuleiro
-    Random posicaoVirus = new Random(); // Aleatoriedade para posicionar o virus
+    Random posicao = new Random(); // Aleatoriedade para posicionar o virus
     Turnos turno = new Turnos();
-    int posLinha = posicaoVirus.nextInt(5);
-    int posColuna = posicaoVirus.nextInt(5);
+    int posLinha = posicao.nextInt(5);
+    int posColuna = posicao.nextInt(5);
     
     public void gerarTabuleiroInicial() {
         int contador = 0; // Contador usado durante o percorrimento dos setores
@@ -140,7 +140,13 @@ public class Tabuleiro {
     public void movimentaSetor(int[] vet){
         int posLin = vet[0];
         int posCol = vet[1];
-        
+        apagarTela();
+        criarSetor(posLin, posCol);
+    }
+
+    public void criarSetor(int posLin, int posCol) {
+        int nPortas = posicao.nextInt(10) + 1;
+        int totalPortas = nPortas;
 
     }
 }
