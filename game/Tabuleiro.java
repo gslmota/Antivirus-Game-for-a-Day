@@ -137,7 +137,10 @@ public class Tabuleiro {
         }
     }
 
-    public void movimentaSetor(int linha, int coluna){
+    public void movimentaSetor(int[] vet){
+        int posLin = vet[0];
+        int posCol = vet[1];
         
+
     }
 }

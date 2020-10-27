@@ -10,7 +10,7 @@ public class GamePrincipal {
         System.out.println("\nVamos Começar o Jogo ? (1-sim / 2-não)");
         key = input.nextInt();
         if(key == 1){
-            jogo.turno.turnos();
+            jogo.movimentaSetor(jogo.turno.movimentar());
         } else{
             System.exit(0);
         }
