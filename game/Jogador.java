@@ -60,4 +60,36 @@ public class Jogador {
     public void habilidadeEspecial(){
         
     }
+
+    public String getTipoJogador() {
+        return tipoJogador;
+    }
+
+    public void setTipoJogador(String tipoJogador) {
+        this.tipoJogador = tipoJogador;
+    }
+
+    public int getATK() {
+        return ATK;
+    }
+
+    public void setATK(int aTK) {
+        ATK = aTK;
+    }
+
+    public int getDEF() {
+        return DEF;
+    }
+
+    public void setDEF(int dEF) {
+        DEF = dEF;
+    }
+
+    public int getNumAcoes() {
+        return numAcoes;
+    }
+
+    public void setNumAcoes(int numAcoes) {
+        this.numAcoes = numAcoes;
+    }
 }

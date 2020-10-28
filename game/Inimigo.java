@@ -13,4 +13,7 @@ public class Inimigo {
     public void atacar(){
 
     }
+
+   
+    
 }

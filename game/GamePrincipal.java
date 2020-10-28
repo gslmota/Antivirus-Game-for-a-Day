@@ -1,7 +1,7 @@
 package game;
 import java.util.Scanner;
 public class GamePrincipal {
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
 
         int key;
         Tabuleiro jogo = new Tabuleiro();
@@ -15,6 +15,6 @@ public class GamePrincipal {
         } else{
             System.exit(0);
         }
-        
+        */
     }
 }
