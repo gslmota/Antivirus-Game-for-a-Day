@@ -18,18 +18,5 @@ public class placadecarro {
         return letras;
     }
 
-    public void setLetras(String[] letras) {
-        this.letras = letras;
-    }
-
-    public placadecarro(String nomepa, String[] letras) {
-        this.nomepa = nomepa;
-        this.letras = letras;
-    }
-
-    
-
-
-    
 
 }
