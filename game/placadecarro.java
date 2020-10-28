@@ -27,13 +27,8 @@ public class placadecarro {
         this.letras = letras;
     }
 
-    public placadecarro(placadecarro placa) {
-        this.(placa.nomepa, placa[].letras);
-    }
+    
 
-    public placadecarro() {
-
-    }
 
     
 
