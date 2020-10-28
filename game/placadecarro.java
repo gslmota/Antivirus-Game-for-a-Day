@@ -35,9 +35,6 @@ public class placadecarro {
 
     }
 
-    @Override
-    public String toString() {
-        return "placadecarro [letras=" + Arrays.toString(letras) + ", nomepa=" + nomepa + "]";
-    }
+    
 
 }
