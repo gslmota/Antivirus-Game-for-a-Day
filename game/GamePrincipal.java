@@ -15,6 +15,6 @@ public class GamePrincipal {
         } else{
             System.exit(0);
         }
-        // update de memoria no java
+        // update de memoria no
     }
 }
