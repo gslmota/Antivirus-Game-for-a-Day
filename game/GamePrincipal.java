@@ -13,8 +13,7 @@ public class GamePrincipal {
             jogo.movimentaSetor(jogo.turno.movimentar());
             
         } else{
-            System.exit(0);
-            // teste de java
+            System.exit(0);  // Fecha o programa
         }
     }
 }
