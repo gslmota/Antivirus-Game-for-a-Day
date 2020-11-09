@@ -137,16 +137,22 @@ public class Tabuleiro {
         }
     }
 
-    public void movimentaSetor(int[] vet){
-        int posLin = vet[0];
-        int posCol = vet[1];
-        apagarTela();
-        criarSetor(posLin, posCol);
-    }
+    public void gerarTabuleiroDeJogo(){
+        int contadorSetor = 0;
 
-    public void criarSetor(int posLin, int posCol) {
-        int nPortas = posicao.nextInt(10) + 1;
-        int totalPortas = nPortas;
+        System.out.println("-----------------------------");
+        System.out.println("|    Antivírus por um dia    |");
+        System.out.println("-----------------------------");
+        System.out.println("       1   2   3   4   5      ");
 
+        // Preenche a matriz cada posição da matriz com " - "
+        for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
+
+            for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++)     { 
+                tabuleiro[linha][coluna] = "-";
+            }  
+          } 
+        
     }
+    
 }
