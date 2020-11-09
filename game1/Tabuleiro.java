@@ -1,4 +1,4 @@
-package game;
+package game1;
 import java.util.Random;
 public class Tabuleiro {
     String porta = "|"; // paredes/portas

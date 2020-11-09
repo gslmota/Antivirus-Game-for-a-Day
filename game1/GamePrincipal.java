@@ -1,4 +1,4 @@
-package game;
+package game1;
 import java.util.Scanner;
 public class GamePrincipal {
     public static void main(String[] args) {

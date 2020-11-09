@@ -1,4 +1,4 @@
-package game;
+package game1;
 
 public class Setor {
     String porta = "|";
