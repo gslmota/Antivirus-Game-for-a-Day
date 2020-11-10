@@ -1,4 +1,4 @@
-package game;
+
 import java.util.Scanner;
 public class Turnos {
     int contadorCiclos = 0;

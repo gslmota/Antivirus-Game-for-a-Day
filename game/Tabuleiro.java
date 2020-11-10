@@ -1,4 +1,4 @@
-package game;
+
 import java.util.Random;
 public class Tabuleiro {
     String porta = "|"; // paredes/portas
@@ -9,6 +9,7 @@ public class Tabuleiro {
     Turnos turno = new Turnos();
     int posLinha = posicao.nextInt(5);
     int posColuna = posicao.nextInt(5);
+    private int contador;
     
     public void gerarTabuleiroInicial() {
         int contador = 0; // Contador usado durante o percorrimento dos setores
@@ -178,12 +179,8 @@ public class Tabuleiro {
             }  
             System.out.println(" ");// Pula para próxima linha da matriz
             System.out.print(linha + 1 + "    ");// Gera o inicio da linha, o interior do tabuleiro
-            int contador;
-			for(int i = 0; i < vetor.length; i++){
-                criaSetor[i].vetorSetor[i]
-
-
-
+            for(int i = 0; i < vetor.length; i++){
+                
                 // Esse IF gera o Centro do tabuleiro (* C *) e o posiciona o vírus
                 if(contador == 2){// contador 2 porque é o centro do tabuleiro
                     if(contador == posLinha){
