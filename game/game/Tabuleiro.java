@@ -150,13 +150,6 @@ public class Tabuleiro {
     public void gerarTabuleiroDeJogo(){
 
         gerarSetorVazio();
-        apagarTela();
-
-        System.out.println("-----------------------------");
-        System.out.println("|    Antivírus por um dia    |");
-        System.out.println("-----------------------------");
-        System.out.println("       1   2   3   4   5      ");
-
         // Preenche a matriz cada posição da matriz com " - "
         for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
 
@@ -168,23 +161,72 @@ public class Tabuleiro {
          // Percorre a matriz para criar o tabuleiro
         for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
 
-            System.out.print("     |"); // Cria a parede da esquerda do tabuleiro
             for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
                 // Esse if gera o centro do tabuleiro
                 if(coluna == 2 && linha == 2){
                     tabuleiro[2][2] = "*";
                     tabuleiro[3][2] = "*";
                 }
+            }  
+            
+            // Gera o interior do setor
+            for(int vet = 0; vet < criaSetor[linha].vetorSetor.length; vet ++){
+
+                if(linha== 2){
+                    // Gera o centro do tabuleiro
+                    criaSetor[linha].vetorSetor[4] = "*";
+                    criaSetor[linha].vetorSetor[6] = "*";
+                    criaSetor[linha].vetorSetor[5] = "C";
+                }
+
+                if(linha == posLinha){
+                    if(posColuna == 0){
+                        criaSetor[linha].vetorSetor[1] = "X";
+                    } else {
+                        if(posColuna == 1){
+                            criaSetor[linha].vetorSetor[3] = "X";
+                        } else {
+                            if(posColuna == 2){
+                                criaSetor[linha].vetorSetor[7] = "X";
+                            } else {
+                                if(posColuna == 3){
+                                    criaSetor[linha].vetorSetor[7] = "X";
+                                } else {
+                                    criaSetor[linha].vetorSetor[9] = "X";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void printarTabuleiro(){
+
+        //apagarTela();
+
+        System.out.println("-----------------------------");
+        System.out.println("|    Antivírus por um dia    |");
+        System.out.println("-----------------------------");
+        System.out.println("       1   2   3   4   5      ");
+
+        // Percorre a matriz para criar o tabuleiro
+        for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
+
+            System.out.print("     |"); // Cria a parede da esquerda do tabuleiro
+            for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
+                
                 System.out.print("-" + tabuleiro[linha][coluna] + "-|"); // Gera as paredes internas do tabuleiro
 
                 if(coluna == 4 && linha == 2){
-                    System.out.print("    |             |");
+                    System.out.print("     |             |");
                 }
                 if(coluna == 4 && linha == 3){
-                    System.out.print("    *             *");
+                    System.out.print("     *             *");
                 }
                 if(coluna == 4 && linha == 4){
-                    System.out.print("    |  2/6    1/7 |");
+                    System.out.print("     |  2/6    1/7 |");
                 }
             }  
             System.out.println(" ");// Pula para próxima linha da matriz
@@ -193,33 +235,7 @@ public class Tabuleiro {
             // Gera o interior do setor
             for(int vet = 0; vet < criaSetor[linha].vetorSetor.length; vet ++){
 
-                if(linha== 2){
-                    // Gera o centro do tabuleiro
-                    criaSetor[linha].vetorSetor[8] = "*";
-                    criaSetor[linha].vetorSetor[12] = "*";
-                    criaSetor[linha].vetorSetor[10] = "C";
-                }
-
-                if(linha == posLinha){
-                    if(posColuna == 0){
-                        criaSetor[linha].vetorSetor[2] = "X";
-                    } else {
-                        if(posColuna == 1){
-                            criaSetor[linha].vetorSetor[6] = "X";
-                        } else {
-                            if(posColuna == 2){
-                                criaSetor[linha].vetorSetor[2] = "X";
-                            } else {
-                                if(posColuna == 3){
-                                    criaSetor[linha].vetorSetor[14] = "X";
-                                } else {
-                                    criaSetor[linha].vetorSetor[18] = "X";
-                                }
-                            }
-                        }
-                    }
-                }
-                System.out.print(criaSetor[linha].vetorSetor[vet]);
+                System.out.print(criaSetor[linha].vetorSetor[vet] + " ");
             }
             if(linha == 0){
                 System.out.print("      Setor [" + criaSetor[linha].posSetor[0] + "," + criaSetor[linha].posSetor[1] + "]");
@@ -239,5 +255,6 @@ public class Tabuleiro {
            System.out.println(""); //muda de linha
         }
         System.out.print("     |---|---|---|---|---|\n\n"); // Cria a parede inferior do tabuleiro
+
     }
 }

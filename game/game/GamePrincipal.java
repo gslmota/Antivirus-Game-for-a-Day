@@ -6,7 +6,7 @@ public class GamePrincipal {
         int key, pl, pc;
         Tabuleiro jogo = new Tabuleiro();
         Scanner input = new Scanner(System.in);
-        jogo.gerarTabuleiroInicial();
+        /*jogo.gerarTabuleiroInicial();
         System.out.println("\nVamos Começar o Jogo ? (1-sim / 2-não)");
         key = input.nextInt();
         if(key == 1){
@@ -20,6 +20,8 @@ public class GamePrincipal {
         pl = input.nextInt();
         pc = input.nextInt();
         
-
+*/
+        jogo.gerarTabuleiroDeJogo();
+        jogo.printarTabuleiro();
     }
 }
