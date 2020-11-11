@@ -1,3 +1,4 @@
+package game;
 import java.util.Scanner;
 public class GamePrincipal {
     public static void main(String[] args) {
@@ -15,7 +16,7 @@ public class GamePrincipal {
             System.exit(0);  // Fecha o programa
         }
         System.out.println("\nPara onde P1 vai se movimentar ? ");
-        System.out.println("\n Digite a linha e depois a coluna: ");
+        System.out.println("\nDigite a linha e depois a coluna: ");
         pl = input.nextInt();
         pc = input.nextInt();
         
