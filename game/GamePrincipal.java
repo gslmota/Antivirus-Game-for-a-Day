@@ -13,6 +13,6 @@ public class GamePrincipal {
             
         } else{
             System.exit(0);  // Fecha o programa
-        }**/
+        }
     }
 }

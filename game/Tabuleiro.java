@@ -1,9 +1,9 @@
 
 import java.util.Random;
 public class Tabuleiro {
-   // String porta = "|"; // paredes/portas
+    String porta = "|"; // paredes/portas
     String [][] tabuleiro = new String[5][5]; // Cria a matriz 5 X 5
-   // String [] vetor = {"|", " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ","|"}; // Vetor criado para gerar os setores do tabuleiro
+    String [] vetor = {"|", " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ","|"}; // Vetor criado para gerar os setores do tabuleiro
     Setor [] criaSetor = new Setor[5];
     Random posicao = new Random(); // Aleatoriedade para posicionar o virus
     Turnos turno = new Turnos();
