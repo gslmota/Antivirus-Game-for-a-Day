@@ -150,8 +150,7 @@ public class Tabuleiro {
     public void gerarTabuleiroDeJogo(){
 
         gerarSetorVazio();
-
-        int contador = 0;
+        apagarTela();
 
         System.out.println("-----------------------------");
         System.out.println("|    Antivírus por um dia    |");
@@ -177,18 +176,43 @@ public class Tabuleiro {
                     tabuleiro[3][2] = "*";
                 }
                 System.out.print("-" + tabuleiro[linha][coluna] + "-|"); // Gera as paredes internas do tabuleiro
-                
             }  
             System.out.println(" ");// Pula para próxima linha da matriz
             System.out.print(linha + 1 + "    ");// Gera o inicio da linha, o interior do tabuleiro
 
             // Gera o interior do setor
-            for(int set = 0; set < criaSetor.length; set++){
+            for(int vet = 0; vet < criaSetor[linha].vetorSetor.length; vet ++){
 
-                for(int vet = 0; vet < criaSetor[set].vetorSetor.length; vet ++){
-                    System.out.print(criaSetor[set].vetorSetor[vet]);
+                if(linha== 2){
+                    // Gera o centro do tabuleiro
+                    criaSetor[linha].vetorSetor[8] = "*";
+                    criaSetor[linha].vetorSetor[12] = "*";
+                    criaSetor[linha].vetorSetor[10] = "C";
                 }
-                break;// faz a parada na repetição no setor
+
+                if(linha == posLinha){
+                    if(posColuna == 0){
+                        criaSetor[linha].vetorSetor[2] = "X";
+                    } else {
+                        if(posColuna == 1){
+                            criaSetor[linha].vetorSetor[6] = "X";
+                        } else {
+                            if(posColuna == 2){
+                                criaSetor[linha].vetorSetor[2] = "X";
+                            } else {
+                                if(posColuna == 3){
+                                    criaSetor[linha].vetorSetor[14] = "X";
+                                } else {
+                                    criaSetor[linha].vetorSetor[18] = "X";
+                                }
+                            }
+                        }
+                    }
+                }
+                System.out.print(criaSetor[linha].vetorSetor[vet]);
+                if(linha == 0){
+                    System.out.print("      Setor [" + criaSetor[linha].posSetor[0] + "," + criaSetor[linha].posSetor[1] + "]");
+                }
             }
            System.out.println(""); //muda de linha
         }
