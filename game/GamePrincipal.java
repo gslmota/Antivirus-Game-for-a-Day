@@ -5,12 +5,11 @@ public class GamePrincipal {
         int key;
         Tabuleiro jogo = new Tabuleiro();
         Scanner input = new Scanner(System.in);
-        jogo.gerarTabuleiroDeJogo();
-        //jogo.gerarTabuleiroInicial();
-        /*System.out.println("\nVamos Começar o Jogo ? (1-sim / 2-não)");
+        jogo.gerarTabuleiroInicial();
+        System.out.println("\nVamos Começar o Jogo ? (1-sim / 2-não)");
         key = input.nextInt();
         if(key == 1){
-            jogo.movimentaSetor(jogo.turno.movimentar());
+            jogo.gerarTabuleiroDeJogo();
             
         } else{
             System.exit(0);  // Fecha o programa

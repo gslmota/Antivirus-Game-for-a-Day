@@ -17,7 +17,7 @@ public class Tabuleiro {
         }
     }
 
-   /* public void gerarTabuleiroInicial() {
+    public void gerarTabuleiroInicial() {
         int contador = 0; // Contador usado durante o percorrimento dos setores
         
         System.out.println("-----------------------------");
@@ -137,7 +137,7 @@ public class Tabuleiro {
            contador ++;
         }
         System.out.print("     |---|---|---|---|---|\n\n"); // Cria a parede inferior do tabuleiro
-    }*/
+    }
 
     // Função para apagar a exibição no terminal
     public void apagarTela(){
@@ -176,6 +176,16 @@ public class Tabuleiro {
                     tabuleiro[3][2] = "*";
                 }
                 System.out.print("-" + tabuleiro[linha][coluna] + "-|"); // Gera as paredes internas do tabuleiro
+
+                if(coluna == 4 && linha == 2){
+                    System.out.print("    |             |");
+                }
+                if(coluna == 4 && linha == 3){
+                    System.out.print("    *             *");
+                }
+                if(coluna == 4 && linha == 4){
+                    System.out.print("    |  2/6    1/7 |");
+                }
             }  
             System.out.println(" ");// Pula para próxima linha da matriz
             System.out.print(linha + 1 + "    ");// Gera o inicio da linha, o interior do tabuleiro
@@ -210,8 +220,20 @@ public class Tabuleiro {
                     }
                 }
                 System.out.print(criaSetor[linha].vetorSetor[vet]);
-                if(linha == 0){
-                    System.out.print("      Setor [" + criaSetor[linha].posSetor[0] + "," + criaSetor[linha].posSetor[1] + "]");
+            }
+            if(linha == 0){
+                System.out.print("      Setor [" + criaSetor[linha].posSetor[0] + "," + criaSetor[linha].posSetor[1] + "]");
+            }
+            if(linha == 1 || linha ==4){
+                System.out.print("    |------*------|");
+            } else{
+                if(linha == 2){
+                    System.out.print("    |             |");
+                }
+                else{
+                    if(linha == 3){
+                        System.out.print("    |  P1     P2  |");
+                    }
                 }
             }
            System.out.println(""); //muda de linha
