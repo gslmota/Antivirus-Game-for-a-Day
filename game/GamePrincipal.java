@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class GamePrincipal {
     public static void main(String[] args) {
 
-        int key;
+        int key, pl, pc;
         Tabuleiro jogo = new Tabuleiro();
         Scanner input = new Scanner(System.in);
         jogo.gerarTabuleiroInicial();
@@ -14,5 +14,11 @@ public class GamePrincipal {
         } else{
             System.exit(0);  // Fecha o programa
         }
+        System.out.println("\nPara onde P1 vai se movimentar ? ");
+        System.out.println("\n Digite a linha e depois a coluna: ");
+        pl = input.nextInt();
+        pc = input.nextInt();
+        
+
     }
 }

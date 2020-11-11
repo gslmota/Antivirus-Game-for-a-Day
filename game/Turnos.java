@@ -4,7 +4,7 @@ public class Turnos {
     int contadorCiclos = 0;
     Scanner input = new Scanner(System.in);
 
-    public int[] movimentar(){
+    public int[] coletarMovimento(){
         if(contadorCiclos<25){
             int posLin, posCol;
             System.out.println("");
@@ -19,5 +19,8 @@ public class Turnos {
             return null;
         }
     }
-    
+
+    public void movimentar(int[] vet){
+        
+    }
 }
