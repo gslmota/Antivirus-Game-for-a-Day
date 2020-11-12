@@ -281,32 +281,32 @@ public class Tabuleiro {
 
             for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
                 // Esse for serve para modificar a matriz
-                if(linha == posicoes[0] && coluna == posicoes[1]){
-                    criaSetor[linha].posSetor[0] = posicoes[0];
-                    if(coluna == 1){
-                        criaSetor[linha].vetorSetor[coluna] = "º";
-                        criaSetor[linha].posSetor[1] = posicoes[1];
-                    } else {
-                        if(coluna == 2){
-                            criaSetor[linha].vetorSetor[coluna + 1] = "º";
+                if(jogador == "P1"){
+                    if(linha == posicoes[0] && coluna == posicoes[1]){
+                        criaSetor[linha].posSetor[0] = posicoes[0];
+                        if(coluna == 1){
+                            criaSetor[linha].vetorSetor[coluna] = "º";
                             criaSetor[linha].posSetor[1] = posicoes[1];
                         } else {
-                            if(coluna == 3){
-                                criaSetor[linha].vetorSetor[coluna + 3] = "º";
+                            if(coluna == 2){
+                                criaSetor[linha].vetorSetor[coluna + 1] = "º";
                                 criaSetor[linha].posSetor[1] = posicoes[1];
                             } else {
-                                if(coluna == 4){
+                                if(coluna == 3){
                                     criaSetor[linha].vetorSetor[coluna + 3] = "º";
                                     criaSetor[linha].posSetor[1] = posicoes[1];
                                 } else {
-                                    criaSetor[linha].vetorSetor[coluna + 5] = "º";
-                                    criaSetor[linha].posSetor[1] = posicoes[1];
+                                    if(coluna == 4){
+                                        criaSetor[linha].vetorSetor[coluna + 3] = "º";
+                                        criaSetor[linha].posSetor[1] = posicoes[1];
+                                    } else {
+                                        criaSetor[linha].vetorSetor[coluna + 5] = "º";
+                                        criaSetor[linha].posSetor[1] = posicoes[1];
+                                    }
                                 }
                             }
                         }
-                        
                     }
-                    
                 }
             }  
         }
