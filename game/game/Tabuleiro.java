@@ -175,25 +175,30 @@ public class Tabuleiro {
 
                 if(linha== 2){
                     // Gera o centro do tabuleiro
-                    criaSetor[linha].vetorSetor[4] = "*";
-                    criaSetor[linha].vetorSetor[6] = "*";
-                    criaSetor[linha].vetorSetor[5] = "C";
+                    criaSetor[linha].vetorSetor[8] = "*";
+                    criaSetor[linha].vetorSetor[12] = "*";
+                    criaSetor[linha].vetorSetor[10] = "C";
                 }
 
                 if(linha == posLinha){
                     if(posColuna == 0){
-                        criaSetor[linha].vetorSetor[1] = "X";
+                        criaSetor[linha].vetorSetor[2] = "X";
                     } else {
                         if(posColuna == 1){
                             criaSetor[linha].vetorSetor[3] = "X";
                         } else {
                             if(posColuna == 2){
-                                criaSetor[linha].vetorSetor[7] = "X";
+                                if(posColuna == posLinha){
+                                    criaSetor[linha].vetorSetor[18] = "X";
+                                } else {
+                                    criaSetor[linha].vetorSetor[10] = "X";
+                                }
+                                
                             } else {
                                 if(posColuna == 3){
-                                    criaSetor[linha].vetorSetor[7] = "X";
+                                    criaSetor[linha].vetorSetor[14] = "X";
                                 } else {
-                                    criaSetor[linha].vetorSetor[9] = "X";
+                                    criaSetor[linha].vetorSetor[18] = "X";
                                 }
                             }
                         }
@@ -259,7 +264,7 @@ public class Tabuleiro {
 
     }
 
-    public void alterarSetor(int[] posicoes){
+    public void alterarSetor(int[] posicoes, String jogador){
         // Sorteia as portas e paredes
         for(int i = 0; i < 3; i ++){
 
