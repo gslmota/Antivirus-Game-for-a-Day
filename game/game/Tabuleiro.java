@@ -221,13 +221,13 @@ public class Tabuleiro {
                 System.out.print("-" + tabuleiro[linha][coluna] + "-|"); // Gera as paredes internas do tabuleiro
 
                 if(coluna == 4 && linha == 2){
-                    System.out.print("     |             |");
+                    System.out.print("    |             |");
                 }
                 if(coluna == 4 && linha == 3){
-                    System.out.print("     *             *");
+                    System.out.print("    *             *");
                 }
                 if(coluna == 4 && linha == 4){
-                    System.out.print("     |  2/6    1/7 |");
+                    System.out.print("    |  2/6    1/7 |");
                 }
             }  
             System.out.println(" ");// Pula para próxima linha da matriz
@@ -236,7 +236,7 @@ public class Tabuleiro {
             // Gera o interior do setor
             for(int vet = 0; vet < criaSetor[linha].vetorSetor.length; vet ++){
 
-                System.out.print(criaSetor[linha].vetorSetor[vet] + " ");
+                System.out.print(criaSetor[linha].vetorSetor[vet]);
             }
             if(linha == 0){
                 System.out.print("      Setor [" + criaSetor[linha].posSetor[0] + "," + criaSetor[linha].posSetor[1] + "]");
