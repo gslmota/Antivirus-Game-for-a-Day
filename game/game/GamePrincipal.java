@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class GamePrincipal {
     public static void main(String[] args) {
 
-        int key, pl, pc, contTurnos = 0;
+        int key, contTurnos = 0;
         Tabuleiro tabuleiro = new Tabuleiro();
         Turnos turno = new Turnos();
         Scanner input = new Scanner(System.in);
@@ -18,16 +18,20 @@ public class GamePrincipal {
         } else{
             System.exit(0);  // Fecha o programa
         }
-        /*
+        
         while(contTurnos <= 25){
-            System.out.println("\nPara onde P1 vai se movimentar ? ");
-            System.out.println("\nDigite a linha e depois a coluna: ");
-            pl = input.nextInt();
-            pc = input.nextInt();
 
-            contTurnos ++;
-
-        }*/
-        turno.coletarMovimento();
+            int vet [] = turno.coletarMovimentoP1(contTurnos);
+            tabuleiro.alterarSetor(vet);
+            tabuleiro.printarTabuleiro();
+            System.out.println("\nTudo ok? (1-sim / 2-não)");
+            key = input.nextInt();
+            if(key == 1){
+                System.out.println(tabuleiro.criaSetor[1].vetorSetor.length);
+                contTurnos ++;
+            } else {
+                break;
+            }
+        }
     }
 }

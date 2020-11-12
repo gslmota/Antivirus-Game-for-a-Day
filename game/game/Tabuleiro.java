@@ -9,6 +9,7 @@ public class Tabuleiro {
     Turnos turno = new Turnos();
     int posLinha = posicao.nextInt(5);
     int posColuna = posicao.nextInt(5);
+    int contPorta = 0, contParede = 0;
 
     // Função para criar setores vazios
     public void gerarSetorVazio(){
@@ -256,5 +257,53 @@ public class Tabuleiro {
         }
         System.out.print("     |---|---|---|---|---|\n\n"); // Cria a parede inferior do tabuleiro
 
+    }
+
+    public void alterarSetor(int[] posicoes){
+        // Sorteia as portas e paredes
+        for(int i = 0; i < 3; i ++){
+
+            int geraPortaParede = posicao.nextInt(10) + 1;
+            if(geraPortaParede > 3){
+                this.contPorta ++;
+            } else {
+                this.contParede ++;
+            }
+        }
+        
+         // Percorre a matriz para criar o tabuleiro
+        for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
+
+            for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
+                // Esse for serve para modificar a matriz
+                if(linha == posicoes[0] && coluna == posicoes[1]){
+                    criaSetor[linha].posSetor[0] = posicoes[0];
+                    if(coluna == 1){
+                        criaSetor[linha].vetorSetor[coluna] = "º";
+                        criaSetor[linha].posSetor[1] = posicoes[1];
+                    } else {
+                        if(coluna == 2){
+                            criaSetor[linha].vetorSetor[coluna + 1] = "º";
+                            criaSetor[linha].posSetor[1] = posicoes[1];
+                        } else {
+                            if(coluna == 3){
+                                criaSetor[linha].vetorSetor[coluna + 3] = "º";
+                                criaSetor[linha].posSetor[1] = posicoes[1];
+                            } else {
+                                if(coluna == 4){
+                                    criaSetor[linha].vetorSetor[coluna + 3] = "º";
+                                    criaSetor[linha].posSetor[1] = posicoes[1];
+                                } else {
+                                    criaSetor[linha].vetorSetor[coluna + 5] = "º";
+                                    criaSetor[linha].posSetor[1] = posicoes[1];
+                                }
+                            }
+                        }
+                        
+                    }
+                    
+                }
+            }  
+        }
     }
 }
