@@ -22,7 +22,7 @@ public class GamePrincipal {
         while(contTurnos <= 25){
 
             int vet [] = turno.coletarMovimentoP1(contTurnos);
-            tabuleiro.alterarSetor(vet);
+            tabuleiro.alterarSetor(vet, "P1");
             tabuleiro.printarTabuleiro();
             System.out.println("\nTudo ok? (1-sim / 2-não)");
             key = input.nextInt();

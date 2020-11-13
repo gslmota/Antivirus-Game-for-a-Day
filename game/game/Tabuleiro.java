@@ -173,7 +173,7 @@ public class Tabuleiro {
             // Gera o interior do setor
             for(int vet = 0; vet < criaSetor[linha].vetorSetor.length; vet ++){
 
-                if(linha== 2){
+                if(linha == 2){
                     // Gera o centro do tabuleiro
                     criaSetor[linha].vetorSetor[8] = "*";
                     criaSetor[linha].vetorSetor[12] = "*";
@@ -185,7 +185,7 @@ public class Tabuleiro {
                         criaSetor[linha].vetorSetor[2] = "X";
                     } else {
                         if(posColuna == 1){
-                            criaSetor[linha].vetorSetor[3] = "X";
+                            criaSetor[linha].vetorSetor[6] = "X";
                         } else {
                             if(posColuna == 2){
                                 if(posColuna == posLinha){
@@ -285,22 +285,48 @@ public class Tabuleiro {
                     if(linha == posicoes[0] && coluna == posicoes[1]){
                         criaSetor[linha].posSetor[0] = posicoes[0];
                         if(coluna == 1){
-                            criaSetor[linha].vetorSetor[coluna] = "º";
+                            criaSetor[linha].vetorSetor[coluna] = "P1";
                             criaSetor[linha].posSetor[1] = posicoes[1];
                         } else {
                             if(coluna == 2){
-                                criaSetor[linha].vetorSetor[coluna + 1] = "º";
+                                criaSetor[linha].vetorSetor[coluna + 1] = "P1";
                                 criaSetor[linha].posSetor[1] = posicoes[1];
                             } else {
                                 if(coluna == 3){
-                                    criaSetor[linha].vetorSetor[coluna + 3] = "º";
+                                    criaSetor[linha].vetorSetor[coluna + 3] = "P1";
                                     criaSetor[linha].posSetor[1] = posicoes[1];
                                 } else {
                                     if(coluna == 4){
-                                        criaSetor[linha].vetorSetor[coluna + 3] = "º";
+                                        criaSetor[linha].vetorSetor[coluna + 3] = "P1";
                                         criaSetor[linha].posSetor[1] = posicoes[1];
                                     } else {
-                                        criaSetor[linha].vetorSetor[coluna + 5] = "º";
+                                        criaSetor[linha].vetorSetor[coluna + 5] = "P1";
+                                        criaSetor[linha].posSetor[1] = posicoes[1];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if(linha == posicoes[0] && coluna == posicoes[1]){
+                        criaSetor[linha].posSetor[0] = posicoes[0];
+                        if(coluna == 1){
+                            criaSetor[linha].vetorSetor[coluna] = "P2";
+                            criaSetor[linha].posSetor[1] = posicoes[1];
+                        } else {
+                            if(coluna == 2){
+                                criaSetor[linha].vetorSetor[coluna + 1] = "P2";
+                                criaSetor[linha].posSetor[1] = posicoes[1];
+                            } else {
+                                if(coluna == 3){
+                                    criaSetor[linha].vetorSetor[coluna + 3] = "P2";
+                                    criaSetor[linha].posSetor[1] = posicoes[1];
+                                } else {
+                                    if(coluna == 4){
+                                        criaSetor[linha].vetorSetor[coluna + 3] = "P2";
+                                        criaSetor[linha].posSetor[1] = posicoes[1];
+                                    } else {
+                                        criaSetor[linha].vetorSetor[coluna + 5] = "P2";
                                         criaSetor[linha].posSetor[1] = posicoes[1];
                                     }
                                 }
