@@ -285,23 +285,27 @@ public class Tabuleiro {
                     if(linha == posicoes[0] && coluna == posicoes[1]){
                         criaSetor[linha].posSetor[0] = posicoes[0];
                         if(coluna == 1){
-                            criaSetor[linha].vetorSetor[coluna] = "P";
-                            criaSetor[linha].vetorSetor[coluna + 2] = "1";
+                            criaSetor[linha - 1].vetorSetor[coluna] = "P";
+                            criaSetor[linha - 1].vetorSetor[coluna + 2] = "1";
                             criaSetor[linha].posSetor[1] = posicoes[1];
                         } else {
                             if(coluna == 2){
-                                criaSetor[linha].vetorSetor[coluna + 1] = "P1";
+                                criaSetor[linha - 1].vetorSetor[coluna + 3] = "P";
+                                criaSetor[linha - 1].vetorSetor[coluna + 5] = "1";
                                 criaSetor[linha].posSetor[1] = posicoes[1];
                             } else {
                                 if(coluna == 3){
-                                    criaSetor[linha].vetorSetor[coluna + 3] = "P1";
+                                    criaSetor[linha - 1].vetorSetor[coluna + 6] = "P";
+                                    criaSetor[linha - 1].vetorSetor[coluna + 8] = "1";
                                     criaSetor[linha].posSetor[1] = posicoes[1];
                                 } else {
                                     if(coluna == 4){
-                                        criaSetor[linha].vetorSetor[coluna + 3] = "P1";
+                                        criaSetor[linha - 1].vetorSetor[coluna + 9] = "P";
+                                        criaSetor[linha - 1].vetorSetor[coluna + 11] = "1";
                                         criaSetor[linha].posSetor[1] = posicoes[1];
                                     } else {
-                                        criaSetor[linha].vetorSetor[coluna + 5] = "P1";
+                                        criaSetor[linha].vetorSetor[coluna + 12] = "P";
+                                        criaSetor[linha].vetorSetor[coluna + 14] = "1";
                                         criaSetor[linha].posSetor[1] = posicoes[1];
                                     }
                                 }
