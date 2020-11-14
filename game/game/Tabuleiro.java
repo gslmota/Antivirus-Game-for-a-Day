@@ -285,7 +285,8 @@ public class Tabuleiro {
                     if(linha == posicoes[0] && coluna == posicoes[1]){
                         criaSetor[linha].posSetor[0] = posicoes[0];
                         if(coluna == 1){
-                            criaSetor[linha].vetorSetor[coluna] = "P1";
+                            criaSetor[linha].vetorSetor[coluna] = "P";
+                            criaSetor[linha].vetorSetor[coluna + 2] = "1";
                             criaSetor[linha].posSetor[1] = posicoes[1];
                         } else {
                             if(coluna == 2){
