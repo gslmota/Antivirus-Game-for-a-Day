@@ -304,9 +304,11 @@ public class Tabuleiro {
                                         criaSetor[linha - 1].vetorSetor[coluna + 11] = "1";
                                         criaSetor[linha].posSetor[1] = posicoes[1];
                                     } else {
-                                        criaSetor[linha].vetorSetor[coluna + 12] = "P";
-                                        criaSetor[linha].vetorSetor[coluna + 14] = "1";
-                                        criaSetor[linha].posSetor[1] = posicoes[1];
+                                        if(coluna == 5){
+                                            criaSetor[linha - 1].vetorSetor[coluna + 12] = "P";
+                                            criaSetor[linha - 1].vetorSetor[coluna + 14] = "1";
+                                            criaSetor[linha].posSetor[1] = posicoes[1];
+                                        }
                                     }
                                 }
                             }
