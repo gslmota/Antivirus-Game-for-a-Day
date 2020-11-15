@@ -39,6 +39,8 @@ public class Turnos {
         }
     }
 
+    
+
     public void movimentar(int[] vet){
         
     }

@@ -23,11 +23,11 @@ public class GamePrincipal {
 
             int vet [] = turno.coletarMovimentoP1(contTurnos);
             tabuleiro.alterarSetor(vet, "P1");
+            tabuleiro.gerarPortaParede(vet);
             tabuleiro.printarTabuleiro();
             System.out.println("\nTudo ok? (1-sim / 2-não)");
             key = input.nextInt();
             if(key == 1){
-                System.out.println(tabuleiro.criaSetor[1].vetorSetor.length);
                 contTurnos ++;
             } else {
                 break;

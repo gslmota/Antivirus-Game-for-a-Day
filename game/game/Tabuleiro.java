@@ -265,16 +265,6 @@ public class Tabuleiro {
     }
 
     public void alterarSetor(int[] posicoes, String jogador){
-        // Sorteia as portas e paredes
-        for(int i = 0; i < 3; i ++){
-
-            int geraPortaParede = posicao.nextInt(10) + 1;
-            if(geraPortaParede > 3){
-                this.contPorta ++;
-            } else {
-                this.contParede ++;
-            }
-        }
         
          // Percorre a matriz para criar o tabuleiro
         for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
@@ -282,32 +272,31 @@ public class Tabuleiro {
             for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
                 // Esse for serve para modificar a matriz
                 if(jogador == "P1"){
-                    if(linha == posicoes[0] && coluna == posicoes[1]){
-                        criaSetor[linha].posSetor[0] = posicoes[0];
-                        if(coluna == 1){
-                            criaSetor[linha - 1].vetorSetor[coluna] = "P";
-                            criaSetor[linha - 1].vetorSetor[coluna + 2] = "1";
-                            criaSetor[linha].posSetor[1] = posicoes[1];
+                    if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
+                        if(coluna == 0){
+                            criaSetor[linha].vetorSetor[coluna + 1] = "P";
+                            criaSetor[linha].vetorSetor[coluna + 2] = "L";
+                            criaSetor[linha].vetorSetor[coluna + 3] = "1";
                         } else {
-                            if(coluna == 2){
-                                criaSetor[linha - 1].vetorSetor[coluna + 3] = "P";
-                                criaSetor[linha - 1].vetorSetor[coluna + 5] = "1";
-                                criaSetor[linha].posSetor[1] = posicoes[1];
+                            if(coluna == 1){
+                                criaSetor[linha].vetorSetor[coluna + 4] = "P";
+                                criaSetor[linha].vetorSetor[coluna + 5] = "L";
+                                criaSetor[linha].vetorSetor[coluna + 6] = "1";
                             } else {
-                                if(coluna == 3){
-                                    criaSetor[linha - 1].vetorSetor[coluna + 6] = "P";
-                                    criaSetor[linha - 1].vetorSetor[coluna + 8] = "1";
-                                    criaSetor[linha].posSetor[1] = posicoes[1];
+                                if(coluna == 2){
+                                    criaSetor[linha].vetorSetor[coluna + 8] = "P";
+                                    criaSetor[linha].vetorSetor[coluna + 9] = "L";
+                                    criaSetor[linha].vetorSetor[coluna + 10] = "1";
                                 } else {
-                                    if(coluna == 4){
-                                        criaSetor[linha - 1].vetorSetor[coluna + 9] = "P";
-                                        criaSetor[linha - 1].vetorSetor[coluna + 11] = "1";
-                                        criaSetor[linha].posSetor[1] = posicoes[1];
+                                    if(coluna == 3){
+                                        criaSetor[linha].vetorSetor[coluna + 10] = "P";
+                                        criaSetor[linha].vetorSetor[coluna + 11] = "L";
+                                        criaSetor[linha].vetorSetor[coluna + 12] = "1";
                                     } else {
-                                        if(coluna == 5){
-                                            criaSetor[linha - 1].vetorSetor[coluna + 12] = "P";
-                                            criaSetor[linha - 1].vetorSetor[coluna + 14] = "1";
-                                            criaSetor[linha].posSetor[1] = posicoes[1];
+                                        if(coluna == 4){
+                                            criaSetor[linha].vetorSetor[coluna + 13] = "P";
+                                            criaSetor[linha].vetorSetor[coluna + 14] = "L";
+                                            criaSetor[linha].vetorSetor[coluna + 15] = "1";
                                         }
                                     }
                                 }
@@ -315,26 +304,32 @@ public class Tabuleiro {
                         }
                     }
                 } else {
-                    if(linha == posicoes[0] && coluna == posicoes[1]){
-                        criaSetor[linha].posSetor[0] = posicoes[0];
-                        if(coluna == 1){
-                            criaSetor[linha].vetorSetor[coluna] = "P2";
-                            criaSetor[linha].posSetor[1] = posicoes[1];
+                    if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
+                        if(coluna == 0){
+                            criaSetor[linha].vetorSetor[coluna + 1] = "P";
+                            criaSetor[linha].vetorSetor[coluna + 2] = "L";
+                            criaSetor[linha].vetorSetor[coluna + 3] = "2";
                         } else {
-                            if(coluna == 2){
-                                criaSetor[linha].vetorSetor[coluna + 1] = "P2";
-                                criaSetor[linha].posSetor[1] = posicoes[1];
+                            if(coluna == 1){
+                                criaSetor[linha].vetorSetor[coluna + 4] = "P";
+                                criaSetor[linha].vetorSetor[coluna + 5] = "L";
+                                criaSetor[linha].vetorSetor[coluna + 6] = "2";
                             } else {
-                                if(coluna == 3){
-                                    criaSetor[linha].vetorSetor[coluna + 3] = "P2";
-                                    criaSetor[linha].posSetor[1] = posicoes[1];
+                                if(coluna == 2){
+                                    criaSetor[linha].vetorSetor[coluna + 8] = "P";
+                                    criaSetor[linha].vetorSetor[coluna + 9] = "L";
+                                    criaSetor[linha].vetorSetor[coluna + 10] = "2";
                                 } else {
-                                    if(coluna == 4){
-                                        criaSetor[linha].vetorSetor[coluna + 3] = "P2";
-                                        criaSetor[linha].posSetor[1] = posicoes[1];
+                                    if(coluna == 3){
+                                        criaSetor[linha].vetorSetor[coluna + 10] = "P";
+                                        criaSetor[linha].vetorSetor[coluna + 11] = "L";
+                                        criaSetor[linha].vetorSetor[coluna + 12] = "2";
                                     } else {
-                                        criaSetor[linha].vetorSetor[coluna + 5] = "P2";
-                                        criaSetor[linha].posSetor[1] = posicoes[1];
+                                        if(coluna == 4){
+                                            criaSetor[linha].vetorSetor[coluna + 13] = "P";
+                                            criaSetor[linha].vetorSetor[coluna + 14] = "L";
+                                            criaSetor[linha].vetorSetor[coluna + 15] = "2";
+                                        }
                                     }
                                 }
                             }
@@ -343,5 +338,87 @@ public class Tabuleiro {
                 }
             }  
         }
+    }
+
+    public void gerarPortaParede(int[] posicoes){
+        String porta = "*";
+        String parede = "|";
+        int tPorta = 0, tParede = 0;
+        int escolha = posicao.nextInt(2);
+        // escolha == 0 porta
+        // Sorteia as portas e paredes
+        for(int i = 0; i < 3; i ++){
+
+            int geraPortaParede = posicao.nextInt(10) + 1;
+            if(geraPortaParede > 3){
+                tPorta++;
+            } else {
+                tParede++;
+            }
+        }
+        if(escolha == 0){
+            // Modifica os setores
+            // Percorre a matriz para criar o tabuleiro
+            for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
+
+                for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
+                    // Esse for serve para modificar a matriz
+
+                        if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
+                            if(coluna == 0){
+                                criaSetor[linha].vetorSetor[coluna + 4] = porta;
+                            } else {
+                                if(coluna == 1){
+                                    criaSetor[linha].vetorSetor[coluna + 7] = porta;
+                                } else {
+                                    if(coluna == 2){
+                                        criaSetor[linha].vetorSetor[coluna + 10] = porta;
+                                        
+                                    } else {
+                                        if(coluna == 3){
+                                            criaSetor[linha].vetorSetor[coluna + 13] = porta;
+                                            
+                                        } else {
+                                            System.out.println("Não pode haver porta nessas posições");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                } 
+            }
+        } else {
+            // Modifica os setores
+            // Percorre a matriz para criar o tabuleiro
+            for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
+
+                for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
+                    // Esse for serve para modificar a matriz
+
+                        if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
+                            if(coluna == 0){
+                                criaSetor[linha].vetorSetor[coluna + 4] = parede;
+                            } else {
+                                if(coluna == 1){
+                                    criaSetor[linha].vetorSetor[coluna + 7] = parede;
+                                } else {
+                                    if(coluna == 2){
+                                        criaSetor[linha].vetorSetor[coluna + 10] = parede;
+                                        
+                                    } else {
+                                        if(coluna == 3){
+                                            criaSetor[linha].vetorSetor[coluna + 13] = parede;
+                                            
+                                        } else {
+                                            System.out.println("ok");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                } 
+            }
+        }
+        
     }
 }
