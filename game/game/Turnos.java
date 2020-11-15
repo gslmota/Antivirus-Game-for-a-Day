@@ -10,7 +10,7 @@ public class Turnos {
 
             int posLin, posCol;
             System.out.println("");
-            System.out.println("Digite a posição para onde P1 deseja ir na ordem (linha/coluna): ");
+            System.out.println("Digite a posição para onde o jogador 1 (PL1) deseja ir na ordem (linha/coluna): ");
             posLin = input.nextInt();
             posCol = input.nextInt();
             int vet[] = {posLin, posCol};
@@ -27,7 +27,7 @@ public class Turnos {
 
             int posLin, posCol;
             System.out.println("");
-            System.out.println("Digite a posição para onde P2 deseja ir na ordem (linha/coluna): ");
+            System.out.println("Digite a posição para onde o jogador 2 (PL2) deseja ir na ordem (linha/coluna): ");
             posLin = input.nextInt();
             posCol = input.nextInt();
             int vet[] = {posLin, posCol};

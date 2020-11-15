@@ -356,9 +356,10 @@ public class Tabuleiro {
                 tParede++;
             }
         }
-        if(escolha == 0){
-            // Modifica os setores
-            // Percorre a matriz para criar o tabuleiro
+        this.contParede = tParede;
+        this.contPorta = tPorta;
+        // Modifica os setores
+        if(escolha == 0 && tPorta != 0){
             for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
 
                 for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
@@ -387,8 +388,10 @@ public class Tabuleiro {
                         }
                 } 
             }
+            tPorta --;
         } else {
-            // Modifica os setores
+            if(tParede != 0){
+                // Modifica os setores
             // Percorre a matriz para criar o tabuleiro
             for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
 
@@ -418,7 +421,11 @@ public class Tabuleiro {
                         }
                 } 
             }
+            tParede --;
+            }
+            
         }
         
+        // Modifica as linhas
     }
 }
