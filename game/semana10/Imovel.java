@@ -2,8 +2,8 @@ package semana10;
 
 public abstract class Imovel {
 
-    private Endereco endereco;
-    private double preco;
+    protected Endereco endereco;
+    protected double preco;
 
     public Imovel (){
 

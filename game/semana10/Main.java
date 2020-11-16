@@ -10,18 +10,20 @@ public class Main {
         // Usei o next para prencher pq o nextLine não funciona
         for(int i = 0; i < imoveis.length; i++){
             System.out.println("Digite a rua: ");
-            String rua = input.next();
+            String rua = input.nextLine();
             System.out.println("Digite o numero: ");
             int num = input.nextInt();
+            input.nextLine();
             System.out.println("Digite o bairro: ");
-            String bairro = input.next();
+            String bairro = input.nextLine();
             System.out.println("Digite a cidade: ");
-            String cidade = input.next();
+            String cidade = input.nextLine();
             System.out.println("Digite o estado: ");
-            String estado = input.next();
+            String estado = input.nextLine();
             Endereco end = new Endereco(rua, bairro, cidade, estado, num);
             System.out.println("Digite o preço do imovel: ");
             double preco = input.nextDouble();
+            input.nextLine();
             int sort = altenar.nextInt(2);
             if(sort == 0){
                 imoveis[i] = new ImovelVelho(end, preco);
