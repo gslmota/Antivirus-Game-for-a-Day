@@ -14,7 +14,6 @@ public class GamePrincipal {
             tabuleiro.gerarTabuleiroDeJogo();
             tabuleiro.apagarTela();
             tabuleiro.printarTabuleiro();
-            
         } else{
             System.exit(0);  // Fecha o programa
         }
