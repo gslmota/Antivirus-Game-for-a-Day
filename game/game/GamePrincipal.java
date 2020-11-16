@@ -25,6 +25,7 @@ public class GamePrincipal {
             tabuleiro.alterarSetor(vet, "P1");
             tabuleiro.gerarPortaParede(vet);
             tabuleiro.printarTabuleiro();
+            tabuleiro.limparSetor(vet);
             System.out.println("\nTudo ok? (1-sim / 2-não)");
             key = input.nextInt();
             if(key == 1){

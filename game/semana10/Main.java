@@ -3,7 +3,9 @@ import java.util.Scanner;
 import java.util.Random;
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        
+        
+        /*Scanner input = new Scanner(System.in);
         Imovel[] imoveis = new Imovel [200];
         Random altenar = new Random();
 
@@ -33,7 +35,8 @@ public class Main {
         for(int i = 0; i < imoveis.length; i ++){
             imoveis[i].calcularValorImovel();
         }
-
+        */
+        
     }
 
 }

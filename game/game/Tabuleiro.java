@@ -129,7 +129,7 @@ public class Tabuleiro {
                     }
                     else{
                         if(linha == 3){
-                            System.out.print("    |  P1     P2  |");
+                            System.out.print("    |  PL1    PL2 |");
                         }
                     }
                 }
@@ -226,13 +226,13 @@ public class Tabuleiro {
                 System.out.print("-" + tabuleiro[linha][coluna] + "-|"); // Gera as paredes internas do tabuleiro
 
                 if(coluna == 4 && linha == 2){
-                    System.out.print("    |             |");
+                    System.out.print("    |             |" + "    |             |");
                 }
                 if(coluna == 4 && linha == 3){
-                    System.out.print("    *             *");
+                    System.out.print("    *             *" + "    *             *");
                 }
                 if(coluna == 4 && linha == 4){
-                    System.out.print("    |  2/6    1/7 |");
+                    System.out.print("    |     2/6     |" + "    |     1/7     |");
                 }
             }  
             System.out.println(" ");// Pula para próxima linha da matriz
@@ -244,17 +244,17 @@ public class Tabuleiro {
                 System.out.print(criaSetor[linha].vetorSetor[vet]);
             }
             if(linha == 0){
-                System.out.print("      Setor [" + criaSetor[linha].posSetor[0] + "," + criaSetor[linha].posSetor[1] + "]");
+                System.out.print("      Setor [" + criaSetor[linha].posSetor[0] + "," + criaSetor[linha].posSetor[1] + "]" + "      Setor [" + criaSetor[linha].posSetor[0] + "," + criaSetor[linha].posSetor[1] + "]");
             }
             if(linha == 1 || linha ==4){
-                System.out.print("    |------*------|");
+                System.out.print("    |------*------|" + "    |------*------|");
             } else{
                 if(linha == 2){
-                    System.out.print("    |             |");
+                    System.out.print("    |             |" + "    |             |");
                 }
                 else{
                     if(linha == 3){
-                        System.out.print("    |  P1     P2  |");
+                        System.out.print("    |     PL1     |" + "    |     PL2     |");
                     }
                 }
             }
@@ -266,7 +266,7 @@ public class Tabuleiro {
 
     public void alterarSetor(int[] posicoes, String jogador){
         
-         // Percorre a matriz para criar o tabuleiro
+        // Percorre a matriz para criar o tabuleiro
         for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
 
             for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
@@ -284,9 +284,9 @@ public class Tabuleiro {
                                 criaSetor[linha].vetorSetor[coluna + 6] = "1";
                             } else {
                                 if(coluna == 2){
-                                    criaSetor[linha].vetorSetor[coluna + 8] = "P";
-                                    criaSetor[linha].vetorSetor[coluna + 9] = "L";
-                                    criaSetor[linha].vetorSetor[coluna + 10] = "1";
+                                    criaSetor[linha].vetorSetor[coluna + 7] = "P";
+                                    criaSetor[linha].vetorSetor[coluna + 8] = "L";
+                                    criaSetor[linha].vetorSetor[coluna + 9] = "1";
                                 } else {
                                     if(coluna == 3){
                                         criaSetor[linha].vetorSetor[coluna + 10] = "P";
@@ -356,6 +356,13 @@ public class Tabuleiro {
                 tParede++;
             }
         }
+
+        // Previnir a não criação de portas
+        if(tPorta == 0){
+            tPorta = 1;
+            tParede --;
+        }
+
         this.contParede = tParede;
         this.contPorta = tPorta;
 
@@ -431,7 +438,7 @@ public class Tabuleiro {
         
         // Modifica as linhas
         if(escolha == 0 && tPorta != 0){
-            for (int linha = 0; linha < tabuleiro.length; linha ++) {  
+            for (int linha = 1; linha < tabuleiro.length; linha ++) {  
 
                 for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++) { 
                     if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
@@ -442,6 +449,62 @@ public class Tabuleiro {
             tPorta --;
         } else {
             tParede --;
+        }
+
+        // Modifica as linhas
+        if(escolha == 0 && tPorta != 0){
+            for (int linha = 1; linha < tabuleiro.length; linha ++) {  
+
+                for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++) { 
+                    if(linha == posicoes[0] && coluna == posicoes[1] - 1){
+                        tabuleiro[linha][coluna] = porta;
+                    }
+                }  
+            }
+            tPorta --;
+        } else {
+            tParede --;
+        }
+    }
+
+    public void limparSetor(int[] posicoes){
+        // Percorre a matriz para criar o tabuleiro
+        for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
+
+            for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
+                // Esse for serve para modificar a matriz
+                    if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
+                        if(coluna == 0){
+                            criaSetor[linha].vetorSetor[coluna + 1] = " ";
+                            criaSetor[linha].vetorSetor[coluna + 2] = " ";
+                            criaSetor[linha].vetorSetor[coluna + 3] = " ";
+                        } else {
+                            if(coluna == 1){
+                                criaSetor[linha].vetorSetor[coluna + 4] = " ";
+                                criaSetor[linha].vetorSetor[coluna + 5] = " ";
+                                criaSetor[linha].vetorSetor[coluna + 6] = " ";
+                            } else {
+                                if(coluna == 2){
+                                    criaSetor[linha].vetorSetor[coluna + 7] = " ";
+                                    criaSetor[linha].vetorSetor[coluna + 8] = " ";
+                                    criaSetor[linha].vetorSetor[coluna + 9] = " ";
+                                } else {
+                                    if(coluna == 3){
+                                        criaSetor[linha].vetorSetor[coluna + 10] = " ";
+                                        criaSetor[linha].vetorSetor[coluna + 11] = " ";
+                                        criaSetor[linha].vetorSetor[coluna + 12] = " ";
+                                    } else {
+                                        if(coluna == 4){
+                                            criaSetor[linha].vetorSetor[coluna + 13] = " ";
+                                            criaSetor[linha].vetorSetor[coluna + 14] = " ";
+                                            criaSetor[linha].vetorSetor[coluna + 15] = " ";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+            }
         }
     }
 }
