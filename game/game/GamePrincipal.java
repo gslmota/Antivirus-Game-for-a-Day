@@ -13,7 +13,7 @@ public class GamePrincipal {
         if(key == 1){
             tabuleiro.gerarTabuleiroDeJogo();
             tabuleiro.apagarTela();
-            tabuleiro.printarTabuleiro();
+            tabuleiro.printarTabuleiro(tabuleiro.criaSetor[1].posSetor,tabuleiro.criaSetor[1].posSetor);
         } else{
             System.exit(0);  // Fecha o programa
         }
@@ -23,7 +23,7 @@ public class GamePrincipal {
             int vet [] = turno.coletarMovimentoP1(contTurnos);
             tabuleiro.alterarSetor(vet, "P1");
             tabuleiro.gerarPortaParede(vet);
-            tabuleiro.printarTabuleiro();
+            tabuleiro.printarTabuleiro(vet, tabuleiro.criaSetor[1].posSetor);
             tabuleiro.limparSetor(vet);
             System.out.println("\nTudo ok? (1-sim / 2-não)");
             key = input.nextInt();

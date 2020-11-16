@@ -208,7 +208,7 @@ public class Tabuleiro {
         }
     }
 
-    public void printarTabuleiro(){
+    public void printarTabuleiro(int vetPos1[], int vetPos2[]){
 
         //apagarTela();
 
@@ -244,7 +244,7 @@ public class Tabuleiro {
                 System.out.print(criaSetor[linha].vetorSetor[vet]);
             }
             if(linha == 0){
-                System.out.print("      Setor [" + criaSetor[linha].posSetor[0] + "," + criaSetor[linha].posSetor[1] + "]" + "      Setor [" + criaSetor[linha].posSetor[0] + "," + criaSetor[linha].posSetor[1] + "]");
+                System.out.print("      Setor [" + vetPos1[0] + "," + vetPos1[1] + "]" + "      Setor [" + vetPos2[0] + "," + vetPos2[1] + "]");
             }
             if(linha == 1 || linha ==4){
                 System.out.print("    |------*------|" + "    |------*------|");
