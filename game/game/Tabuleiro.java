@@ -358,6 +358,9 @@ public class Tabuleiro {
         }
         this.contParede = tParede;
         this.contPorta = tPorta;
+
+        //suponhamos 2 portas e 1 parede
+
         // Modifica os setores
         if(escolha == 0 && tPorta != 0){
             for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
@@ -435,7 +438,10 @@ public class Tabuleiro {
                         tabuleiro[linha][coluna] = porta;
                     }
                 }  
-            } 
+            }
+            tPorta --;
+        } else {
+            tParede --;
         }
     }
 }
