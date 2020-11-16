@@ -427,5 +427,15 @@ public class Tabuleiro {
         }
         
         // Modifica as linhas
+        if(escolha == 0 && tPorta != 0){
+            for (int linha = 0; linha < tabuleiro.length; linha ++) {  
+
+                for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++) { 
+                    if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
+                        tabuleiro[linha][coluna] = porta;
+                    }
+                }  
+            } 
+        }
     }
 }
