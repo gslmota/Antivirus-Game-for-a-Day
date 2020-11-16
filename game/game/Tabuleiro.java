@@ -1,9 +1,8 @@
 package game;
 import java.util.Random;
 public class Tabuleiro {
-    String porta = "|"; // paredes/portas
+
     String [][] tabuleiro = new String[5][5]; // Cria a matriz 5 X 5
-    String [] vetor = {"|", " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ","|"}; // Vetor criado para gerar os setores do tabuleiro
     Setor [] criaSetor = new Setor[5];
     Random posicao = new Random(); // Aleatoriedade para posicionar o virus
     Turnos turno = new Turnos();
@@ -19,6 +18,8 @@ public class Tabuleiro {
     }
 
     public void gerarTabuleiroInicial() {
+        String porta = "|"; // paredes/portas
+        String [] vetorInicial = {"|", " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ","|"}; // Vetor criado para gerar os setores do tabuleiro
         int contador = 0; // Contador usado durante o percorrimento dos setores
         
         System.out.println("-----------------------------");
@@ -57,7 +58,7 @@ public class Tabuleiro {
             }  
             System.out.println(" ");// Pula para próxima linha da matriz
             System.out.print(linha + 1 + "    ");// Gera o inicio da linha, o interior do tabuleiro
-            for(int i = 0; i < vetor.length; i++){
+            for(int i = 0; i < vetorInicial.length; i++){
                 // Esse IF gera o Centro do tabuleiro (* C *) e o posiciona o vírus
                 if(contador == 2){// contador 2 porque é o centro do tabuleiro
                     if(contador == posLinha){
@@ -113,7 +114,7 @@ public class Tabuleiro {
                         }
                     }
                     else{
-                        System.out.print(vetor[i]);
+                        System.out.print(vetorInicial[i]);
                     }
                 }
             }
@@ -272,6 +273,7 @@ public class Tabuleiro {
             for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
                 // Esse for serve para modificar a matriz
                 if(jogador == "P1"){
+
                     if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
                         if(coluna == 0){
                             criaSetor[linha].vetorSetor[coluna + 1] = "P";
@@ -506,5 +508,17 @@ public class Tabuleiro {
                     }
             }
         }
+    }
+
+    public boolean verificarMovimento(int[] posicoes) {
+        for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
+
+            for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
+                // Esse for serve para modificar a matriz
+                    if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
+                    }
+            }
+        }
+        return true;
     }
 }
