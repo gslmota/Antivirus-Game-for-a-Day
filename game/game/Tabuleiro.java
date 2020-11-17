@@ -247,7 +247,7 @@ public class Tabuleiro {
                 System.out.print(criaSetor[linha].vetorSetor[vet]);
             }
             if(linha == 0){
-                System.out.print("      Setor [" + position.posSetor1[0] + "," + position.posSetor1[1] + "]" + "      Setor [" + position.posSetor2[0] + "," + position.posSetor2[1] + "]");
+                System.out.print("      Setor [" + position.posSetor1[0] + "," + position.posSetor1[1] + "]" + "        Setor [" + position.posSetor2[0] + "," + position.posSetor2[1] + "]");
             }
             if(linha == 1 || linha ==4){
                 System.out.print("    |------*------|" + "    |------*------|");
@@ -318,7 +318,7 @@ public class Tabuleiro {
                                 }
                             }
                         } else {
-                            System.out.println("Você não pode se movimentar para o centro!");
+                            System.out.println("\nVocê retornou a posição central!\n");
                         }
                     }
                 } else {
@@ -339,9 +339,9 @@ public class Tabuleiro {
                                     position.posSetor2[1] = posicoes[1];
                                 } else {
                                     if(coluna == 2){
-                                        criaSetor[linha].vetorSetor[coluna + 8] = "P";
-                                        criaSetor[linha].vetorSetor[coluna + 9] = "L";
-                                        criaSetor[linha].vetorSetor[coluna + 10] = "2";
+                                        criaSetor[linha].vetorSetor[coluna + 7] = "P";
+                                        criaSetor[linha].vetorSetor[coluna + 8] = "L";
+                                        criaSetor[linha].vetorSetor[coluna + 9] = "2";
                                         position.posSetor2[0] = posicoes[0];
                                         position.posSetor2[1] = posicoes[1];
                                     } else {
@@ -364,7 +364,7 @@ public class Tabuleiro {
                                 }
                             }
                         } else {
-                            System.out.println("Você não pode se movimentar para o centro!");
+                            System.out.println("\nVocê retornou a posição central!\n");
                         }
                     }
                 }
@@ -520,34 +520,38 @@ public class Tabuleiro {
             for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
                 // Esse for serve para modificar a matriz
                     if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
-                        if(coluna == 0){
-                            criaSetor[linha].vetorSetor[coluna + 1] = " ";
-                            criaSetor[linha].vetorSetor[coluna + 2] = " ";
-                            criaSetor[linha].vetorSetor[coluna + 3] = " ";
-                        } else {
-                            if(coluna == 1){
-                                criaSetor[linha].vetorSetor[coluna + 4] = " ";
-                                criaSetor[linha].vetorSetor[coluna + 5] = " ";
-                                criaSetor[linha].vetorSetor[coluna + 6] = " ";
+                        if(linha != 2 || coluna != 2){
+                            if(coluna == 0){
+                                criaSetor[linha].vetorSetor[coluna + 1] = " ";
+                                criaSetor[linha].vetorSetor[coluna + 2] = " ";
+                                criaSetor[linha].vetorSetor[coluna + 3] = " ";
                             } else {
-                                if(coluna == 2){
-                                    criaSetor[linha].vetorSetor[coluna + 7] = " ";
-                                    criaSetor[linha].vetorSetor[coluna + 8] = " ";
-                                    criaSetor[linha].vetorSetor[coluna + 9] = " ";
+                                if(coluna == 1){
+                                    criaSetor[linha].vetorSetor[coluna + 4] = " ";
+                                    criaSetor[linha].vetorSetor[coluna + 5] = " ";
+                                    criaSetor[linha].vetorSetor[coluna + 6] = " ";
                                 } else {
-                                    if(coluna == 3){
-                                        criaSetor[linha].vetorSetor[coluna + 10] = " ";
-                                        criaSetor[linha].vetorSetor[coluna + 11] = " ";
-                                        criaSetor[linha].vetorSetor[coluna + 12] = " ";
+                                    if(coluna == 2){
+                                        criaSetor[linha].vetorSetor[coluna + 7] = " ";
+                                        criaSetor[linha].vetorSetor[coluna + 8] = " ";
+                                        criaSetor[linha].vetorSetor[coluna + 9] = " ";
                                     } else {
-                                        if(coluna == 4){
-                                            criaSetor[linha].vetorSetor[coluna + 13] = " ";
-                                            criaSetor[linha].vetorSetor[coluna + 14] = " ";
-                                            criaSetor[linha].vetorSetor[coluna + 15] = " ";
+                                        if(coluna == 3){
+                                            criaSetor[linha].vetorSetor[coluna + 10] = " ";
+                                            criaSetor[linha].vetorSetor[coluna + 11] = " ";
+                                            criaSetor[linha].vetorSetor[coluna + 12] = " ";
+                                        } else {
+                                            if(coluna == 4){
+                                                criaSetor[linha].vetorSetor[coluna + 13] = " ";
+                                                criaSetor[linha].vetorSetor[coluna + 14] = " ";
+                                                criaSetor[linha].vetorSetor[coluna + 15] = " ";
+                                            }
                                         }
                                     }
                                 }
                             }
+                        } else {
+                            System.out.println("\n Não é possível limpar o centro do tabuleiro!\n");
                         }
                     }
             }
@@ -623,5 +627,6 @@ public class Tabuleiro {
                     }
             }
         }
+        return true;
     }
 }
