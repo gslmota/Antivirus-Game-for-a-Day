@@ -21,16 +21,22 @@ public class GamePrincipal {
         while(contTurnos <= 25){
 
             int vet [] = turno.coletarMovimentoP1(contTurnos);
-            tabuleiro.alterarSetor(vet, "P1");
-            tabuleiro.gerarPortaParede(vet);
-            tabuleiro.printarTabuleiro();
-            tabuleiro.limparSetor(vet);
-            System.out.println("\nTudo ok? (1-sim / 2-não)");
-            key = input.nextInt();
-            if(key == 1){
-                contTurnos ++;
+            boolean res = tabuleiro.verificarMovimento(vet);
+
+            if(res == true){
+                tabuleiro.alterarSetor(vet, "P1");
+                tabuleiro.gerarPortaParede(vet);
+                tabuleiro.printarTabuleiro();
+                tabuleiro.limparSetor(vet);
+                System.out.println("\nTudo ok? (1-sim / 2-não)");
+                key = input.nextInt();
+                if(key == 1){
+                    contTurnos ++;
+                } else {
+                    break;
+                }
             } else {
-                break;
+                System.out.println("Digite uma posição onde haja portas adjacentes!");
             }
         }
     }

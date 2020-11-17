@@ -19,7 +19,7 @@ public class Tabuleiro {
     }
 
     public void gerarTabuleiroInicial() {
-        
+
         String porta = "|"; // paredes/portas
         String [] vetorInicial = {"|", " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ",porta, " ", " ", " ","|"}; // Vetor criado para gerar os setores do tabuleiro
         int contador = 0; // Contador usado durante o percorrimento dos setores
@@ -533,36 +533,66 @@ public class Tabuleiro {
     }
     // fazer a interação verificar 
     public boolean verificarMovimento(int[] posicoes) {
-        // Percorre a matriz para criar o tabuleiro
+
         for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
 
             for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
-                // Esse for serve para modificar a matriz
+
                     if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
                         if(coluna == 0){
-                            criaSetor[linha].vetorSetor[coluna + 1] = " ";
-                            criaSetor[linha].vetorSetor[coluna + 2] = " ";
-                            criaSetor[linha].vetorSetor[coluna + 3] = " ";
+                            if(criaSetor[linha].vetorSetor[4] == "*"){
+                                return true;
+                            } else {
+                                if(tabuleiro[linha + 1][coluna] == "*"){
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            }
                         } else {
                             if(coluna == 1){
-                                criaSetor[linha].vetorSetor[coluna + 4] = " ";
-                                criaSetor[linha].vetorSetor[coluna + 5] = " ";
-                                criaSetor[linha].vetorSetor[coluna + 6] = " ";
+                                if(criaSetor[linha].vetorSetor[4] == "*" || criaSetor[linha].vetorSetor[8] == "*"){
+                                    return true;
+                                } else {
+                                    if(tabuleiro[linha + 1][coluna] == "*" || tabuleiro[linha][coluna] == "*"){
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                }
                             } else {
                                 if(coluna == 2){
-                                    criaSetor[linha].vetorSetor[coluna + 7] = " ";
-                                    criaSetor[linha].vetorSetor[coluna + 8] = " ";
-                                    criaSetor[linha].vetorSetor[coluna + 9] = " ";
+                                    if(criaSetor[linha].vetorSetor[8] == "*" || criaSetor[linha].vetorSetor[12] == "*"){
+                                        return true;
+                                    } else {
+                                        if(tabuleiro[linha + 1][coluna] == "*" || tabuleiro[linha][coluna] == "*"){
+                                            return true;
+                                        } else {
+                                            return false;
+                                        }
+                                    }
                                 } else {
                                     if(coluna == 3){
                                         if(criaSetor[linha].vetorSetor[12] == "*" || criaSetor[linha].vetorSetor[16] == "*"){
                                             return true;
+                                        } else {
+                                            if(tabuleiro[linha + 1][coluna] == "*" || tabuleiro[linha][coluna] == "*"){
+                                                return true;
+                                            } else {
+                                                return false;
+                                            }
                                         }
                                     } else {
                                         if(coluna == 4){
-                                            criaSetor[linha].vetorSetor[coluna + 13] = " ";
-                                            criaSetor[linha].vetorSetor[coluna + 14] = " ";
-                                            criaSetor[linha].vetorSetor[coluna + 15] = " ";
+                                            if(criaSetor[linha].vetorSetor[16] == "*"){
+                                                return true;
+                                            } else {
+                                                if(tabuleiro[linha][coluna] == "*"){
+                                                    return true;
+                                                } else {
+                                                    return false;
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -571,6 +601,5 @@ public class Tabuleiro {
                     }
             }
         }
-        return true;
     }
 }
