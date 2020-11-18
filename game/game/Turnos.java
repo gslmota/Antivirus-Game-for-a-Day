@@ -1,10 +1,10 @@
 package game;
 import java.util.Scanner;
 public class Turnos {
-    int contadorCiclos = 0;
+    protected int contadorCiclos = 0;
     Scanner input = new Scanner(System.in);
 
-    public int[] coletarMovimentoP1(int contadorCiclos){
+    public int[] coletarMovimento(int contadorCiclos){
 
         if(contadorCiclos<25){
 

@@ -1,3 +1,14 @@
+/*
+
+Criar os jogadores e definir os tipos(suporte,simples)
+Criar ATk e DEF dos jogadores e printar
+Criar os metodos referentes as acoes dos jogadores
+
+Criar o metodo para criação dos inimigos
+
+
+
+*/
 package game;
 import java.util.Scanner;
 public class GamePrincipal {
@@ -7,6 +18,9 @@ public class GamePrincipal {
         Tabuleiro tabuleiro = new Tabuleiro();
         Turnos turno = new Turnos();
         Scanner input = new Scanner(System.in);
+        Jogador jogador1 = new Jogador("simples");
+        Jogador jogador2 = new Jogador("suporte");
+
         tabuleiro.gerarTabuleiroInicial();
         System.out.println("\nVamos Começar o Jogo ? (1-sim / 2-não)");
         key = input.nextInt();
@@ -20,7 +34,7 @@ public class GamePrincipal {
         
         while(contTurnos <= 25){
 
-            int vet1[] = turno.coletarMovimentoP1(contTurnos);
+            int vet1[] = jogador1.coletarMovimento(contTurnos);
             boolean res1 = tabuleiro.verificarMovimento(vet1);
 
             if(res1 == true){
@@ -30,17 +44,24 @@ public class GamePrincipal {
                 System.out.println("\nTudo ok? (1-sim / 2-não)");
                 key = input.nextInt();
                 if(key == 1){
-                    int vet2[] = turno.coletarMovimentoP2(contTurnos);
+                    int vet2[] = jogador2.coletarMovimento(contTurnos);
                     boolean res2 = tabuleiro.verificarMovimento(vet2);
                     if(res2 == true){
-                        tabuleiro.alterarSetor(vet2, "P2");
-                        tabuleiro.printarTabuleiro();
-                        tabuleiro.limparSetor(vet2);
+                        if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
+                            tabuleiro.limparSetor(vet1);
+                            tabuleiro.alterarSetor(vet2, "P");
+                            tabuleiro.printarTabuleiro(jogador1, jogador2);
+                        } else {
+                            tabuleiro.alterarSetor(vet2, "P2");
+                            tabuleiro.gerarPortaParede(vet2);
+                            tabuleiro.printarTabuleiro();
+                            }
+                        
                         System.out.println("\nTudo ok? (1-sim / 2-não)");
                         key = input.nextInt();
                         if(key == 1){
                             tabuleiro.limparSetor(vet1);
-                            tabuleiro.gerarPortaParede(vet2);
+                            tabuleiro.limparSetor(vet2);
                             contTurnos ++;
                         } else{
                             break;
