@@ -94,10 +94,6 @@ public class Jogador {
         }
     }
 
-    public void movimentar(){
-
-    }
-
     public void recuperarDefesa(Jogador jogador){
         if(jogador.tipoJogador == "simples"){
             jogador.DEF += 2;

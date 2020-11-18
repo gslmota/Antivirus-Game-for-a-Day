@@ -6,7 +6,7 @@ Criar os metodos referentes as acoes dos jogadores
 
 Criar o metodo para criação dos inimigos
 
-
+Testar a criação de setores por movimentação
 
 */
 package game;

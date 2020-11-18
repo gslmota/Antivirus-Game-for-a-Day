@@ -14,6 +14,9 @@ public class Inimigo {
 
     }
 
+    public void gerarInimigos(){
+        
+    }
    
     
 }
