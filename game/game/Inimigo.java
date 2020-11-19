@@ -3,10 +3,11 @@ import java.util.Random;
 public class Inimigo {
     // Atributos
     int ATK, DEF;
+    Random inimigos = new Random();
     // Metodos
     public Inimigo() {
-        Random virusPower = new Random();
-        ATK = virusPower.nextInt(3) + 1;
+        
+        ATK = inimigos.nextInt(3) + 1;
         DEF = ATK;
     }
     
@@ -15,7 +16,7 @@ public class Inimigo {
     }
 
     public void gerarInimigos(){
-        
+        int totalInimigos = inimigos.nextInt(5) + 1;
     }
    
     
