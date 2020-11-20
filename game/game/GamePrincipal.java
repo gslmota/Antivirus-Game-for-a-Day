@@ -18,8 +18,8 @@ public class GamePrincipal {
         Tabuleiro tabuleiro = new Tabuleiro();
         Turnos turno = new Turnos();
         Scanner input = new Scanner(System.in);
-        Jogador1 jogador1 = new Jogador1("simples");
-        Jogador1 jogador2 = new Jogador1("suporte");
+        Jogador1 jogador1 = new Jogador1();
+        Jogador2 jogador2 = new Jogador2();
 
         tabuleiro.gerarTabuleiroInicial();
         System.out.println("\nVamos Começar o Jogo ? (1-sim / 2-não)");

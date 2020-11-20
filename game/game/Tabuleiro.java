@@ -267,7 +267,7 @@ public class Tabuleiro {
 
     }
 
-    public void printarTabuleiro(Jogador1 jogador1, Jogador1 jogador2){
+    public void printarTabuleiro(Jogador1 jogador1, Jogador2 jogador2){
         //apagarTela();
 
         System.out.println("-----------------------------");

@@ -1,7 +1,9 @@
 package game;
+
 import java.util.Random;
 import java.util.Scanner;
-public class Jogador1 extends Jogador {
+
+public class Jogador2 extends Jogador {
     // Atributos
     protected String tipoJogador;
     protected int numAcoes;
@@ -9,11 +11,11 @@ public class Jogador1 extends Jogador {
     Scanner input = new Scanner(System.in);
 
     // Métodos
-    public Jogador1() {
-        this.tipoJogador = "simples";
+    public Jogador2() {
+        this.tipoJogador = "suporte";
         this.numAcoes = 0;
-        this.ATK = 2;
-        this.DEF= 6;
+        this.ATK = 1;
+        this.DEF = 7;
     }
 
     public String getTipoJogador() {
@@ -82,19 +84,22 @@ public class Jogador1 extends Jogador {
 
     public int[] movimentar(int contadorCiclos){
 
+        
         if(contadorCiclos<25){
+            
             int posLin, posCol;
             System.out.println("");
-            System.out.println("Digite a posição para onde o jogador 1 (PL1) deseja ir na ordem (linha/coluna): ");
+            System.out.println("Digite a posição para onde o jogador 2 (PL2) deseja ir na ordem (linha/coluna): ");
             posLin = input.nextInt();
             posCol = input.nextInt();
-            int vet[] = {posLin, posCol};
+             int vet[] = {posLin, posCol};
             return vet;
         } else{
     
-             System.out.println("Você Já chegou no limite de 25 ciclos!");
+            System.out.println("Você Já chegou no limite de 25 ciclos!");
             return null;
-            }
+        }
+        
     }
 
     @Override
@@ -102,4 +107,5 @@ public class Jogador1 extends Jogador {
         // TODO Auto-generated method stub
         return null;
     }
+    
 }
