@@ -6,18 +6,15 @@ public class Inimigo {
     Random inimigos = new Random();
     // Metodos
     public Inimigo() {
-        
         ATK = inimigos.nextInt(3) + 1;
         DEF = ATK;
     }
     
-    public void atacar(){
-
+    public void atacar(Jogador jogador){
+        int ataque = inimigos.nextInt(6) + 1;
+        if(ataque % 2 == 0){
+            jogador.DEF -= this.ATK;
+        }
     }
 
-    public void gerarInimigos(){
-        int totalInimigos = inimigos.nextInt(5) + 1;
-    }
-   
-    
 }

@@ -731,4 +731,15 @@ public class Tabuleiro {
         }
         return true;
     }
+
+    public void gerarInimigos(){
+        int quantidadeDeInimigos = posicao.nextInt(5) + 1;
+        Inimigo [] vetInimigo = new Inimigo[quantidadeDeInimigos];
+        for(int i = 0; i < vetInimigo.length; i ++){
+            vetInimigo[i] = new Inimigo();
+        }
+    }
+
+
+
 }
