@@ -10,7 +10,7 @@ public class Inimigo {
         DEF = ATK;
     }
     
-    public void atacar(Jogador jogador){
+    public void atacar(Jogador1 jogador){
         int ataque = inimigos.nextInt(6) + 1;
         if(ataque % 2 == 0){
             jogador.DEF -= this.ATK;

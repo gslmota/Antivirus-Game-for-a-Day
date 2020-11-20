@@ -18,8 +18,8 @@ public class GamePrincipal {
         Tabuleiro tabuleiro = new Tabuleiro();
         Turnos turno = new Turnos();
         Scanner input = new Scanner(System.in);
-        Jogador jogador1 = new Jogador("simples");
-        Jogador jogador2 = new Jogador("suporte");
+        Jogador1 jogador1 = new Jogador1("simples");
+        Jogador1 jogador2 = new Jogador1("suporte");
 
         tabuleiro.gerarTabuleiroInicial();
         System.out.println("\nVamos Começar o Jogo ? (1-sim / 2-não)");
@@ -34,17 +34,18 @@ public class GamePrincipal {
         
         while(contTurnos <= 25){
 
-            int vet1[] = jogador1.coletarMovimento(contTurnos);
+            int vet1[] = jogador1.movimentar(contTurnos);
             boolean res1 = tabuleiro.verificarMovimento(vet1);
 
             if(res1 == true){
                 tabuleiro.alterarSetor(vet1, "P1");
                 tabuleiro.gerarPortaParede(vet1);
+                tabuleiro.gerarInimigos();
                 tabuleiro.printarTabuleiro();
                 System.out.println("\nTudo ok? (1-sim / 2-não)");
                 key = input.nextInt();
                 if(key == 1){
-                    int vet2[] = jogador2.coletarMovimento(contTurnos);
+                    int vet2[] = jogador2.movimentar(contTurnos);
                     boolean res2 = tabuleiro.verificarMovimento(vet2);
                     if(res2 == true){
                         if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
