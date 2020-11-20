@@ -8,6 +8,8 @@ Criar o metodo para criação dos inimigos
 
 Testar a criação de setores por movimentação
 
+Resolver p2 na mesma posicao de p1
+
 */
 package game;
 import java.util.Scanner;
@@ -17,11 +19,9 @@ public class GamePrincipal {
         int key, contTurnos = 0, contvet = 0;
         int[] vetAux = new int[2];
         Tabuleiro tabuleiro = new Tabuleiro();
-        Turnos turno = new Turnos();
         Scanner input = new Scanner(System.in);
         Jogador1 jogador1 = new Jogador1();
         Jogador2 jogador2 = new Jogador2();
-
         tabuleiro.gerarTabuleiroInicial();
         System.out.println("\nVamos Começar o Jogo ? (1-sim / 2-não)");
         key = input.nextInt();
@@ -41,7 +41,7 @@ public class GamePrincipal {
             if(res1 == true){
                 tabuleiro.alterarSetor(vet1, "P1");
                 tabuleiro.gerarPortaParede(vet1);
-                tabuleiro.gerarInimigos();
+                int totalInimigos = tabuleiro.gerarInimigos();
                 tabuleiro.printarTabuleiro();
                 if(contTurnos != 0){
                     tabuleiro.limparSetor(vetAux);

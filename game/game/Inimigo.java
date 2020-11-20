@@ -10,11 +10,15 @@ public class Inimigo {
         DEF = ATK;
     }
     
-    public void atacar(Jogador1 jogador){
+    public void atacar(Jogador1 jogador1){
         int ataque = inimigos.nextInt(6) + 1;
         if(ataque % 2 == 0){
-            jogador.DEF -= this.ATK;
+            jogador1.DEF -= this.ATK;
         }
+    }
+
+    public void atacar(Jogador2 jogador2){
+
     }
 
 }

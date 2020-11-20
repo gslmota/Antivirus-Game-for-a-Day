@@ -3,15 +3,14 @@ import java.util.Random;
 public class Tabuleiro {
 
     String [][] tabuleiro = new String[5][5]; // Cria a matriz 5 X 5
-    Setor [] criaSetor = new Setor[5];
+    Setor [] criaSetor = new Setor[5]; // Vetor de setor
     Setor position = new Setor();
     Random posicao = new Random(); // Aleatoriedade para posicionar o virus
     Turnos turno = new Turnos();
     int posLinha = posicao.nextInt(5);
     int posColuna = posicao.nextInt(5);
     int contPorta = 0, contParede = 0;
-    int quantidadeDeInimigos = posicao.nextInt(5) + 1;
-        Inimigo [] vetInimigo = new Inimigo[quantidadeDeInimigos];
+
 
     // Função para criar setores vazios
     public void gerarSetorVazio(){
@@ -216,7 +215,6 @@ public class Tabuleiro {
     public void printarTabuleiro(){
 
         //apagarTela();
-
         System.out.println("-----------------------------");
         System.out.println("|    Antivírus por um dia    |");
         System.out.println("-----------------------------");
@@ -231,7 +229,7 @@ public class Tabuleiro {
                 System.out.print("-" + tabuleiro[linha][coluna] + "-|"); // Gera as paredes internas do tabuleiro
 
                 if(coluna == 4 && linha == 2){
-                    System.out.print("    | []  [ ]  [] |" + "    | []  [ ]  [] |");
+                    System.out.print("    | " + turno.vetInimigo[0].ATK + "/" + turno.vetInimigo[0].DEF + " " + turno.vetInimigo[1].ATK + "/" + turno.vetInimigo[1].DEF + " " + + turno.vetInimigo[2].ATK + "/" + turno.vetInimigo[2].DEF + " ");
                 }
                 if(coluna == 4 && linha == 3){
                     System.out.print("    *             *" + "    *             *");
@@ -741,8 +739,6 @@ public class Tabuleiro {
     }
 
     public void gerarInimigos(){
-        for(int i = 0; i < vetInimigo.length; i ++){
-            vetInimigo[i] = new Inimigo();
-        }
+        turno.gerarInimigos();
     }
 }
