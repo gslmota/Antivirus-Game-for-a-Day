@@ -14,7 +14,8 @@ import java.util.Scanner;
 public class GamePrincipal {
     public static void main(String[] args) {
 
-        int key, contTurnos = 0;
+        int key, contTurnos = 0, contvet = 0;
+        int[] vetAux = new int[2];
         Tabuleiro tabuleiro = new Tabuleiro();
         Turnos turno = new Turnos();
         Scanner input = new Scanner(System.in);
@@ -42,6 +43,9 @@ public class GamePrincipal {
                 tabuleiro.gerarPortaParede(vet1);
                 tabuleiro.gerarInimigos();
                 tabuleiro.printarTabuleiro();
+                if(contTurnos != 0){
+                    tabuleiro.limparSetor(vetAux);
+                }
                 System.out.println("\nTudo ok? (1-sim / 2-não)");
                 key = input.nextInt();
                 if(key == 1){
@@ -52,6 +56,7 @@ public class GamePrincipal {
                             tabuleiro.limparSetor(vet1);
                             tabuleiro.alterarSetor(vet2, "P");
                             tabuleiro.printarTabuleiro(jogador1, jogador2);
+                            tabuleiro.alterarSetor(vet2, "P2");
                         } else {
                             tabuleiro.alterarSetor(vet2, "P2");
                             tabuleiro.gerarPortaParede(vet2);
@@ -62,7 +67,8 @@ public class GamePrincipal {
                         key = input.nextInt();
                         if(key == 1){
                             tabuleiro.limparSetor(vet1);
-                            tabuleiro.limparSetor(vet2);
+                            vetAux[0] = vet2[0];
+                            vetAux[1] = vet2[1];
                             contTurnos ++;
                         } else{
                             break;

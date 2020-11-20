@@ -10,6 +10,8 @@ public class Tabuleiro {
     int posLinha = posicao.nextInt(5);
     int posColuna = posicao.nextInt(5);
     int contPorta = 0, contParede = 0;
+    int quantidadeDeInimigos = posicao.nextInt(5) + 1;
+        Inimigo [] vetInimigo = new Inimigo[quantidadeDeInimigos];
 
     // Função para criar setores vazios
     public void gerarSetorVazio(){
@@ -229,7 +231,7 @@ public class Tabuleiro {
                 System.out.print("-" + tabuleiro[linha][coluna] + "-|"); // Gera as paredes internas do tabuleiro
 
                 if(coluna == 4 && linha == 2){
-                    System.out.print("    |             |" + "    |             |");
+                    System.out.print("    | []  [ ]  [] |" + "    | []  [ ]  [] |");
                 }
                 if(coluna == 4 && linha == 3){
                     System.out.print("    *             *" + "    *             *");
@@ -253,7 +255,7 @@ public class Tabuleiro {
                 System.out.print("    |------*------|" + "    |------*------|");
             } else{
                 if(linha == 2){
-                    System.out.print("    |             |" + "    |             |");
+                    System.out.print("    |   []   []   |" + "    |   []   []   |");
                 }
                 else{
                     if(linha == 3){
@@ -382,6 +384,8 @@ public class Tabuleiro {
                             }
                         } else {
                             System.out.println("\nVocê retornou a posição central!\n");
+                            position.posSetor1[0] = 3;
+                            position.posSetor1[1] = 3;
                         }
                     }
                 } else {
@@ -429,6 +433,8 @@ public class Tabuleiro {
                                 }
                             } else {
                                 System.out.println("\nVocê retornou a posição central!\n");
+                                position.posSetor1[0] = 3;
+                                position.posSetor1[1] = 3;
                             }
                         }
                     } else {
@@ -465,6 +471,8 @@ public class Tabuleiro {
                                 }
                             } else {
                                 System.out.println("\nVocê retornou a posição central!\n");
+                                position.posSetor1[0] = 3;
+                                position.posSetor1[1] = 3;
                             }
                         }
                     }
@@ -733,8 +741,6 @@ public class Tabuleiro {
     }
 
     public void gerarInimigos(){
-        int quantidadeDeInimigos = posicao.nextInt(5) + 1;
-        Inimigo [] vetInimigo = new Inimigo[quantidadeDeInimigos];
         for(int i = 0; i < vetInimigo.length; i ++){
             vetInimigo[i] = new Inimigo();
         }
