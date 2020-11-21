@@ -10,7 +10,7 @@ public class Tabuleiro {
     int posLinha = posicao.nextInt(5);
     int posColuna = posicao.nextInt(5);
     int contPorta = 0, contParede = 0;
-
+    int totIni = 0;
 
     // Função para criar setores vazios
     public void gerarSetorVazio(){
@@ -215,6 +215,7 @@ public class Tabuleiro {
     public void printarTabuleiro(){
 
         //apagarTela();
+        
 
         System.out.println("-----------------------------");
         System.out.println("|    Antivírus por um dia    |");
@@ -230,7 +231,23 @@ public class Tabuleiro {
                 System.out.print("-" + tabuleiro[linha][coluna] + "-|"); // Gera as paredes internas do tabuleiro
 
                 if(coluna == 4 && linha == 2){
-                    System.out.print("    | []  [ ]  [] |" + "    | []  [ ]  [] |");
+                    if(this.totIni == 0){
+                        System.out.print("    |             |" + "    |             |");
+                    } else {
+                        if(this.totIni == 1){
+                            System.out.print("    | " + turno.vetInimigo[0].ATK + "/" + turno.vetInimigo[0].DEF + "         |");
+                        } else {
+                            if(this.totIni == 2){
+                                System.out.print("    | " + turno.vetInimigo[0].ATK + "/" + turno.vetInimigo[0].DEF + " " + turno.vetInimigo[1].ATK + "/" + turno.vetInimigo[1].DEF + "     |");
+                            } else {
+                                if(this.totIni == 3){
+                                    System.out.print("    | " + turno.vetInimigo[0].ATK + "/" + turno.vetInimigo[0].DEF + " " + turno.vetInimigo[1].ATK + "/" + turno.vetInimigo[1].DEF + " " +  turno.vetInimigo[2].ATK + "/" + turno.vetInimigo[2].DEF + " |");
+                                } else {
+                                    System.out.print("    | " + turno.vetInimigo[0].ATK + "/" + turno.vetInimigo[0].DEF + " " + turno.vetInimigo[1].ATK + "/" + turno.vetInimigo[1].DEF + " " +  turno.vetInimigo[2].ATK + "/" + turno.vetInimigo[2].DEF + " |");
+                                }
+                            }
+                        }
+                    }
                 }
                 if(coluna == 4 && linha == 3){
                     System.out.print("    *             *" + "    *             *");
@@ -254,7 +271,17 @@ public class Tabuleiro {
                 System.out.print("    |------*------|" + "    |------*------|");
             } else{
                 if(linha == 2){
-                    System.out.print("    |   []   []   |" + "    |   []   []   |");
+                    if(this.totIni < 4){
+                        System.out.print("    |             |" + "    |             |");
+                    }
+                    if(this.totIni == 4){
+                        System.out.print("    | " +  " " + turno.vetInimigo[3].ATK + "/" + turno.vetInimigo[3].DEF + "       |" );
+                    } else {
+                        if(this.totIni == 5){
+                            System.out.print("    | " +  " " + turno.vetInimigo[3].ATK + "/" + turno.vetInimigo[3].DEF + " " + turno.vetInimigo[4].ATK + "/" + turno.vetInimigo[4].DEF + "  |");
+                        }
+                    }
+                    
                 }
                 else{
                     if(linha == 3){
@@ -266,7 +293,7 @@ public class Tabuleiro {
         }
         System.out.print("     |---|---|---|---|---|\n\n"); // Cria a parede inferior do tabuleiro
     }
-
+/*
     public void printarTabuleiro(int totalInimigos){
         turno.gerarInimigos();
         //apagarTela();
@@ -327,7 +354,7 @@ public class Tabuleiro {
         }
         System.out.print("     |---|---|---|---|---|\n\n"); // Cria a parede inferior do tabuleiro
         }
-    }
+    }*/
 
     public void printarTabuleiro(Jogador1 jogador1, Jogador2 jogador2){
         //apagarTela();
@@ -801,6 +828,7 @@ public class Tabuleiro {
     }
 
     public void gerarInimigos(){
-        
+        int n = turno.gerarInimigos();
+        this.totIni = n;
     }
 }
