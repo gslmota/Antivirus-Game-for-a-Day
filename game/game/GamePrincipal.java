@@ -41,8 +41,7 @@ public class GamePrincipal {
             if(res1 == true){
                 tabuleiro.alterarSetor(vet1, "P1");
                 tabuleiro.gerarPortaParede(vet1);
-                int totalInimigos = tabuleiro.gerarInimigos();
-                tabuleiro.printarTabuleiro();
+                tabuleiro.printarTabuleiro(3);
                 if(contTurnos != 0){
                     tabuleiro.limparSetor(vetAux);
                 }
