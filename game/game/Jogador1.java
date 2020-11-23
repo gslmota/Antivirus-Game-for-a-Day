@@ -41,33 +41,30 @@ public class Jogador1 extends Jogador {
     }
 
 
-    public void atacar(){
-        if(numAcoes < 2){
-            numAcoes += 1;
-        }
+    public void atacar(Inimigo[] vetInimigoP1, int inimigo){
+        vetInimigoP1[inimigo - 1].DEF -= this.ATK;
 
     }
 
-    public void procurar(){
+    public void procurar(Inimigo[] vetInimigoP1){
         Random res = new Random();
         int valor = res.nextInt(6) + 1;
         if(valor <= 3){
-            if(numAcoes < 2){
-                System.out.print("Nada foi encontrado no setor!");
-                numAcoes += 1;
-            }
+            System.out.print("Nada foi encontrado no setor!");
         } else{
-            if(numAcoes < 2){
-                if(valor == 4){
-                    // jogador 1 DEF +=1
+            if(valor == 4){
+                // jogador 1 DEF +=1
+                this.DEF += 1;
+            } else{
+                if(valor == 5){
+                    // jogador2 DEF += 2
+                    this.DEF += 2;
                 } else{
-                    if(valor == 5){
-                        // jogador2 DEF += 2
-                    } else{
-                        // inimigos perdem 1 de DEF
+                    // inimigos perdem 1 de DEF
+                    for(int i = 0; i < vetInimigoP1.length; i ++){
+                        vetInimigoP1[i].DEF -= 1;
                     }
                 }
-                numAcoes += 1;
             }
         }
     }
@@ -101,5 +98,16 @@ public class Jogador1 extends Jogador {
     public int[] movimentar() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public void procurar() {
+     
+    }
+
+    @Override
+    public void atacar() {
+        // TODO Auto-generated method stub
+
     }
 }
