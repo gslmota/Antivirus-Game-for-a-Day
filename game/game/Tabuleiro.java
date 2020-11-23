@@ -947,4 +947,8 @@ public class Tabuleiro {
         int nInimigos = turno.gerarInimigosP2();
         this.totalInimigosP2 = nInimigos;
     }
+
+    public void turnoP1(){
+        turno.turnoP1();
+    }
 }
