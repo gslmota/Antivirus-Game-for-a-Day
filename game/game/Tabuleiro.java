@@ -484,7 +484,29 @@ public class Tabuleiro {
                 System.out.print("-" + tabuleiro[linha][coluna] + "-|"); // Gera as paredes internas do tabuleiro
 
                 if(coluna == 4 && linha == 2){
-                    System.out.print("    |             |");
+                    if(this.totalInimigosP1 == 0){
+                        System.out.print("    |             |");
+                    } else {
+                        if(this.totalInimigosP1 == 1){
+                            System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |");
+                        } else {
+                            if(this.totalInimigosP1 == 2){
+                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |");
+                            } else {
+                                if(this.totalInimigosP1 == 3){
+                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |");
+                                } else {
+                                    if(this.totalInimigosP1 == 4){
+                                        System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |");
+                                    } else {
+                                        if(this.totalInimigosP1 == 5){
+                                            System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" );
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 if(coluna == 4 && linha == 3){
                     System.out.print("    *             *");
@@ -508,7 +530,17 @@ public class Tabuleiro {
                 System.out.print("    |------*------|");
             } else{
                 if(linha == 2){
-                    System.out.print("    |             |");
+                    if(this.totalInimigosP1 < 4){
+                        System.out.print("    |             |");
+                    } else {
+                        if(this.totalInimigosP1 == 4){
+                            System.out.print("    |   " + turno.vetInimigoP1[3].ATK + "/" + turno.vetInimigoP1[3].DEF + "       |");
+                        } else {
+                            if(this.totalInimigosP1 == 5){
+                                System.out.print("    |   " + turno.vetInimigoP1[3].ATK + "/" + turno.vetInimigoP1[3].DEF + " " + turno.vetInimigoP1[4].ATK + "/" + turno.vetInimigoP1[4].DEF + "   |");
+                            }
+                        }
+                    }
                 }
                 else{
                     if(linha == 3){
@@ -948,15 +980,15 @@ public class Tabuleiro {
         this.totalInimigosP2 = nInimigos;
     }
 
-    public void turnoP1(Jogador1 jogador1){
-        turno.turnoP1(jogador1);
+    public void turnoP1(Jogador1 jogador1, int contador){
+        turno.turnoP1(jogador1, contador);
     }
 
-    public void turnoP2(Jogador1 jogador1, Jogador2 jogador2, int[] vet1, int[] vet2){
-        turno.turnoP2(jogador1, jogador2, vet1, vet2);
+    public void turnoP2(Jogador1 jogador1, Jogador2 jogador2, int[] vet1, int[] vet2, int contador){
+        turno.turnoP2(jogador1, jogador2, vet1, vet2, contador);
     }
 
-    public void turnoInimigos(){
-        
+    public void turnoInimigos(Jogador1 jogador1, Jogador2 jogador2){
+        turno.turnoInimigos(jogador1, jogador2);
     }
 }

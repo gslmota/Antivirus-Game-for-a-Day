@@ -43,11 +43,8 @@ public class Jogador2 extends Jogador {
     }
 
 
-    public void atacar(){
-        if(numAcoes < 2){
-            numAcoes += 1;
-        }
-
+    public void atacar(Inimigo[] vetInimigoP2, int inimigo){
+        vetInimigoP2[inimigo - 1].DEF -= this.ATK;
     }
 
     public void procurar(Inimigo[] vetInimigoP2){
@@ -108,6 +105,11 @@ public class Jogador2 extends Jogador {
 
     @Override
     public void procurar() {
+
+    }
+
+    @Override
+    public void atacar() {
 
     }
     
