@@ -149,24 +149,20 @@ public class Turnos {
 
     public boolean verificarExistenciaInimigosP1(Inimigo[] vet){
         for(int i = 0; i < totalIniP1; i ++){
-            if(vet[i].DEF != 0){
+            if(vet[i].DEF > 0){
                 return true;
-            } else {
-                return false;
             }
         }
-        return true;
+        return false;
     }
 
     public boolean verificarExistenciaInimigosP2(Inimigo[] vet){
         for(int i = 0; i < totalIniP2; i ++){
-            if(vet[i].DEF != 0){
+            if(vet[i].DEF > 0){
                 return true;
-            } else {
-                return false;
             }
         }
-        return true;
+        return false;
     }
 
 }

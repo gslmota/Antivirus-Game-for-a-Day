@@ -1,5 +1,7 @@
 package game;
+
 import java.util.Random;
+import java.util.Scanner;
 public class Tabuleiro {
 
     String [][] tabuleiro = new String[5][5]; // Cria a matriz 5 X 5
@@ -12,7 +14,7 @@ public class Tabuleiro {
     int contPorta = 0, contParede = 0;
     int totalInimigosP1 = 0;
     int totalInimigosP2 = 0;
-
+    Scanner input = new Scanner(System.in);
     // Função para criar setores vazios
     public void gerarSetorVazio(){
         for(int i = 0; i < criaSetor.length; i++){
@@ -999,5 +1001,35 @@ public class Tabuleiro {
     public boolean verificarExistenciaInimigosP2(){
         boolean res2 = turno.verificarExistenciaInimigosP2(turno.vetInimigoP2);
         return res2;
+    }
+
+    public void verificaVitoria(int[] vet1, String jogador){
+        if(this.posLinha == vet1[0] - 1){
+            if(this.posColuna == vet1[1] - 1){
+                if(jogador == "P1"){
+                    System.out.println("\n    -----------------------------");
+                    System.out.println("    ------- O JOGADOR P1 ------- ");
+                    System.out.println("    -----------VENCEU!-----------");
+                    System.out.println("    -----------------------------");
+                    System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");
+                    int escolha = 0;
+                    escolha = input.nextInt();
+                    if(escolha == 1){
+                        System.exit(0);  // Fecha o programa
+                    }
+                } else{
+                    System.out.println("\n    -----------------------------");
+                    System.out.println("    ------- O JOGADOR P2 ------- ");
+                    System.out.println("    -----------VENCEU!-----------");
+                    System.out.println("    -----------------------------");
+                    System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");
+                    int escolha = 0;
+                    escolha = input.nextInt();
+                    if(escolha == 1){
+                        System.exit(0);  // Fecha o programa
+                    }
+                }
+            }
+        }
     }
 }

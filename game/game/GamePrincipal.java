@@ -39,7 +39,7 @@ public class GamePrincipal {
 
             int vet1[] = jogador1.movimentar(contCiclos);
             boolean res1 = tabuleiro.verificarMovimento(vet1);
-
+            tabuleiro.verificaVitoria(vet1, "P1");
             if(res1 == true){
                 tabuleiro.alterarSetor(vet1, "P1");
                 tabuleiro.gerarPortaParede(vet1);
@@ -54,6 +54,7 @@ public class GamePrincipal {
                 if(key == 1){
                     int vet2[] = jogador2.movimentar(contCiclos);
                     boolean res2 = tabuleiro.verificarMovimento(vet2);
+                    tabuleiro.verificaVitoria(vet2, "P2");
                     if(res2 == true){
                         if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
                             tabuleiro.limparSetor(vet1);
@@ -74,6 +75,10 @@ public class GamePrincipal {
                             boolean repetir = true;
                             do{
                                 int contador1 = 1, contador2 = 1;
+                                if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
+                                    tabuleiro.turnoP1(jogador1, contador1);
+                                    tabuleiro.printarTabuleiro(jogador1, jogador2);
+                                }
                                 while(contador1 <= 2){
                                     tabuleiro.turnoP1(jogador1, contador1);
                                     tabuleiro.printarTabuleiro();
