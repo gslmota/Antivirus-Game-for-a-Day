@@ -71,21 +71,30 @@ public class GamePrincipal {
                         key = input.nextInt();
                         if(key == 1){
                             // Chama o turno de P1
-                            int contador1 = 1, contador2 = 1;
-                            while(contador1 <= 2){
-                                tabuleiro.turnoP1(jogador1, contador1);
-                                tabuleiro.printarTabuleiro();
-                                contador1 ++;
-                            }
+                            boolean repetir = true;
+                            do{
+                                int contador1 = 1, contador2 = 1;
+                                while(contador1 <= 2){
+                                    tabuleiro.turnoP1(jogador1, contador1);
+                                    tabuleiro.printarTabuleiro();
+                                    contador1 ++;
+                                }
 
-                            while(contador2 <= 2){
-                                tabuleiro.turnoP2(jogador1, jogador2, vet1, vet2, contador2);
+                                while(contador2 <= 2){
+                                    tabuleiro.turnoP2(jogador1, jogador2, vet1, vet2, contador2);
+                                    tabuleiro.printarTabuleiro();
+                                    contador2 ++;
+                                }
+                                
+                                tabuleiro.turnoInimigos(jogador1, jogador2);
                                 tabuleiro.printarTabuleiro();
-                                contador2 ++;
-                            }
-                            
-                            tabuleiro.turnoInimigos(jogador1, jogador2);
-                            
+                                boolean result1 = tabuleiro.verificarExistenciaInimigosP1();
+                                boolean result2 = tabuleiro.verificarExistenciaInimigosP2();
+                                if (result1 == false && result2 == false){
+                                    repetir = false;
+                                }
+                            } while(repetir);
+
                             tabuleiro.limparSetor(vet1);
                             vetAux[0] = vet2[0];
                             vetAux[1] = vet2[1];

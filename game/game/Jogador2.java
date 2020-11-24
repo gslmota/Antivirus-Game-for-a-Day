@@ -47,11 +47,11 @@ public class Jogador2 extends Jogador {
         vetInimigoP2[inimigo - 1].DEF -= this.ATK;
     }
 
-    public void procurar(Inimigo[] vetInimigoP2){
+    public void procurar(Inimigo[] vetInimigoP2, int tamanho){
         Random res = new Random();
         int valor = res.nextInt(6) + 1;
         if(valor <= 3){
-            System.out.print("Nada foi encontrado no setor!");
+            System.out.print("\nNada foi encontrado no setor!\n");
         } else{
             if(valor == 4){
                 // jogador 1 DEF +=1
@@ -62,7 +62,7 @@ public class Jogador2 extends Jogador {
                     this.DEF += 2;
                 } else{
                     // inimigos perdem 1 de DEF
-                    for(int i = 0; i < vetInimigoP2.length; i ++){
+                    for(int i = 0; i < tamanho; i ++){
                         vetInimigoP2[i].DEF -= 1;
                     }
                 }

@@ -216,8 +216,7 @@ public class Tabuleiro {
     public void printarTabuleiro(){
 
         //apagarTela();
-        
-
+        System.out.println("");
         System.out.println("-----------------------------");
         System.out.println("|    Antivírus por um dia    |");
         System.out.println("-----------------------------");
@@ -469,7 +468,7 @@ public class Tabuleiro {
 
     public void printarTabuleiro(Jogador1 jogador1, Jogador2 jogador2){
         //apagarTela();
-
+        System.out.println("");
         System.out.println("-----------------------------");
         System.out.println("|    Antivírus por um dia    |");
         System.out.println("-----------------------------");
@@ -990,5 +989,15 @@ public class Tabuleiro {
 
     public void turnoInimigos(Jogador1 jogador1, Jogador2 jogador2){
         turno.turnoInimigos(jogador1, jogador2);
+    }
+
+    public boolean verificarExistenciaInimigosP1(){
+        boolean res1 = turno.verificarExistenciaInimigosP1(turno.vetInimigoP1);
+        return res1;
+    }
+
+    public boolean verificarExistenciaInimigosP2(){
+        boolean res2 = turno.verificarExistenciaInimigosP2(turno.vetInimigoP2);
+        return res2;
     }
 }
