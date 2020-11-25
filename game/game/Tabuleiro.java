@@ -215,7 +215,7 @@ public class Tabuleiro {
         }
     }
 
-    public void printarTabuleiro(){
+    public void printarTabuleiro(Jogador1 jogador1, Jogador2 jogador2, int cont){
 
         //apagarTela();
         System.out.println("");
@@ -343,7 +343,7 @@ public class Tabuleiro {
                     System.out.print("    *             *" + "    *             *");
                 }
                 if(coluna == 4 && linha == 4){
-                    System.out.print("    |     2/6     |" + "    |     1/7     |");
+                    System.out.print("    |     " + jogador1.ATK + "/" + jogador1.DEF + "     |" + "    |     " + jogador1.ATK + "/" + jogador1.DEF + "     |");
                 }
             }  
             System.out.println(" ");// Pula para próxima linha da matriz
@@ -702,12 +702,11 @@ public class Tabuleiro {
                                 }
                             } else {
                                 System.out.println("\nVocê retornou a posição central!\n");
-                                position.posSetor1[0] = 3;
-                                position.posSetor1[1] = 3;
+                                position.posSetor2[0] = 3;
+                                position.posSetor2[1] = 3;
                             }
                         }
                     }
-                    
                 }
             }  
         }
@@ -989,8 +988,8 @@ public class Tabuleiro {
         turno.turnoP2(jogador1, jogador2, vet1, vet2, contador);
     }
 
-    public void turnoInimigos(Jogador1 jogador1, Jogador2 jogador2){
-        turno.turnoInimigos(jogador1, jogador2);
+    public void turnoInimigos(Jogador1 jogador1, Jogador2 jogador2, int[] vet1, int[] vet2){
+        turno.turnoInimigos(jogador1, jogador2, vet1, vet2);
     }
 
     public boolean verificarExistenciaInimigosP1(){
@@ -1030,6 +1029,45 @@ public class Tabuleiro {
                     }
                 }
             }
+        }
+    }
+
+    public void fimDeJogoP1(){
+        System.out.println("\n    -----------------------------");
+        System.out.println("    ------- O JOGADOR P1 ------- ");
+        System.out.println("    -----------PERDEU!-----------");
+        System.out.println("    -----------------------------");
+        System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");
+        int escolha = 0;
+        escolha = input.nextInt();
+        if(escolha == 1){
+            System.exit(0);  // Fecha o programa
+        }
+    }
+
+    public void fimDeJogoP2(){
+        System.out.println("\n    -----------------------------");
+        System.out.println("    ------- O JOGADOR P2 ------- ");
+        System.out.println("    -----------PERDEU!-----------");
+        System.out.println("    -----------------------------");
+        System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");
+        int escolha = 0;
+        escolha = input.nextInt();
+        if(escolha == 1){
+            System.exit(0);  // Fecha o programa
+        }
+    }
+
+    public void fimDeJogo(){
+        System.out.println("\n    -----------------------------");
+        System.out.println("    ------------O JOGO---------- ");
+        System.out.println("    ------------ACABOU!----------");
+        System.out.println("    -----------------------------");
+        System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");
+        int escolha = 0;
+        escolha = input.nextInt();
+        if(escolha == 1){
+            System.exit(0);  // Fecha o programa
         }
     }
 }

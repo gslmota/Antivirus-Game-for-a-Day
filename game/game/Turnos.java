@@ -8,6 +8,7 @@ public class Turnos {
     Inimigo[] vetInimigoP1 = new Inimigo[5];
     Inimigo[] vetInimigoP2 = new Inimigo[5];
     int totalIniP1 = 0, totalIniP2 = 0;
+
     public Turnos() {
         
     }
@@ -73,7 +74,11 @@ public class Turnos {
             System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
             inimigo = input.nextInt();
             //vetInimigoP2[inimigo - 1].DEF -= jogador2.ATK;
-            jogador2.atacar(vetInimigoP2, inimigo);
+            if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
+                jogador2.atacar(vetInimigoP1, inimigo);
+            } else {
+                jogador2.atacar(vetInimigoP2, inimigo);
+            }
         } else {
             if (opcao == 2){
                 System.out.println("Será realizada uma procura no setor!");
@@ -99,31 +104,48 @@ public class Turnos {
                 }
             }
         }
-
-        verificarDefP2(vetInimigoP2);
+        if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
+            verificarDefP1(vetInimigoP1);
+        } else {
+            verificarDefP2(vetInimigoP2);
+        }
         contador ++;
     }
 
-    public void turnoInimigos(Jogador1 jogador1, Jogador2 jogador2){
+    public void turnoInimigos(Jogador1 jogador1, Jogador2 jogador2, int[] vet1, int[] vet2){
         System.out.println("Começa agora o turno dos Inimigos.");
-        for(int i = 0; i < totalIniP1; i ++){
-            if(vetInimigoP1[i].DEF != 0){
-                int resultado = sorteio.nextInt(6) + 1;
-                if(resultado %2 == 0){
-                    jogador1.DEF -= vetInimigoP1[i].ATK;
-                } else {
-
+        if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
+            for(int i = 0; i < totalIniP1; i ++){
+                if(vetInimigoP1[i].DEF != 0){
+                    int resultado = sorteio.nextInt(6) + 1;
+                    if(resultado %2 == 0){
+                        jogador1.DEF -= vetInimigoP1[i].ATK;
+                        jogador2.DEF -= vetInimigoP1[i].ATK;
+                    } else {
+    
+                    }
                 }
             }
-        }
-
-        for(int i = 0; i < totalIniP2; i ++){
-            if(vetInimigoP2[i].DEF != 0){
-                int resultado = sorteio.nextInt(6) + 1;
-                if(resultado %2 == 0){
-                    jogador2.DEF -= vetInimigoP2[i].ATK;
-                } else {
-
+        } else {
+            for(int i = 0; i < totalIniP1; i ++){
+                if(vetInimigoP1[i].DEF != 0){
+                    int resultado = sorteio.nextInt(6) + 1;
+                    if(resultado %2 == 0){
+                        jogador1.DEF -= vetInimigoP1[i].ATK;
+                    } else {
+    
+                    }
+                }
+            }
+    
+            for(int i = 0; i < totalIniP2; i ++){
+                if(vetInimigoP2[i].DEF != 0){
+                    int resultado = sorteio.nextInt(6) + 1;
+                    if(resultado %2 == 0){
+                        jogador2.DEF -= vetInimigoP2[i].ATK;
+                    } else {
+    
+                    }
                 }
             }
         }
