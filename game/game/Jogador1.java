@@ -94,6 +94,15 @@ public class Jogador1 extends Jogador {
             }
     }
 
+    public boolean verificaVida(){
+        if(this.DEF <= 0){
+            this.ATK = 0;
+            this.DEF = 0;
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public int[] movimentar() {
         // TODO Auto-generated method stub

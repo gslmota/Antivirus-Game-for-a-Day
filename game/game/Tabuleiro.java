@@ -15,6 +15,8 @@ public class Tabuleiro {
     int totalInimigosP1 = 0;
     int totalInimigosP2 = 0;
     Scanner input = new Scanner(System.in);
+    boolean [][] movimentosP1 = new boolean [5][5];
+    boolean [][] movimentosP2 = new boolean [5][5];
     // Função para criar setores vazios
     public void gerarSetorVazio(){
         for(int i = 0; i < criaSetor.length; i++){
@@ -343,7 +345,7 @@ public class Tabuleiro {
                     System.out.print("    *             *" + "    *             *");
                 }
                 if(coluna == 4 && linha == 4){
-                    System.out.print("    |     " + jogador1.ATK + "/" + jogador1.DEF + "     |" + "    |     " + jogador1.ATK + "/" + jogador1.DEF + "     |");
+                    System.out.print("    |     " + jogador1.ATK + "/" + jogador1.DEF + "     |" + "    |     " + jogador2.ATK + "/" + jogador2.DEF + "     |");
                 }
             }  
             System.out.println(" ");// Pula para próxima linha da matriz
@@ -571,6 +573,7 @@ public class Tabuleiro {
                                 criaSetor[linha].vetorSetor[coluna + 3] = "1";
                                 position.posSetor1[0] = posicoes[0];
                                 position.posSetor1[1] = posicoes[1];
+                                movimentosP1[linha][coluna] = true;
                             } else {
                                 if(coluna == 1){
                                     criaSetor[linha].vetorSetor[coluna + 4] = "P";
@@ -578,6 +581,7 @@ public class Tabuleiro {
                                     criaSetor[linha].vetorSetor[coluna + 6] = "1";
                                     position.posSetor1[0] = posicoes[0];
                                     position.posSetor1[1] = posicoes[1];
+                                    movimentosP1[linha][coluna] = true;
                                 } else {
                                     if(coluna == 2){
                                         criaSetor[linha].vetorSetor[coluna + 7] = "P";
@@ -585,6 +589,7 @@ public class Tabuleiro {
                                         criaSetor[linha].vetorSetor[coluna + 9] = "1";
                                         position.posSetor1[0] = posicoes[0];
                                         position.posSetor1[1] = posicoes[1];
+                                        movimentosP1[linha][coluna] = true;
                                     } else {
                                         if(coluna == 3){
                                             /*
@@ -600,6 +605,7 @@ public class Tabuleiro {
                                             criaSetor[linha].vetorSetor[coluna + 12] = "1";
                                             position.posSetor1[0] = posicoes[0];
                                             position.posSetor1[1] = posicoes[1];
+                                            movimentosP1[linha][coluna] = true;
                                             
                                         } else {
                                             if(coluna == 4){
@@ -608,6 +614,7 @@ public class Tabuleiro {
                                                 criaSetor[linha].vetorSetor[coluna + 15] = "1";
                                                 position.posSetor1[0] = posicoes[0];
                                                 position.posSetor1[1] = posicoes[1];
+                                                movimentosP1[linha][coluna] = true;
                                             }
                                         }
                                     }
@@ -629,6 +636,7 @@ public class Tabuleiro {
                                     criaSetor[linha].vetorSetor[coluna + 3] = "2";
                                     position.posSetor2[0] = posicoes[0];
                                     position.posSetor2[1] = posicoes[1];
+                                    movimentosP2[linha][coluna] = true;
                                 } else {
                                     if(coluna == 1){
                                         criaSetor[linha].vetorSetor[coluna + 4] = "P";
@@ -636,6 +644,7 @@ public class Tabuleiro {
                                         criaSetor[linha].vetorSetor[coluna + 6] = "2";
                                         position.posSetor2[0] = posicoes[0];
                                         position.posSetor2[1] = posicoes[1];
+                                        movimentosP2[linha][coluna] = true;
                                     } else {
                                         if(coluna == 2){
                                             criaSetor[linha].vetorSetor[coluna + 7] = "P";
@@ -643,6 +652,7 @@ public class Tabuleiro {
                                             criaSetor[linha].vetorSetor[coluna + 9] = "2";
                                             position.posSetor2[0] = posicoes[0];
                                             position.posSetor2[1] = posicoes[1];
+                                            movimentosP2[linha][coluna] = true;
                                         } else {
                                             if(coluna == 3){
                                                 criaSetor[linha].vetorSetor[coluna + 10] = "P";
@@ -650,6 +660,7 @@ public class Tabuleiro {
                                                 criaSetor[linha].vetorSetor[coluna + 12] = "2";
                                                 position.posSetor2[0] = posicoes[0];
                                                 position.posSetor2[1] = posicoes[1];
+                                                movimentosP2[linha][coluna] = true;
                                             } else {
                                                 if(coluna == 4){
                                                     criaSetor[linha].vetorSetor[coluna + 13] = "P";
@@ -657,6 +668,7 @@ public class Tabuleiro {
                                                     criaSetor[linha].vetorSetor[coluna + 15] = "2";
                                                     position.posSetor2[0] = posicoes[0];
                                                     position.posSetor2[1] = posicoes[1];
+                                                    movimentosP2[linha][coluna] = true;
                                                 }
                                             }
                                         }
@@ -675,26 +687,36 @@ public class Tabuleiro {
                                     criaSetor[linha].vetorSetor[coluna + 2] = "P";
                                     position.posSetor2[0] = posicoes[0];
                                     position.posSetor2[1] = posicoes[1];
+                                    movimentosP1[linha][coluna] = true;
+                                    movimentosP2[linha][coluna] = true;
                                 } else {
                                     if(coluna == 1){
                                         criaSetor[linha].vetorSetor[coluna + 5] = "P";
                                         position.posSetor2[0] = posicoes[0];
                                         position.posSetor2[1] = posicoes[1];
+                                        movimentosP1[linha][coluna] = true;
+                                        movimentosP2[linha][coluna] = true;
                                     } else {
                                         if(coluna == 2){
                                             criaSetor[linha].vetorSetor[coluna + 8] = "P";
                                             position.posSetor2[0] = posicoes[0];
                                             position.posSetor2[1] = posicoes[1];
+                                            movimentosP1[linha][coluna] = true;
+                                            movimentosP2[linha][coluna] = true;
                                         } else {
                                             if(coluna == 3){
                                                 criaSetor[linha].vetorSetor[coluna + 11] = "P";
                                                 position.posSetor2[0] = posicoes[0];
                                                 position.posSetor2[1] = posicoes[1];
+                                                movimentosP1[linha][coluna] = true;
+                                                movimentosP2[linha][coluna] = true;
                                             } else {
                                                 if(coluna == 4){
                                                     criaSetor[linha].vetorSetor[coluna + 14] = "P";
                                                     position.posSetor2[0] = posicoes[0];
                                                     position.posSetor2[1] = posicoes[1];
+                                                    movimentosP1[linha][coluna] = true;
+                                                    movimentosP2[linha][coluna] = true;
                                                 }
                                             }
                                         }
@@ -720,13 +742,18 @@ public class Tabuleiro {
         // escolha == 0 porta
         // Sorteia as portas e paredes
         for(int i = 0; i < 3; i ++){
-
-            int geraPortaParede = posicao.nextInt(10) + 1;
-            if(geraPortaParede > 3){
-                tPorta++;
+            if(this.contPorta < this.contParede){
+                tPorta = 2;
+                tParede = 1;
             } else {
-                tParede++;
+                int geraPortaParede = posicao.nextInt(10) + 1;
+                if(geraPortaParede > 3){
+                    tPorta++;
+                } else {
+                    tParede++;
+                }
             }
+            
         }
 
         // Previnir a não criação de portas
@@ -975,7 +1002,7 @@ public class Tabuleiro {
         this.totalInimigosP1 = nInimigos;
     }
 
-    public void gerarIninimigosP2(){
+    public void gerarInimigosP2(){
         int nInimigos = turno.gerarInimigosP2();
         this.totalInimigosP2 = nInimigos;
     }
@@ -984,12 +1011,24 @@ public class Tabuleiro {
         turno.turnoP1(jogador1, contador);
     }
 
+    public void turnoP2(Jogador1 jogador1, Jogador2 jogador2,int[] vet2, int contador){
+        turno.turnoP2(jogador1, jogador2, vet2, contador);
+    }
+
     public void turnoP2(Jogador1 jogador1, Jogador2 jogador2, int[] vet1, int[] vet2, int contador){
         turno.turnoP2(jogador1, jogador2, vet1, vet2, contador);
     }
 
     public void turnoInimigos(Jogador1 jogador1, Jogador2 jogador2, int[] vet1, int[] vet2){
         turno.turnoInimigos(jogador1, jogador2, vet1, vet2);
+    }
+
+    public void turnoInimigos(Jogador2 jogador2, int[] vet2){
+        turno.turnoInimigos(jogador2, vet2);
+    }
+
+    public void turnoInimigos(Jogador1 jogador1, int[] vet1){
+        turno.turnoInimigos(jogador1, vet1);
     }
 
     public boolean verificarExistenciaInimigosP1(){
@@ -1069,5 +1108,33 @@ public class Tabuleiro {
         if(escolha == 1){
             System.exit(0);  // Fecha o programa
         }
+    }
+
+    public boolean verificarVisitaP1(int[] posicoes){
+        // Percorre a matriz para criar o tabuleiro
+        for (int linha = 0; linha < movimentosP1.length; linha ++) {  
+            for (int coluna = 0; coluna < movimentosP1[linha].length; coluna ++){ 
+                if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
+                    if(movimentosP1[linha][coluna] == true){
+                        return true;
+                    }
+                }
+            }  
+        }
+        return false;
+    }
+
+    public boolean verificarVisitaP2(int[] posicoes){
+        // Percorre a matriz para criar o tabuleiro
+        for (int linha = 0; linha < movimentosP2.length; linha ++) {  
+            for (int coluna = 0; coluna < movimentosP2[linha].length; coluna ++){ 
+                if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
+                    if(movimentosP2[linha][coluna] == true){
+                        return true;
+                    }
+                }
+            }  
+        }
+        return false;
     }
 }

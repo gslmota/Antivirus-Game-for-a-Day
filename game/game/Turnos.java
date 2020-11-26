@@ -112,6 +112,48 @@ public class Turnos {
         contador ++;
     }
 
+    public void turnoP2(Jogador1 jogador1, Jogador2 jogador2, int[] vet2, int contador){
+        System.out.println("\n Começa agora o turno " + contador  + " de P2, escolha uma opção abaixo: ");
+        System.out.println("\n    -----------------------------");
+        System.out.println("    |         Turno P2           |");
+        System.out.println("    -----------------------------");
+        System.out.println("    -----------------------------");
+        System.out.println("    | [1] -------------- ATACAR |");
+        System.out.println("    | [2] ------------ PROCURAR |");
+        System.out.println("    | [3] ---- RECUPERAR DEFESA |");
+        System.out.println("    -----------------------------");
+        System.out.println("Digite a opção que escolheu: ");
+        int opcao = 0, inimigo = 0;
+        opcao = input.nextInt();
+        if(opcao == 1){
+            System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+            inimigo = input.nextInt();
+            //vetInimigoP2[inimigo - 1].DEF -= jogador2.ATK;
+            jogador2.atacar(vetInimigoP2, inimigo);
+        } else {
+            if (opcao == 2){
+                System.out.println("Será realizada uma procura no setor!");
+                jogador2.procurar(vetInimigoP2, totalIniP2);
+            }
+
+            if(opcao == 3){
+                System.out.println("Deseja recuperar defesa?");
+                System.out.println("\n    -----------------------------");
+                System.out.println("    ------RECUPERAR  DEFESA------");
+                System.out.println("    -----------------------------");
+                System.out.println("    | [1] ------------------ P2 |");
+                System.out.println("    -----------------------------");
+                int escolha = 0;
+                escolha = input.nextInt();
+                if(escolha == 1){
+                    jogador2.DEF += 2;
+                }
+            }
+        }
+        verificarDefP2(vetInimigoP2);
+        contador ++;
+    }
+
     public void turnoInimigos(Jogador1 jogador1, Jogador2 jogador2, int[] vet1, int[] vet2){
         System.out.println("Começa agora o turno dos Inimigos.");
         if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
@@ -146,6 +188,34 @@ public class Turnos {
                     } else {
     
                     }
+                }
+            }
+        }
+    }
+
+    public void turnoInimigos(Jogador2 jogador2,int[] vet2){
+        System.out.println("Começa agora o turno dos Inimigos.");
+        for(int i = 0; i < totalIniP2; i ++){
+            if(vetInimigoP2[i].DEF != 0){
+                int resultado = sorteio.nextInt(6) + 1;
+                if(resultado %2 == 0){
+                    jogador2.DEF -= vetInimigoP2[i].ATK;
+                } else {
+
+                }
+            }
+        }
+    }
+
+    public void turnoInimigos(Jogador1 jogador1,int[] vet1){
+        System.out.println("Começa agora o turno dos Inimigos.");
+        for(int i = 0; i < totalIniP1; i ++){
+            if(vetInimigoP1[i].DEF != 0){
+                int resultado = sorteio.nextInt(6) + 1;
+                if(resultado %2 == 0){
+                    jogador1.DEF -= vetInimigoP1[i].ATK;
+                } else {
+
                 }
             }
         }
