@@ -1,6 +1,8 @@
 /*
 Armazenar os movimentos em matriz e criar metodo verificar posicaoAntiga
 Try e catch
+
+refazer os atributos def e atk de jogador 1 2
 */
 package game;
 import java.util.InputMismatchException;
@@ -8,7 +10,7 @@ import java.util.Scanner;
 public class GamePrincipal {
     public static void main(String[] args) {
 
-        int key, contCiclos = 0, contvet = 0;
+        int key, contCiclos = 0;
         int[] vetAux = new int[2];
         Tabuleiro tabuleiro = new Tabuleiro();
         Scanner input = new Scanner(System.in);
@@ -39,6 +41,8 @@ public class GamePrincipal {
 
             if(life1 == true && life2 == true){
                 int vet1[] = jogador1.movimentar(contCiclos);
+                jogador1.vetPosFuturaP1 = vet1;
+                //tabuleiro.verificarMovimento(jogador1.vetPosAtualP1, vet1);
                 boolean res1 = tabuleiro.verificarMovimento(vet1);
                 tabuleiro.verificaVitoria(vet1, "P1");
                 if(res1 == true){
@@ -242,7 +246,7 @@ public class GamePrincipal {
                                 boolean repetir = true;
                                 int contDoWhile = 0;
                                 do{
-                                    int contador1 = 1, contador2 = 1;
+                                    int contador1 = 1;
                                     while(contador1 <= 2){
                                         tabuleiro.turnoP1(jogador1, contador1);
                                         tabuleiro.printarTabuleiro(jogador1, jogador2);
@@ -313,7 +317,7 @@ public class GamePrincipal {
                                     boolean repetir = true;
                                     int contDoWhile = 0;
                                     do{
-                                        int contador1 = 1, contador2 = 1;
+                                        int contador2 = 1;
                                     
                                         while(contador2 <= 2){
                                             tabuleiro.turnoP2(jogador1, jogador2, vet2, contador2);

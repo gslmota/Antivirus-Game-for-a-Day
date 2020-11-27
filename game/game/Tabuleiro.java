@@ -736,7 +736,6 @@ public class Tabuleiro {
         String parede = "|";
         int tPorta = 0, tParede = 0;
         int escolha = posicao.nextInt(2);
-        int cont = 0;
         // escolha == 0 porta
 
         // Sorteia as portas e paredes
@@ -994,7 +993,7 @@ public class Tabuleiro {
         return true;
     }
 
-    public boolean verificarMovimento(int[] posicoesAtual, int[] posicoesAntiga) {
+    public boolean verificarMovimento(int[] posicoesAtual, int[] posicoesFuturas, Jogador1 jogador1, Jogador2 jogador2) {
 
         for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
 
@@ -1002,43 +1001,105 @@ public class Tabuleiro {
 
                     if(linha == posicoesAtual[0] - 1 && coluna == posicoesAtual[1] - 1){
 
-                        if(linha == posicoesAntiga[0] - 1){
-                            if(posicoesAntiga[1] - 1 == 0){
-                                if(criaSetor[linha].vetorSetor[4] == "*"){
-                                    return true;
-                                } else {
-                                    return false;
-                                }
-                            } else {
-                                if(posicoesAntiga[1] - 1 == 1){
+                        if(linha == posicoesFuturas[0] - 1){
+
+                            if(posicoesFuturas[1] - 1 == posicoesAtual[1]){
+
+                                if(posicoesFuturas[1] - 1 == 0){
                                     if(criaSetor[linha].vetorSetor[4] == "*"){
                                         return true;
                                     } else {
                                         return false;
                                     }
                                 } else {
-                                    if(posicoesAntiga[1] - 1 == 2){
-                                        if(criaSetor[linha].vetorSetor[8] == "*"){
+                                    if(posicoesFuturas[1] - 1 == 1){
+                                        if(criaSetor[linha].vetorSetor[4] == "*"){
                                             return true;
                                         } else {
                                             return false;
                                         }
                                     } else {
-                                        if(posicoesAntiga[1] - 1 == 3){
-                                            if(criaSetor[linha].vetorSetor[12] == "*"){
+                                        if(posicoesFuturas[1] - 1 == 2){
+                                            if(criaSetor[linha].vetorSetor[8] == "*"){
                                                 return true;
                                             } else {
                                                 return false;
                                             }
                                         } else {
-                                            if(posicoesAntiga[1] - 1 == 4){
-                                                if(criaSetor[linha].vetorSetor[16] == "*"){
+                                            if(posicoesFuturas[1] - 1 == 3){
+                                                if(criaSetor[linha].vetorSetor[12] == "*"){
                                                     return true;
                                                 } else {
                                                     return false;
                                                 }
+                                            } else {
+                                                if(posicoesFuturas[1] - 1 == 4){
+                                                    if(criaSetor[linha].vetorSetor[16] == "*"){
+                                                        return true;
+                                                    } else {
+                                                        return false;
+                                                    }
+                                                }
                                             }
                                         }
+                                    }
+                                }
+                            } else {
+                                if(posicoesFuturas[1] == posicoesAtual[1] - 1){
+
+                                    if(posicoesFuturas[1] - 1 == 0){
+                                        if(criaSetor[linha].vetorSetor[4] == "*"){
+                                            return true;
+                                        } else {
+                                            return false;
+                                        }
+                                    } else {
+                                        if(posicoesFuturas[1] - 1 == 1){
+                                            if(criaSetor[linha].vetorSetor[8] == "*"){
+                                                return true;
+                                            } else {
+                                                return false;
+                                            }
+                                        } else {
+                                            if(posicoesFuturas[1] - 1 == 2){
+                                                if(criaSetor[linha].vetorSetor[12] == "*"){
+                                                    return true;
+                                                } else {
+                                                    return false;
+                                                }
+                                            } else {
+                                                if(posicoesFuturas[1] - 1 == 3){
+                                                    if(criaSetor[linha].vetorSetor[16] == "*"){
+                                                        return true;
+                                                    } else {
+                                                        return false;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    return false;
+                                }
+                            }
+                        } else {
+                            if(coluna == posicoesFuturas[1] - 1){
+                                if(posicoesFuturas[0] == posicoesAtual[0] - 1){
+
+                                    if(tabuleiro[posicoesFuturas[0]][posicoesFuturas[1] - 1] == "*"){
+                                        return true;
+                                    } else{
+                                        return false;
+                                    }
+                                } else {
+                                    if(posicoesFuturas[0] - 1 == posicoesAtual[0]){
+                                        if(tabuleiro[posicoesAtual[0]][posicoesAtual[0] - 1] == "*"){
+                                            return true;
+                                        } else {
+                                            return false;
+                                        }
+                                    } else{
+                                        return false;
                                     }
                                 }
                             }
@@ -1098,7 +1159,7 @@ public class Tabuleiro {
             if(this.posColuna == vet1[1] - 1){
                 if(jogador == "P1"){
                     System.out.println("\n    -----------------------------");
-                    System.out.println("    ------- O JOGADOR P1 ------- ");
+                    System.out.println("    ------- O JOGADOR PL1 ------- ");
                     System.out.println("    -----------VENCEU!-----------");
                     System.out.println("    -----------------------------");
                     System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");
@@ -1109,7 +1170,7 @@ public class Tabuleiro {
                     }
                 } else{
                     System.out.println("\n    -----------------------------");
-                    System.out.println("    ------- O JOGADOR P2 ------- ");
+                    System.out.println("    ------- O JOGADOR PL2 ------- ");
                     System.out.println("    -----------VENCEU!-----------");
                     System.out.println("    -----------------------------");
                     System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");
@@ -1125,7 +1186,7 @@ public class Tabuleiro {
 
     public void fimDeJogoP1(){
         System.out.println("\n    -----------------------------");
-        System.out.println("    ------- O JOGADOR P1 ------- ");
+        System.out.println("    ------- O JOGADOR PL1 ------- ");
         System.out.println("    -----------PERDEU!-----------");
         System.out.println("    -----------------------------");
         System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");
@@ -1138,7 +1199,7 @@ public class Tabuleiro {
 
     public void fimDeJogoP2(){
         System.out.println("\n    -----------------------------");
-        System.out.println("    ------- O JOGADOR P2 ------- ");
+        System.out.println("    ------- O JOGADOR PL2 ------- ");
         System.out.println("    -----------PERDEU!-----------");
         System.out.println("    -----------------------------");
         System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");

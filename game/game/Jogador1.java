@@ -6,6 +6,8 @@ public class Jogador1 extends Jogador {
     protected String tipoJogador;
     protected int numAcoes;
     protected int contadorCiclos = 0;
+    int[] vetPosAtualP1 = {3,3};
+    int[] vetPosFuturaP1 = new int[2];
     Scanner input = new Scanner(System.in);
 
     // Métodos
@@ -54,13 +56,16 @@ public class Jogador1 extends Jogador {
         } else{
             if(valor == 4){
                 // jogador 1 DEF +=1
+                System.out.println("O jogador PL1 ganhou 1 de DEF");
                 this.DEF += 1;
             } else{
                 if(valor == 5){
                     // jogador2 DEF += 2
+                    System.out.println("O jogador PL1 ganhou 2 de DEF");
                     this.DEF += 2;
                 } else{
                     // inimigos perdem 1 de DEF
+                    System.out.println("Os inimigos de PL1 perdem 1 de DEF");
                     for(int i = 0; i < tamanho; i ++){
                         vetInimigoP1[i].DEF -= 1;
                     }
@@ -82,8 +87,9 @@ public class Jogador1 extends Jogador {
         if(contadorCiclos<25){
             int posLin, posCol;
             System.out.println("");
-            System.out.println("Digite a posição para onde o jogador 1 (PL1) deseja ir na ordem (linha/coluna): ");
+            System.out.println("Digite a linha para onde o jogador 1 (PL1) deseja ir: ");
             posLin = input.nextInt();
+            System.out.println("Digite a coluna para onde o jogador 1 (PL1) deseja ir: ");
             posCol = input.nextInt();
             int vet[] = {posLin, posCol};
             return vet;
