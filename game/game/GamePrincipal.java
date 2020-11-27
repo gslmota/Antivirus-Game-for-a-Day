@@ -1,6 +1,6 @@
 /*
 Armazenar os movimentos em matriz e criar metodo verificar posicaoAntiga
-
+Try e catch
 */
 package game;
 import java.util.Scanner;
@@ -47,6 +47,7 @@ public class GamePrincipal {
                             tabuleiro.gerarInimigosP1();
                         }
                     }
+                    tabuleiro.visitaSetor(vet1, "P1");
                     tabuleiro.alterarSetor(vetAux, "P2");
                     tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
                     if(contCiclos != 0){
@@ -62,6 +63,7 @@ public class GamePrincipal {
                             if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
                                 tabuleiro.limparSetor(vet1);
                                 tabuleiro.alterarSetor(vet2, "P");
+                                tabuleiro.visitaSetor(vet2, "P");
                                 tabuleiro.printarTabuleiro(jogador1, jogador2);
                                 //tabuleiro.limparSetor(vet2);
                                 System.out.println("\nTudo ok? (1-sim / 2-não)");
@@ -131,6 +133,7 @@ public class GamePrincipal {
                                         tabuleiro.gerarInimigosP2();
                                     }
                                 }
+                                tabuleiro.visitaSetor(vet2, "P2");
                                 tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
     
                                 System.out.println("\nTudo ok? (1-sim / 2-não)");
@@ -217,6 +220,7 @@ public class GamePrincipal {
                                 tabuleiro.gerarInimigosP1();
                             }
                         }
+                        tabuleiro.visitaSetor(vet1, "P1");
                         tabuleiro.alterarSetor(vetAux, "P2");
                         tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
                         if(contCiclos != 0){
@@ -291,6 +295,8 @@ public class GamePrincipal {
                                         tabuleiro.gerarInimigosP2();
                                     }
                                 }
+
+                                tabuleiro.visitaSetor(vet2, "P2");
                                 tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
     
                                 System.out.println("\nTudo ok? (1-sim / 2-não)");

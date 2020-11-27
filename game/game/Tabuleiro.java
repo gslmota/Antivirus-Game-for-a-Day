@@ -573,7 +573,6 @@ public class Tabuleiro {
                                 criaSetor[linha].vetorSetor[coluna + 3] = "1";
                                 position.posSetor1[0] = posicoes[0];
                                 position.posSetor1[1] = posicoes[1];
-                                movimentosP1[linha][coluna] = true;
                             } else {
                                 if(coluna == 1){
                                     criaSetor[linha].vetorSetor[coluna + 4] = "P";
@@ -581,7 +580,7 @@ public class Tabuleiro {
                                     criaSetor[linha].vetorSetor[coluna + 6] = "1";
                                     position.posSetor1[0] = posicoes[0];
                                     position.posSetor1[1] = posicoes[1];
-                                    movimentosP1[linha][coluna] = true;
+
                                 } else {
                                     if(coluna == 2){
                                         criaSetor[linha].vetorSetor[coluna + 7] = "P";
@@ -589,7 +588,7 @@ public class Tabuleiro {
                                         criaSetor[linha].vetorSetor[coluna + 9] = "1";
                                         position.posSetor1[0] = posicoes[0];
                                         position.posSetor1[1] = posicoes[1];
-                                        movimentosP1[linha][coluna] = true;
+    
                                     } else {
                                         if(coluna == 3){
                                             /*
@@ -605,7 +604,7 @@ public class Tabuleiro {
                                             criaSetor[linha].vetorSetor[coluna + 12] = "1";
                                             position.posSetor1[0] = posicoes[0];
                                             position.posSetor1[1] = posicoes[1];
-                                            movimentosP1[linha][coluna] = true;
+        
                                             
                                         } else {
                                             if(coluna == 4){
@@ -614,7 +613,7 @@ public class Tabuleiro {
                                                 criaSetor[linha].vetorSetor[coluna + 15] = "1";
                                                 position.posSetor1[0] = posicoes[0];
                                                 position.posSetor1[1] = posicoes[1];
-                                                movimentosP1[linha][coluna] = true;
+            
                                             }
                                         }
                                     }
@@ -636,7 +635,6 @@ public class Tabuleiro {
                                     criaSetor[linha].vetorSetor[coluna + 3] = "2";
                                     position.posSetor2[0] = posicoes[0];
                                     position.posSetor2[1] = posicoes[1];
-                                    movimentosP2[linha][coluna] = true;
                                 } else {
                                     if(coluna == 1){
                                         criaSetor[linha].vetorSetor[coluna + 4] = "P";
@@ -644,7 +642,7 @@ public class Tabuleiro {
                                         criaSetor[linha].vetorSetor[coluna + 6] = "2";
                                         position.posSetor2[0] = posicoes[0];
                                         position.posSetor2[1] = posicoes[1];
-                                        movimentosP2[linha][coluna] = true;
+
                                     } else {
                                         if(coluna == 2){
                                             criaSetor[linha].vetorSetor[coluna + 7] = "P";
@@ -652,7 +650,7 @@ public class Tabuleiro {
                                             criaSetor[linha].vetorSetor[coluna + 9] = "2";
                                             position.posSetor2[0] = posicoes[0];
                                             position.posSetor2[1] = posicoes[1];
-                                            movimentosP2[linha][coluna] = true;
+    
                                         } else {
                                             if(coluna == 3){
                                                 criaSetor[linha].vetorSetor[coluna + 10] = "P";
@@ -660,7 +658,7 @@ public class Tabuleiro {
                                                 criaSetor[linha].vetorSetor[coluna + 12] = "2";
                                                 position.posSetor2[0] = posicoes[0];
                                                 position.posSetor2[1] = posicoes[1];
-                                                movimentosP2[linha][coluna] = true;
+        
                                             } else {
                                                 if(coluna == 4){
                                                     criaSetor[linha].vetorSetor[coluna + 13] = "P";
@@ -668,7 +666,7 @@ public class Tabuleiro {
                                                     criaSetor[linha].vetorSetor[coluna + 15] = "2";
                                                     position.posSetor2[0] = posicoes[0];
                                                     position.posSetor2[1] = posicoes[1];
-                                                    movimentosP2[linha][coluna] = true;
+            
                                                 }
                                             }
                                         }
@@ -687,36 +685,35 @@ public class Tabuleiro {
                                     criaSetor[linha].vetorSetor[coluna + 2] = "P";
                                     position.posSetor2[0] = posicoes[0];
                                     position.posSetor2[1] = posicoes[1];
-                                    movimentosP1[linha][coluna] = true;
-                                    movimentosP2[linha][coluna] = true;
+
                                 } else {
                                     if(coluna == 1){
                                         criaSetor[linha].vetorSetor[coluna + 5] = "P";
                                         position.posSetor2[0] = posicoes[0];
                                         position.posSetor2[1] = posicoes[1];
-                                        movimentosP1[linha][coluna] = true;
-                                        movimentosP2[linha][coluna] = true;
+    
+
                                     } else {
                                         if(coluna == 2){
                                             criaSetor[linha].vetorSetor[coluna + 8] = "P";
                                             position.posSetor2[0] = posicoes[0];
                                             position.posSetor2[1] = posicoes[1];
-                                            movimentosP1[linha][coluna] = true;
-                                            movimentosP2[linha][coluna] = true;
+        
+    
                                         } else {
                                             if(coluna == 3){
                                                 criaSetor[linha].vetorSetor[coluna + 11] = "P";
                                                 position.posSetor2[0] = posicoes[0];
                                                 position.posSetor2[1] = posicoes[1];
-                                                movimentosP1[linha][coluna] = true;
-                                                movimentosP2[linha][coluna] = true;
+            
+        
                                             } else {
                                                 if(coluna == 4){
                                                     criaSetor[linha].vetorSetor[coluna + 14] = "P";
                                                     position.posSetor2[0] = posicoes[0];
                                                     position.posSetor2[1] = posicoes[1];
-                                                    movimentosP1[linha][coluna] = true;
-                                                    movimentosP2[linha][coluna] = true;
+                
+            
                                                 }
                                             }
                                         }
@@ -739,7 +736,9 @@ public class Tabuleiro {
         String parede = "|";
         int tPorta = 0, tParede = 0;
         int escolha = posicao.nextInt(2);
+        int cont = 0;
         // escolha == 0 porta
+
         // Sorteia as portas e paredes
         for(int i = 0; i < 3; i ++){
             if(this.contPorta < this.contParede){
@@ -762,10 +761,8 @@ public class Tabuleiro {
             tParede --;
         }
 
-        this.contParede = tParede;
-        this.contPorta = tPorta;
-
-        //suponhamos 2 portas e 1 parede
+        this.contParede += tParede;
+        this.contPorta += tPorta;
 
         // Modifica os setores
         if(escolha == 0 && tPorta != 0){
@@ -1136,5 +1133,16 @@ public class Tabuleiro {
             }  
         }
         return false;
+    }
+
+    public void visitaSetor(int[] vet, String jogador){
+        if(jogador == "P1"){
+            movimentosP1[vet[0] - 1][vet[1] - 1] = true;
+        } else if(jogador == "P2"){
+            movimentosP2[vet[0] - 1][vet[1] - 1] = true;
+        } else if(jogador == "P"){
+            movimentosP1[vet[0] - 1][vet[1] - 1] = true;
+            movimentosP2[vet[0] - 1][vet[1] - 1] = true;
+        }
     }
 }
