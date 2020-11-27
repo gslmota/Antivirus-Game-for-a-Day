@@ -994,6 +994,61 @@ public class Tabuleiro {
         return true;
     }
 
+    public boolean verificarMovimento(int[] posicoesAtual, int[] posicoesAntiga) {
+
+        for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
+
+            for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
+
+                    if(linha == posicoesAtual[0] - 1 && coluna == posicoesAtual[1] - 1){
+
+                        if(linha == posicoesAntiga[0] - 1){
+                            if(posicoesAntiga[1] - 1 == 0){
+                                if(criaSetor[linha].vetorSetor[4] == "*"){
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            } else {
+                                if(posicoesAntiga[1] - 1 == 1){
+                                    if(criaSetor[linha].vetorSetor[4] == "*"){
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                } else {
+                                    if(posicoesAntiga[1] - 1 == 2){
+                                        if(criaSetor[linha].vetorSetor[8] == "*"){
+                                            return true;
+                                        } else {
+                                            return false;
+                                        }
+                                    } else {
+                                        if(posicoesAntiga[1] - 1 == 3){
+                                            if(criaSetor[linha].vetorSetor[12] == "*"){
+                                                return true;
+                                            } else {
+                                                return false;
+                                            }
+                                        } else {
+                                            if(posicoesAntiga[1] - 1 == 4){
+                                                if(criaSetor[linha].vetorSetor[16] == "*"){
+                                                    return true;
+                                                } else {
+                                                    return false;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+            }
+        }
+        return true;
+    }
+
     public void gerarInimigosP1(){
         int nInimigos = turno.gerarInimigosP1();
         this.totalInimigosP1 = nInimigos;

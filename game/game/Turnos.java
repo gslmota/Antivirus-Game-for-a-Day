@@ -45,8 +45,10 @@ public class Turnos {
         int opcao = 0, inimigo = 0;
         opcao = input.nextInt();
         if(opcao == 1){
-            System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-            inimigo = input.nextInt();
+            do{
+                System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                inimigo = input.nextInt();
+            } while(inimigo < 1 || inimigo > totalIniP1);
             //vetInimigoP1[inimigo - 1].DEF -= jogador1.ATK;
             jogador1.atacar(vetInimigoP1, inimigo);
         } else {
@@ -71,14 +73,19 @@ public class Turnos {
         int opcao = 0, inimigo = 0;
         opcao = input.nextInt();
         if(opcao == 1){
-            System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-            inimigo = input.nextInt();
+
+            do{
+                System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                inimigo = input.nextInt();
+            } while(inimigo < 1 || inimigo > totalIniP2);
+            
             //vetInimigoP2[inimigo - 1].DEF -= jogador2.ATK;
             if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
                 jogador2.atacar(vetInimigoP1, inimigo);
             } else {
                 jogador2.atacar(vetInimigoP2, inimigo);
             }
+
         } else {
             if (opcao == 2){
                 System.out.println("Será realizada uma procura no setor!");
@@ -126,8 +133,10 @@ public class Turnos {
         int opcao = 0, inimigo = 0;
         opcao = input.nextInt();
         if(opcao == 1){
-            System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-            inimigo = input.nextInt();
+            do{
+                System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                inimigo = input.nextInt();
+            } while(inimigo < 1 || inimigo > totalIniP2);
             //vetInimigoP2[inimigo - 1].DEF -= jogador2.ATK;
             jogador2.atacar(vetInimigoP2, inimigo);
         } else {

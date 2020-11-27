@@ -3,6 +3,7 @@ Armazenar os movimentos em matriz e criar metodo verificar posicaoAntiga
 Try e catch
 */
 package game;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class GamePrincipal {
     public static void main(String[] args) {
@@ -14,15 +15,21 @@ public class GamePrincipal {
         Jogador1 jogador1 = new Jogador1();
         Jogador2 jogador2 = new Jogador2();
         tabuleiro.gerarTabuleiroInicial();
-        System.out.println("\nVamos Começar o Jogo ? (1-sim / 2-não)");
-        key = input.nextInt();
+        try{
+            System.out.println("\nVamos Começar o Jogo ? (1-sim / 2-não)");
+            key = input.nextInt();
 
-        if(key == 1){
-            tabuleiro.gerarTabuleiroDeJogo();
-            tabuleiro.apagarTela();
-            tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-        } else{
-            System.exit(0);  // Fecha o programa
+            if(key == 1){
+                tabuleiro.gerarTabuleiroDeJogo();
+                tabuleiro.apagarTela();
+                tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
+            } else{
+                System.exit(0);  // Fecha o programa
+            }
+            
+        } catch (InputMismatchException e){
+            System.err.println(e);
+            System.out.println("Digite um valor inteiro: ");
         }
         
         while(contCiclos < 25){
