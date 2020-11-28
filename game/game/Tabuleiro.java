@@ -9,8 +9,8 @@ public class Tabuleiro {
     Setor position = new Setor();
     Random posicao = new Random(); // Aleatoriedade para posicionar o virus
     Turnos turno = new Turnos();
-    int posLinha = posicao.nextInt(5);
-    int posColuna = posicao.nextInt(5);
+    int posLinha = 2;//posicao.nextInt(5);
+    int posColuna = 2;//posicao.nextInt(5);
     int contPorta = 0, contParede = 0;
     int totalInimigosP1 = 0;
     int totalInimigosP2 = 0;
@@ -89,7 +89,7 @@ public class Tabuleiro {
                                 System.out.print(vetor[i]);
                             }
                         } else{
-                            String [] vetor = {"|", " ", "X", " ","|", " ", " ", " ","*", " ", "C", " ","*", " ", " ", " ","|", " ", " ", " ","|"};
+                            String [] vetor = {"|", " ", " ", " ","|", " ", " ", " ","*", " ", "C", " ","*", " ", " ", " ","|", " ", "X", " ","|"};
                             System.out.print(vetor[i]);
                         }
                     } else{
@@ -199,6 +199,8 @@ public class Tabuleiro {
                             if(posColuna == 2){
                                 if(posColuna == posLinha){
                                     criaSetor[linha].vetorSetor[18] = "X";
+                                    posColuna = 4;
+                                    posLinha = 2;
                                 } else {
                                     criaSetor[linha].vetorSetor[10] = "X";
                                 }
@@ -621,6 +623,7 @@ public class Tabuleiro {
                             }
                         } else {
                             System.out.println("\nVocê retornou a posição central!\n");
+                            System.out.println("\n Não é mostrado o jogador na posição central!\n");
                             position.posSetor1[0] = 3;
                             position.posSetor1[1] = 3;
                         }
@@ -674,6 +677,7 @@ public class Tabuleiro {
                                 }
                             } else {
                                 System.out.println("\nVocê retornou a posição central!\n");
+                                System.out.println("\n Não é mostrado o jogador na posição central!\n");
                                 position.posSetor1[0] = 3;
                                 position.posSetor1[1] = 3;
                             }
@@ -721,6 +725,7 @@ public class Tabuleiro {
                                 }
                             } else {
                                 System.out.println("\nVocê retornou a posição central!\n");
+                                System.out.println("\n Não é mostrado o jogador na posição central!\n");
                                 position.posSetor2[0] = 3;
                                 position.posSetor2[1] = 3;
                             }
@@ -1189,12 +1194,6 @@ public class Tabuleiro {
         System.out.println("    ------- O JOGADOR PL1 ------- ");
         System.out.println("    -----------PERDEU!-----------");
         System.out.println("    -----------------------------");
-        System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");
-        int escolha = 0;
-        escolha = input.nextInt();
-        if(escolha == 1){
-            System.exit(0);  // Fecha o programa
-        }
     }
 
     public void fimDeJogoP2(){
@@ -1202,12 +1201,6 @@ public class Tabuleiro {
         System.out.println("    ------- O JOGADOR PL2 ------- ");
         System.out.println("    -----------PERDEU!-----------");
         System.out.println("    -----------------------------");
-        System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");
-        int escolha = 0;
-        escolha = input.nextInt();
-        if(escolha == 1){
-            System.exit(0);  // Fecha o programa
-        }
     }
 
     public void fimDeJogo(){
@@ -1215,6 +1208,7 @@ public class Tabuleiro {
         System.out.println("    ------------O JOGO---------- ");
         System.out.println("    ------------ACABOU!----------");
         System.out.println("    -----------------------------");
+        System.out.println("Todos os jogadores morreram!");
         System.out.println("\n\n FECHAR PROGRAMA ? (1-sim)");
         int escolha = 0;
         escolha = input.nextInt();

@@ -111,7 +111,6 @@ public class Jogador1 extends Jogador {
 
     @Override
     public int[] movimentar() {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -122,7 +121,6 @@ public class Jogador1 extends Jogador {
 
     @Override
     public void atacar() {
-        // TODO Auto-generated method stub
-
+        
     }
 }

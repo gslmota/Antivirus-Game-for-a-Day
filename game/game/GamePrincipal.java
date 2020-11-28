@@ -3,6 +3,8 @@ Armazenar os movimentos em matriz e criar metodo verificar posicaoAntiga
 Try e catch
 
 refazer os atributos def e atk de jogador 1 2
+
+posição igual central, passar total ini como 0
 */
 package game;
 import java.util.InputMismatchException;
@@ -42,7 +44,7 @@ public class GamePrincipal {
             if(life1 == true && life2 == true){
                 int vet1[] = jogador1.movimentar(contCiclos);
                 jogador1.vetPosFuturaP1 = vet1;
-                //tabuleiro.verificarMovimento(jogador1.vetPosAtualP1, vet1);
+                //tabuleiro.verificarMovimento(jogador1.vetPosAtualP1, vet1, jogador1, jogador2);
                 boolean res1 = tabuleiro.verificarMovimento(vet1);
                 tabuleiro.verificaVitoria(vet1, "P1");
                 if(res1 == true){
@@ -50,10 +52,12 @@ public class GamePrincipal {
                     tabuleiro.gerarPortaParede(vet1);
                     if(vet1[0] == 3 && vet1[1] == 3){
                         System.out.println("\n\nNão existe inimigos na posição central!\n");
+                        tabuleiro.totalInimigosP1 = 0;
                     } else {
                         boolean resVisit = tabuleiro.verificarVisitaP1(vet1);
                         if(resVisit == true){
                             // Não gera inimigos novamente
+                            tabuleiro.totalInimigosP1 = 0;
                         } else {
                             tabuleiro.gerarInimigosP1();
                         }
@@ -136,10 +140,12 @@ public class GamePrincipal {
                                 tabuleiro.gerarPortaParede(vet2);
                                 if(vet2[0] == 3 && vet2[1] == 3){
                                     System.out.println("\n\nNão existe inimigos na posição central!\n");
+                                    tabuleiro.totalInimigosP2 = 0;
                                 } else {
                                     boolean resVisit = tabuleiro.verificarVisitaP2(vet2);
                                     if(resVisit == true){
                                         // Não gera inimigos novamente
+                                        tabuleiro.totalInimigosP2 = 0;
                                     } else {
                                         tabuleiro.gerarInimigosP2();
                                     }
@@ -223,10 +229,12 @@ public class GamePrincipal {
                         tabuleiro.gerarPortaParede(vet1);
                         if(vet1[0] == 3 && vet1[1] == 3){
                             System.out.println("\n\nNão existe inimigos na posição central!\n");
+                            tabuleiro.totalInimigosP1 = 0;
                         } else {
                             boolean resVisit = tabuleiro.verificarVisitaP1(vet1);
                             if(resVisit == true){
                                 // Não gera inimigos novamente
+                                tabuleiro.totalInimigosP1 = 0;
                             } else {
                                 tabuleiro.gerarInimigosP1();
                             }
@@ -298,10 +306,12 @@ public class GamePrincipal {
                                 tabuleiro.gerarPortaParede(vet2);
                                 if(vet2[0] == 3 && vet2[1] == 3){
                                     System.out.println("\n\nNão existe inimigos na posição central!\n");
+                                    tabuleiro.totalInimigosP2 = 0;
                                 } else {
                                     boolean resVisit = tabuleiro.verificarVisitaP2(vet2);
                                     if(resVisit == true){
                                         // Não gera inimigos novamente
+                                        tabuleiro.totalInimigosP2 = 0;
                                     } else {
                                         tabuleiro.gerarInimigosP2();
                                     }
