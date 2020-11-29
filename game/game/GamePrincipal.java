@@ -15,7 +15,8 @@ public class GamePrincipal {
         int key, contCiclos = 0;
         int contP1 = 0, contP2 = 0;
         int[] vetAux = new int[2];
-        int[] vetAuxP1, vetAuxP2 = new int[2];
+        int[] vetAuxP1 = new int[2];
+        int[] vetAuxP2 = new int[2];
         Tabuleiro tabuleiro = new Tabuleiro();
         Scanner input = new Scanner(System.in);
         Jogador1 jogador1 = new Jogador1();
@@ -47,6 +48,38 @@ public class GamePrincipal {
                 if((contCiclos != 0 && tabuleiro.verificarExistenciaInimigosP1() == true) || (contCiclos != 0 && tabuleiro.verificarExistenciaInimigosP2() == true)){
 
                     if(tabuleiro.verificarExistenciaInimigosP1() == true && tabuleiro.verificarExistenciaInimigosP2() == false){
+                        System.out.println("O PL1 possui inimigos e não pode se movimentar!");
+                        System.out.println("\nTudo ok? (1-sim / 2-não)");
+                        key = input.nextInt();
+                        if(key == 1){
+                            int contador1 = 1, contador2 = 1;
+                            while(contador1 <= 2){
+                                tabuleiro.turnoP1(jogador1, contador1);
+                                tabuleiro.printarTabuleiro(jogador1, jogador2);
+                                contador1 ++;
+                            }
+
+                            tabuleiro.turnoInimigos(jogador1, vetAuxP1);
+
+                            if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
+                                tabuleiro.fimDeJogo();
+                            } else {
+                                if(jogador1.DEF <= 0){
+                                    tabuleiro.fimDeJogoP1();
+                                } else {
+                                    if(jogador2.DEF <= 0){
+                                        tabuleiro.fimDeJogoP2();
+                                    }
+                                }
+                            }
+                            tabuleiro.printarTabuleiro(jogador1, jogador2);
+                            if(tabuleiro.verificarExistenciaInimigosP1() == false){
+                                tabuleiro.limparSetor(vetAuxP1);
+                            }
+                            contCiclos ++;
+                        } else {
+                            System.exit(0);
+                        }
 
                     } else {
                         if(tabuleiro.verificarExistenciaInimigosP1() == false && tabuleiro.verificarExistenciaInimigosP2() == true){
@@ -199,53 +232,12 @@ public class GamePrincipal {
                                             }
                                             tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
                                             
-                                            /*
-                                            do{
-                                                int contador1 = 1, contador2 = 1;
-                                                while(contador1 <= 2){
-                                                    tabuleiro.turnoP1(jogador1, contador1);
-                                                    tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                                    contador1 ++;
-                                                }
-                
-                                                while(contador2 <= 2){
-                                                    tabuleiro.turnoP2(jogador1, jogador2, vet1, vet2, contador2);
-                                                    tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                                    contador2 ++;
-                                                }
-                                                
-                                                tabuleiro.turnoInimigos(jogador1, jogador2, vet1, vet2);
-                                                
-                                                if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
-                                                    tabuleiro.fimDeJogo();
-                                                } else {
-                                                    if(jogador1.DEF <= 0){
-                                                        tabuleiro.fimDeJogoP1();
-                                                    } else {
-                                                        if(jogador2.DEF <= 0){
-                                                            tabuleiro.fimDeJogoP2();
-                                                        }
-                                                    }
-                                                }
-            
-                                                tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                                boolean result1 = tabuleiro.verificarExistenciaInimigosP1();
-                                                boolean result2 = tabuleiro.verificarExistenciaInimigosP2();
-                                                if (result1 == false && result2 == false){
-                                                    repetir = false;
-                                                }
-            
-                                                if(contDoWhile != 0){
-                                                    contCiclos ++;
-                                                } else {
-            
-                                                }
-            
-                                            } while(repetir);*/
-                
+                                            
                                             tabuleiro.limparSetor(vet1);
                                             vetAux[0] = vet2[0];
                                             vetAux[1] = vet2[1];
+                                            vetAuxP1 = vet1;
+                                            vetAuxP2 = vet2;
                                             contCiclos ++;
             
                                         }
