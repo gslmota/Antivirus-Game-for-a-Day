@@ -409,68 +409,6 @@ public class Tabuleiro {
         }
         System.out.print("     |---|---|---|---|---|\n\n"); // Cria a parede inferior do tabuleiro
     }
-/*
-    public void printarTabuleiro(int totalInimigos){
-        turno.gerarInimigos();
-        //apagarTela();
-        System.out.println("-----------------------------");
-        System.out.println("|    Antivírus por um dia    |");
-        System.out.println("-----------------------------");
-        System.out.println("       1   2   3   4   5      ");
-
-        // Percorre a matriz para criar o tabuleiro
-        for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
-
-            System.out.print("     |"); // Cria a parede da esquerda do tabuleiro
-            for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
-                
-                System.out.print("-" + tabuleiro[linha][coluna] + "-|"); // Gera as paredes internas do tabuleiro
-
-                if(coluna == 4 && linha == 2){
-                    if(totalInimigos == 1){
-                        System.out.print("    | " + turno.vetInimigo[0].ATK + "/" + turno.vetInimigo[0].DEF + " ");
-                    } else {
-                        if(totalInimigos == 2){
-                            System.out.print("    | " + turno.vetInimigo[0].ATK + "/" + turno.vetInimigo[0].DEF + " " + turno.vetInimigo[1].ATK + "/" + turno.vetInimigo[1].DEF);
-                        } else {
-                            System.out.print("    | " + turno.vetInimigo[0].ATK + "/" + turno.vetInimigo[0].DEF + " " + turno.vetInimigo[1].ATK + "/" + turno.vetInimigo[1].DEF + " " + + turno.vetInimigo[2].ATK + "/" + turno.vetInimigo[2].DEF + " ");
-                        }
-                    }
-                if(coluna == 4 && linha == 3){
-                    System.out.print("    *             *" + "    *             *");
-                }
-                if(coluna == 4 && linha == 4){
-                    System.out.print("    |     2/6     |" + "    |     1/7     |");
-                }
-            }  
-            System.out.println(" ");// Pula para próxima linha da matriz
-            System.out.print(linha + 1 + "    ");// Gera o inicio da linha, o interior do tabuleiro
-
-            // Gera o interior do setor
-            for(int vet = 0; vet < criaSetor[linha].vetorSetor.length; vet ++){
-
-                System.out.print(criaSetor[linha].vetorSetor[vet]);
-            }
-            if(linha == 0){
-                System.out.print("      Setor [" + position.posSetor1[0] + "," + position.posSetor1[1] + "]" + "        Setor [" + position.posSetor2[0] + "," + position.posSetor2[1] + "]");
-            }
-            if(linha == 1 || linha ==4){
-                System.out.print("    |------*------|" + "    |------*------|");
-            } else{
-                if(linha == 2){
-                    System.out.print("    |   []   []   |" + "    |   []   []   |");
-                }
-                else{
-                    if(linha == 3){
-                        System.out.print("    |     PL1     |" + "    |     PL2     |");
-                    }
-                }
-            }
-           System.out.println(""); //muda de linha
-        }
-        System.out.print("     |---|---|---|---|---|\n\n"); // Cria a parede inferior do tabuleiro
-        }
-    }*/
 
     public void printarTabuleiro(Jogador1 jogador1, Jogador2 jogador2){
         //apagarTela();
@@ -623,7 +561,7 @@ public class Tabuleiro {
                             }
                         } else {
                             System.out.println("\nVocê retornou a posição central!\n");
-                            System.out.println("\n Não é mostrado o jogador na posição central!\n");
+                            System.out.println("\nNão é mostrado o jogador na posição central!\n");
                             position.posSetor1[0] = 3;
                             position.posSetor1[1] = 3;
                         }
@@ -677,7 +615,7 @@ public class Tabuleiro {
                                 }
                             } else {
                                 System.out.println("\nVocê retornou a posição central!\n");
-                                System.out.println("\n Não é mostrado o jogador na posição central!\n");
+                                System.out.println("\nNão é mostrado o jogador na posição central!\n");
                                 position.posSetor1[0] = 3;
                                 position.posSetor1[1] = 3;
                             }
@@ -725,7 +663,7 @@ public class Tabuleiro {
                                 }
                             } else {
                                 System.out.println("\nVocê retornou a posição central!\n");
-                                System.out.println("\n Não é mostrado o jogador na posição central!\n");
+                                System.out.println("\nNão é mostrado o jogador na posição central!\n");
                                 position.posSetor2[0] = 3;
                                 position.posSetor2[1] = 3;
                             }
@@ -1205,7 +1143,7 @@ public class Tabuleiro {
 
     public void fimDeJogo(){
         System.out.println("\n    -----------------------------");
-        System.out.println("    ------------O JOGO---------- ");
+        System.out.println("    ----------- O JOGO ---------- ");
         System.out.println("    ------------ACABOU!----------");
         System.out.println("    -----------------------------");
         System.out.println("Todos os jogadores morreram!");

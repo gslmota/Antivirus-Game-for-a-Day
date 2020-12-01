@@ -2,9 +2,6 @@
 Armazenar os movimentos em matriz e criar metodo verificar posicaoAntiga
 Try e catch
 
-refazer os atributos def e atk de jogador 1 2
-
-posição igual central, passar total ini como 0
 
 implementar o tipo de setor
 
@@ -17,7 +14,6 @@ public class GamePrincipal {
     public static void main(String[] args) {
 
         int key, contCiclos = 0;
-        int contP1 = 0, contP2 = 0;
         int[] vetAux = new int[2];
         int[] vetAuxP1 = new int[2];
         int[] vetAuxP2 = new int[2];
@@ -72,12 +68,28 @@ public class GamePrincipal {
                             } else {
                                 if(jogador1.DEF <= 0){
                                     tabuleiro.fimDeJogoP1();
+                                    tabuleiro.limparSetor(vetAuxP1);
+                                    tabuleiro.totalInimigosP1 = 0;
                                 } else {
                                     if(jogador2.DEF <= 0){
                                         tabuleiro.fimDeJogoP2();
+                                        tabuleiro.limparSetor(vetAuxP2);
+                                        tabuleiro.totalInimigosP2 = 0;
                                     }
                                 }
                             }
+
+                            if(tabuleiro.verificarExistenciaInimigosP1() == false &&tabuleiro.verificarExistenciaInimigosP2() == false){
+                                tabuleiro.totalInimigosP1 = 0;
+                                tabuleiro.totalInimigosP2 = 0;
+                            } else {
+                                if(tabuleiro.verificarExistenciaInimigosP1() == true && tabuleiro.verificarExistenciaInimigosP2() == false){
+                                    tabuleiro.totalInimigosP2 = 0;
+                                } else {
+                                    tabuleiro.totalInimigosP1 = 0;
+                                }
+                            }
+
                             tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
         
                             contCiclos ++;
@@ -113,18 +125,30 @@ public class GamePrincipal {
                                     } else {
                                         if(jogador1.DEF <= 0){
                                             tabuleiro.fimDeJogoP1();
+                                            tabuleiro.limparSetor(vetAuxP1);
+                                            tabuleiro.totalInimigosP1 = 0;
                                         } else {
                                             if(jogador2.DEF <= 0){
                                                 tabuleiro.fimDeJogoP2();
+                                                tabuleiro.limparSetor(vet2);
+                                                tabuleiro.totalInimigosP2 = 0;
                                             }
                                         }
                                     }
+
+                                    if(tabuleiro.verificarExistenciaInimigosP1() == false &&tabuleiro.verificarExistenciaInimigosP2() == false){
+                                        tabuleiro.totalInimigosP1 = 0;
+                                        tabuleiro.totalInimigosP2 = 0;
+                                    } else {
+                                        if(tabuleiro.verificarExistenciaInimigosP1() == true && tabuleiro.verificarExistenciaInimigosP2() == false){
+                                            tabuleiro.totalInimigosP2 = 0;
+                                        } else {
+                                            tabuleiro.totalInimigosP1 = 0;
+                                        }
+                                    }
+
                                     tabuleiro.printarTabuleiro(jogador1, jogador2);
 
-                                    if(tabuleiro.verificarExistenciaInimigosP1() == false){
-                                        tabuleiro.limparSetor(vetAuxP1);
-                                    }
-                                    
                                     vetAux[0] = vet2[0];
                                     vetAux[1] = vet2[1];
                                     vetAuxP2 = vet2;
@@ -134,10 +158,11 @@ public class GamePrincipal {
                                 }
 
                             } else {
+                                tabuleiro.limparSetor(vetAuxP2);
                                 tabuleiro.alterarSetor(vet2, "P2");
                                 tabuleiro.gerarPortaParede(vet2);
                                 if(vet2[0] == 3 && vet2[1] == 3){
-                                    System.out.println("\n\nNão existe inimigos na posição central!\n");
+                                    System.out.println("\n\nNão existe inimigos na posição central!\n\nMas você pode procurar itens na posição central!\n");
                                     tabuleiro.totalInimigosP2 = 0;
                                 } else {
                                     boolean resVisit = tabuleiro.verificarVisitaP2(vet2);
@@ -169,18 +194,28 @@ public class GamePrincipal {
                                     } else {
                                         if(jogador1.DEF <= 0){
                                             tabuleiro.fimDeJogoP1();
+                                            tabuleiro.limparSetor(vetAuxP1);
+                                            tabuleiro.totalInimigosP1 = 0;
                                         } else {
                                             if(jogador2.DEF <= 0){
                                                 tabuleiro.fimDeJogoP2();
+                                                tabuleiro.limparSetor(vet2);
+                                                tabuleiro.totalInimigosP2 = 0;
                                             }
+                                        }
+                                    }
+                                    if(tabuleiro.verificarExistenciaInimigosP1() == false &&tabuleiro.verificarExistenciaInimigosP2() == false){
+                                        tabuleiro.totalInimigosP1 = 0;
+                                        tabuleiro.totalInimigosP2 = 0;
+                                    } else {
+                                        if(tabuleiro.verificarExistenciaInimigosP1() == true && tabuleiro.verificarExistenciaInimigosP2() == false){
+                                            tabuleiro.totalInimigosP2 = 0;
+                                        } else {
+                                            tabuleiro.totalInimigosP1 = 0;
                                         }
                                     }
                                     tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
 
-                                    if(tabuleiro.verificarExistenciaInimigosP1() == false){
-                                        tabuleiro.limparSetor(vetAuxP1);
-                                    }    
-                                
                                     vetAux[0] = vet2[0];
                                     vetAux[1] = vet2[1];
                                     vetAuxP2 = vet2;
@@ -195,6 +230,7 @@ public class GamePrincipal {
                     } else {
                         if(tabuleiro.verificarExistenciaInimigosP1() == false && tabuleiro.verificarExistenciaInimigosP2() == true){
                             // P1 não tem inimigos mas P2 simp
+                            tabuleiro.limparSetor(vetAuxP1);
                             int vet1[] = jogador1.movimentar(contCiclos);
                             jogador1.vetPosFuturaP1 = vet1;
                             //tabuleiro.verificarMovimento(jogador1.vetPosAtualP1, vet1, jogador1, jogador2);
@@ -218,19 +254,15 @@ public class GamePrincipal {
                                 tabuleiro.visitaSetor(vet1, "P1");
                                 tabuleiro.alterarSetor(vetAux, "P2");
                                 tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                if(contCiclos != 0){
-                                    tabuleiro.limparSetor(vetAux); // Limpa a posição de PL2
-                                }
                                 System.out.println("\nTudo ok? (1-sim / 2-não)");
                                 key = input.nextInt();
                                 if(key == 1){
                                     System.out.println("PL2 não pode se movimentar pois ainda possui inimigos!");
                                     if(vetAuxP2[0] == vet1[0] && vetAuxP2[1] == vet1[1]){
                                         tabuleiro.limparSetor(vet1);
-                                        tabuleiro.alterarSetor(vetAuxP2, "P");
-                                        tabuleiro.visitaSetor(vetAuxP2, "P");
+                                        tabuleiro.alterarSetor(vet1, "P");
+                                        tabuleiro.visitaSetor(vet1, "P");
                                         tabuleiro.printarTabuleiro(jogador1, jogador2);
-                                        //tabuleiro.limparSetor(vet2);
                                         System.out.println("\nTudo ok? (1-sim / 2-não)");
                                         key = input.nextInt();
                                         if(key == 1){
@@ -254,18 +286,19 @@ public class GamePrincipal {
                                             } else {
                                                 if(jogador1.DEF <= 0){
                                                     tabuleiro.fimDeJogoP1();
+                                                    tabuleiro.limparSetor(vet1);
+                                                    tabuleiro.totalInimigosP1 = 0;
                                                 } else {
                                                     if(jogador2.DEF <= 0){
                                                         tabuleiro.fimDeJogoP2();
+                                                        tabuleiro.limparSetor(vetAuxP2);
+                                                        tabuleiro.totalInimigosP2 = 0;
                                                     }
                                                 }
                                             }
+
                                             tabuleiro.printarTabuleiro(jogador1, jogador2);
-                                
-                                            if(tabuleiro.verificarExistenciaInimigosP1() == false){
-                                                tabuleiro.limparSetor(vet1);
-                                            }    
-                                        
+                        
                                             contCiclos ++;
                                         } else {
                                             System.exit(0);
@@ -303,17 +336,18 @@ public class GamePrincipal {
                                             } else {
                                                 if(jogador1.DEF <= 0){
                                                     tabuleiro.fimDeJogoP1();
+                                                    tabuleiro.limparSetor(vet1);
+                                                    tabuleiro.totalInimigosP1 = 0;
                                                 } else {
                                                     if(jogador2.DEF <= 0){
                                                         tabuleiro.fimDeJogoP2();
+                                                        tabuleiro.limparSetor(vetAuxP2);
+                                                        tabuleiro.totalInimigosP2 = 0;
                                                     }
                                                 }
                                             }
+
                                             tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                            
-                                            if(tabuleiro.verificarExistenciaInimigosP1() == false){
-                                                tabuleiro.limparSetor(vet1);
-                                            }    
                                             
                                             vetAuxP1 = vet1;
                                             contCiclos ++;
@@ -336,38 +370,77 @@ public class GamePrincipal {
                                 System.out.println("\nTudo ok? (1-sim / 2-não)");
                                 key = input.nextInt();
                                 if(key == 1){
-                                    int contador1 = 1, contador2 = 1;
-                                    while(contador1 <= 2){
-                                        tabuleiro.turnoP1(jogador1, contador1);
-                                        tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                        contador1 ++;
-                                    }
+                                    if(vetAuxP1[0] == vetAuxP2[0] && vetAuxP1[1] == vetAuxP2[1]){
+                                        int contador1 = 1, contador2 = 1;
+                                        while(contador1 <= 2){
+                                            tabuleiro.turnoP1(jogador1, contador1);
+                                            tabuleiro.printarTabuleiro(jogador1, jogador2);
+                                            contador1 ++;
+                                        }
+        
+                                        while(contador2 <= 2){
+                                            tabuleiro.turnoP2(jogador1, jogador2, vetAuxP1, vetAuxP2, contador2);
+                                            tabuleiro.printarTabuleiro(jogador1, jogador2);
+                                            contador2 ++;
+                                        }
+                                        
+                                        tabuleiro.turnoInimigos(jogador1, jogador2, vetAuxP1, vetAuxP2);
     
-                                    while(contador2 <= 2){
-                                        tabuleiro.turnoP2(jogador1, jogador2, vetAuxP1, vetAuxP2, contador2);
-                                        tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                        contador2 ++;
-                                    }
-                                    
-                                    tabuleiro.turnoInimigos(jogador1, jogador2, vetAuxP1, vetAuxP2);
-
-                                    if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
-                                        tabuleiro.fimDeJogo();
-                                    } else {
-                                        if(jogador1.DEF <= 0){
-                                            tabuleiro.fimDeJogoP1();
+                                        if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
+                                            tabuleiro.fimDeJogo();
                                         } else {
-                                            if(jogador2.DEF <= 0){
-                                                tabuleiro.fimDeJogoP2();
+                                            if(jogador1.DEF <= 0){
+                                                tabuleiro.fimDeJogoP1();
+                                                tabuleiro.limparSetor(vetAuxP1);
+                                                tabuleiro.totalInimigosP1 = 0;
+                                            } else {
+                                                if(jogador2.DEF <= 0){
+                                                    tabuleiro.fimDeJogoP2();
+                                                    tabuleiro.limparSetor(vetAuxP2);
+                                                    tabuleiro.totalInimigosP2 = 0;
+                                                }
                                             }
                                         }
-                                    }
-                                    tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                    if(tabuleiro.verificarExistenciaInimigosP1() == false){
-                                        tabuleiro.limparSetor(vetAuxP1);
+
+                                        tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
+                                        
+                                        contCiclos ++;
+                                    } else {
+                                        int contador1 = 1, contador2 = 1;
+                                        while(contador1 <= 2){
+                                            tabuleiro.turnoP1(jogador1, contador1);
+                                            tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
+                                            contador1 ++;
+                                        }
+        
+                                        while(contador2 <= 2){
+                                            tabuleiro.turnoP2(jogador1, jogador2, vetAuxP1, vetAuxP2, contador2);
+                                            tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
+                                            contador2 ++;
+                                        }
+                                        
+                                        tabuleiro.turnoInimigos(jogador1, jogador2, vetAuxP1, vetAuxP2);
+    
+                                        if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
+                                            tabuleiro.fimDeJogo();
+                                        } else {
+                                            if(jogador1.DEF <= 0){
+                                                tabuleiro.fimDeJogoP1();
+                                                tabuleiro.limparSetor(vetAuxP1);
+                                                tabuleiro.totalInimigosP1 = 0;
+                                            } else {
+                                                if(jogador2.DEF <= 0){
+                                                    tabuleiro.fimDeJogoP2();
+                                                    tabuleiro.limparSetor(vetAuxP2);
+                                                    tabuleiro.totalInimigosP2 = 0;
+                                                }
+                                            }
+                                        }
+                                        tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
+                                        
+                                        contCiclos ++;
                                     }
                                     
-                                    contCiclos ++;
                                 } else {
                                     System.exit(0);
                                 }
@@ -401,7 +474,7 @@ public class GamePrincipal {
                             tabuleiro.alterarSetor(vetAux, "P2");
                             tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
                             if(contCiclos != 0){
-                                tabuleiro.limparSetor(vetAux); // Limpa a posição de PL2
+                                tabuleiro.limparSetor(vetAuxP2); // Limpa a posição de PL2
                             }
                             System.out.println("\nTudo ok? (1-sim / 2-não)");
                             key = input.nextInt();
@@ -439,12 +512,15 @@ public class GamePrincipal {
                                             } else {
                                                 if(jogador1.DEF <= 0){
                                                     tabuleiro.fimDeJogoP1();
+                                                    tabuleiro.limparSetor(vet1);
                                                 } else {
                                                     if(jogador2.DEF <= 0){
                                                         tabuleiro.fimDeJogoP2();
+                                                        tabuleiro.limparSetor(vet2);
                                                     }
                                                 }
                                             }
+
                                             tabuleiro.printarTabuleiro(jogador1, jogador2);
                                             if(tabuleiro.verificarExistenciaInimigosP1() == false){
                                                 tabuleiro.limparSetor(vet1);
@@ -507,12 +583,17 @@ public class GamePrincipal {
                                             } else {
                                                 if(jogador1.DEF <= 0){
                                                     tabuleiro.fimDeJogoP1();
+                                                    tabuleiro.limparSetor(vet1);
                                                 } else {
                                                     if(jogador2.DEF <= 0){
                                                         tabuleiro.fimDeJogoP2();
+                                                        tabuleiro.limparSetor(vet2);
                                                     }
                                                 }
                                             }
+
+                                            tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
+
                                             if(tabuleiro.verificarExistenciaInimigosP1() == false){
                                                 tabuleiro.limparSetor(vet1);
                                             }
@@ -560,12 +641,9 @@ public class GamePrincipal {
                             } else {
                                 if(jogador1.DEF <= 0){
                                     tabuleiro.fimDeJogoP1();
-                                } else {
-                                    if(jogador2.DEF <= 0){
-                                        tabuleiro.fimDeJogoP2();
-                                    }
-                                }
+                                } 
                             }
+
                             tabuleiro.printarTabuleiro(jogador1, jogador2);
         
                             contCiclos ++;
@@ -593,7 +671,7 @@ public class GamePrincipal {
                                     }
                                 }
                                 tabuleiro.visitaSetor(vet1, "P1");
-                                tabuleiro.alterarSetor(vetAux, "P2");
+                                //tabuleiro.alterarSetor(vetAux, "P2");
                                 tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
                                 if(contCiclos != 0){
                                     //tabuleiro.limparSetor(vetAux); // Limpa a posição de PL2
@@ -604,40 +682,24 @@ public class GamePrincipal {
                                     System.out.println("\nComeçar o turno? (1-sim / 2-não)");
                                     key = input.nextInt();
                                     if(key == 1){
-                                        boolean repetir = true;
-                                        int contDoWhile = 0;
-                                        do{
-                                            int contador1 = 1;
-                                            while(contador1 <= 2){
-                                                tabuleiro.turnoP1(jogador1, contador1);
-                                                tabuleiro.printarTabuleiro(jogador1, jogador2);
-                                                contador1 ++;
-                                            }
-        
-                                            tabuleiro.turnoInimigos(jogador1, vet1);
-        
-                                            if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
-                                                tabuleiro.fimDeJogo();
-                                            } else {
-                                                if(jogador1.DEF <= 0){
-                                                    tabuleiro.fimDeJogoP1();
-                                                } 
-                                            }
+                                        int contador1 = 1;
+                                        while(contador1 <= 2){
+                                            tabuleiro.turnoP1(jogador1, contador1);
                                             tabuleiro.printarTabuleiro(jogador1, jogador2);
-                                            boolean result1 = tabuleiro.verificarExistenciaInimigosP1();
-        
-                                            if (result1 == false){
-                                                repetir = false;
-                                            }
-                                            
-                                            if(contDoWhile != 0){
-                                                contCiclos ++;
-                                            } else {
-        
-                                            }
-        
-                                        } while(repetir);
-        
+                                            contador1 ++;
+                                        }
+    
+                                        tabuleiro.turnoInimigos(jogador1, vet1);
+    
+                                        if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
+                                            tabuleiro.fimDeJogo();
+                                        } else {
+                                            if(jogador1.DEF <= 0){
+                                                tabuleiro.fimDeJogoP1();
+                                            } 
+                                        }
+
+                                        tabuleiro.printarTabuleiro(jogador1, jogador2);
                                         tabuleiro.limparSetor(vet1);
                                         contCiclos ++;
                                     } else {
@@ -659,7 +721,7 @@ public class GamePrincipal {
                                 int contador2 = 1;
                                 while(contador2 <= 2){
                                     tabuleiro.turnoP2(jogador1, jogador2, vetAuxP2, contador2);
-                                    tabuleiro.printarTabuleiro(jogador1, jogador2);
+                                    tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
                                     contador2 ++;
                                 }
     
@@ -676,7 +738,8 @@ public class GamePrincipal {
                                         }
                                     }
                                 }
-                                tabuleiro.printarTabuleiro(jogador1, jogador2);
+
+                                tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
             
                                 contCiclos ++;
                             } else {
@@ -713,41 +776,26 @@ public class GamePrincipal {
                                         System.out.println("\nTudo ok? (1-sim / 2-não)");
                                         key = input.nextInt();
                                         if(key == 1){
+
+                                            int contador2 = 1;
                                             
-                                            boolean repetir = true;
-                                            int contDoWhile = 0;
-                                            do{
-                                                int contador2 = 1;
-                                            
-                                                while(contador2 <= 2){
-                                                    tabuleiro.turnoP2(jogador1, jogador2, vet2, contador2);
-                                                    tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                                    contador2 ++;
-                                                }
-                                                
-                                                tabuleiro.turnoInimigos(jogador2, vet2);
-                                                
-                                                if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
-                                                    tabuleiro.fimDeJogo();
-                                                } else {
-                                                    if(jogador2.DEF <= 0){
-                                                        tabuleiro.fimDeJogoP2();
-                                                    }
-                                                }
-            
+                                            while(contador2 <= 2){
+                                                tabuleiro.turnoP2(jogador1, jogador2, vet2, contador2);
                                                 tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                                boolean result2 = tabuleiro.verificarExistenciaInimigosP2();
-                                                if (result2 == false){
-                                                    repetir = false;
+                                                contador2 ++;
+                                            }
+                                            
+                                            tabuleiro.turnoInimigos(jogador2, vet2);
+                                            
+                                            if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
+                                                tabuleiro.fimDeJogo();
+                                            } else {
+                                                if(jogador2.DEF <= 0){
+                                                    tabuleiro.fimDeJogoP2();
                                                 }
-            
-                                                if(contDoWhile != 0){
-                                                    contCiclos ++;
-                                                } else {
-            
-                                                }
-            
-                                            } while(repetir);
+                                            }
+
+                                            tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
                                             tabuleiro.limparSetor(vet2);
                                             contCiclos ++;
                                         }
@@ -763,7 +811,7 @@ public class GamePrincipal {
             }
             contCiclos ++;
         }
-        //tabuleiro.fimDeJogo();
+        tabuleiro.fimDeJogo();
         input.close();
     }
 }
