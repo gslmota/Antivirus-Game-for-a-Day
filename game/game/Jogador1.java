@@ -7,6 +7,7 @@ public class Jogador1 extends Jogador {
     protected int numAcoes;
     protected int contadorCiclos = 0;
     int[] vetPosAtualP1 = {3,3};
+    Random sort = new Random();
     int[] vetPosFuturaP1 = new int[2];
     Scanner input = new Scanner(System.in);
 
@@ -43,9 +44,17 @@ public class Jogador1 extends Jogador {
     }
 
 
-    public void atacar(Inimigo[] vetInimigoP1, int inimigo){
-        vetInimigoP1[inimigo - 1].DEF -= this.ATK;
-
+    public void atacar(Inimigo[] vetInimigoP1, int inimigo, int tipo){
+        if(tipo == 1){
+            int i = sort.nextInt(2);
+            if(i == 0){
+                vetInimigoP1[inimigo - 1].DEF -= this.ATK;
+            } else {
+                System.out.println("O vírus não foi eliminado pois não foi encontrada a posição exata!");
+            }
+        } else {
+            vetInimigoP1[inimigo - 1].DEF -= this.ATK;
+        }
     }
 
     public void procurar(Inimigo[] vetInimigoP1, int tamanho){

@@ -2,10 +2,8 @@
 Armazenar os movimentos em matriz e criar metodo verificar posicaoAntiga
 Try e catch
 
-
-implementar o tipo de setor
-
 // REMOVER A POSIÇÃO ESCOLHIDA POSLIHA POSCOL NO TABULEIRO
+fazer do while para as posiçẽos de pl1 e pl2
 */
 package game;
 import java.util.InputMismatchException;
@@ -21,6 +19,7 @@ public class GamePrincipal {
         Scanner input = new Scanner(System.in);
         Jogador1 jogador1 = new Jogador1();
         Jogador2 jogador2 = new Jogador2();
+        
         tabuleiro.gerarTabuleiroInicial();
         try{
             System.out.println("\nVamos Começar o Jogo ? (1-sim / 2-não)");
@@ -44,7 +43,7 @@ public class GamePrincipal {
             boolean life1, life2;
             life1 = jogador1.verificaVida();
             life2 = jogador2.verificaVida();
-
+            
             if(life1 == true && life2 == true){ // verifica vida de p1 e p2
                 if((contCiclos != 0 && tabuleiro.verificarExistenciaInimigosP1() == true) || (contCiclos != 0 && tabuleiro.verificarExistenciaInimigosP2() == true)){
 
@@ -70,23 +69,20 @@ public class GamePrincipal {
                                     tabuleiro.fimDeJogoP1();
                                     tabuleiro.limparSetor(vetAuxP1);
                                     tabuleiro.totalInimigosP1 = 0;
+                                    jogador1.ATK = 0;
+                                    jogador1.DEF = 0;
+                                    tabuleiro.position.posSetor1[0] = 0;
+                                    tabuleiro.position.posSetor1[1] = 0;
                                 } else {
                                     if(jogador2.DEF <= 0){
                                         tabuleiro.fimDeJogoP2();
                                         tabuleiro.limparSetor(vetAuxP2);
                                         tabuleiro.totalInimigosP2 = 0;
+                                        jogador2.ATK = 0;
+                                        jogador2.DEF = 0;
+                                        tabuleiro.position.posSetor2[0] = 0;
+                                        tabuleiro.position.posSetor2[1] = 0;
                                     }
-                                }
-                            }
-
-                            if(tabuleiro.verificarExistenciaInimigosP1() == false &&tabuleiro.verificarExistenciaInimigosP2() == false){
-                                tabuleiro.totalInimigosP1 = 0;
-                                tabuleiro.totalInimigosP2 = 0;
-                            } else {
-                                if(tabuleiro.verificarExistenciaInimigosP1() == true && tabuleiro.verificarExistenciaInimigosP2() == false){
-                                    tabuleiro.totalInimigosP2 = 0;
-                                } else {
-                                    tabuleiro.totalInimigosP1 = 0;
                                 }
                             }
 
@@ -127,23 +123,20 @@ public class GamePrincipal {
                                             tabuleiro.fimDeJogoP1();
                                             tabuleiro.limparSetor(vetAuxP1);
                                             tabuleiro.totalInimigosP1 = 0;
+                                            jogador1.ATK = 0;
+                                            jogador1.DEF = 0;
+                                            tabuleiro.position.posSetor1[0] = 0;
+                                            tabuleiro.position.posSetor1[1] = 0;
                                         } else {
                                             if(jogador2.DEF <= 0){
                                                 tabuleiro.fimDeJogoP2();
                                                 tabuleiro.limparSetor(vet2);
                                                 tabuleiro.totalInimigosP2 = 0;
+                                                jogador2.ATK = 0;
+                                                jogador2.DEF = 0;
+                                                tabuleiro.position.posSetor2[0] = 0;
+                                                tabuleiro.position.posSetor2[1] = 0;
                                             }
-                                        }
-                                    }
-
-                                    if(tabuleiro.verificarExistenciaInimigosP1() == false &&tabuleiro.verificarExistenciaInimigosP2() == false){
-                                        tabuleiro.totalInimigosP1 = 0;
-                                        tabuleiro.totalInimigosP2 = 0;
-                                    } else {
-                                        if(tabuleiro.verificarExistenciaInimigosP1() == true && tabuleiro.verificarExistenciaInimigosP2() == false){
-                                            tabuleiro.totalInimigosP2 = 0;
-                                        } else {
-                                            tabuleiro.totalInimigosP1 = 0;
                                         }
                                     }
 
@@ -161,6 +154,7 @@ public class GamePrincipal {
                                 tabuleiro.limparSetor(vetAuxP2);
                                 tabuleiro.alterarSetor(vet2, "P2");
                                 tabuleiro.gerarPortaParede(vet2);
+                                tabuleiro.tipoSetorP2();
                                 if(vet2[0] == 3 && vet2[1] == 3){
                                     System.out.println("\n\nNão existe inimigos na posição central!\n\nMas você pode procurar itens na posição central!\n");
                                     tabuleiro.totalInimigosP2 = 0;
@@ -196,24 +190,23 @@ public class GamePrincipal {
                                             tabuleiro.fimDeJogoP1();
                                             tabuleiro.limparSetor(vetAuxP1);
                                             tabuleiro.totalInimigosP1 = 0;
+                                            jogador1.ATK = 0;
+                                            jogador1.DEF = 0;
+                                            tabuleiro.position.posSetor1[0] = 0;
+                                            tabuleiro.position.posSetor1[1] = 0;
                                         } else {
                                             if(jogador2.DEF <= 0){
                                                 tabuleiro.fimDeJogoP2();
                                                 tabuleiro.limparSetor(vet2);
                                                 tabuleiro.totalInimigosP2 = 0;
+                                                jogador2.ATK = 0;
+                                                jogador2.DEF = 0;
+                                                tabuleiro.position.posSetor2[0] = 0;
+                                                tabuleiro.position.posSetor2[1] = 0;
                                             }
                                         }
                                     }
-                                    if(tabuleiro.verificarExistenciaInimigosP1() == false &&tabuleiro.verificarExistenciaInimigosP2() == false){
-                                        tabuleiro.totalInimigosP1 = 0;
-                                        tabuleiro.totalInimigosP2 = 0;
-                                    } else {
-                                        if(tabuleiro.verificarExistenciaInimigosP1() == true && tabuleiro.verificarExistenciaInimigosP2() == false){
-                                            tabuleiro.totalInimigosP2 = 0;
-                                        } else {
-                                            tabuleiro.totalInimigosP1 = 0;
-                                        }
-                                    }
+                                
                                     tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
 
                                     vetAux[0] = vet2[0];
@@ -239,6 +232,7 @@ public class GamePrincipal {
                             if(res1 == true){
                                 tabuleiro.alterarSetor(vet1, "P1");
                                 tabuleiro.gerarPortaParede(vet1);
+                                tabuleiro.tipoSetorP1();
                                 if(vet1[0] == 3 && vet1[1] == 3){
                                     System.out.println("\n\nNão existe inimigos na posição central!\n");
                                     tabuleiro.totalInimigosP1 = 0;
@@ -288,11 +282,19 @@ public class GamePrincipal {
                                                     tabuleiro.fimDeJogoP1();
                                                     tabuleiro.limparSetor(vet1);
                                                     tabuleiro.totalInimigosP1 = 0;
+                                                    jogador1.ATK = 0;
+                                                    jogador1.DEF = 0;
+                                                    tabuleiro.position.posSetor1[0] = 0;
+                                                    tabuleiro.position.posSetor1[1] = 0;
                                                 } else {
                                                     if(jogador2.DEF <= 0){
                                                         tabuleiro.fimDeJogoP2();
                                                         tabuleiro.limparSetor(vetAuxP2);
                                                         tabuleiro.totalInimigosP2 = 0;
+                                                        jogador2.ATK = 0;
+                                                        jogador2.DEF = 0;
+                                                        tabuleiro.position.posSetor2[0] = 0;
+                                                        tabuleiro.position.posSetor2[1] = 0;
                                                     }
                                                 }
                                             }
@@ -338,11 +340,19 @@ public class GamePrincipal {
                                                     tabuleiro.fimDeJogoP1();
                                                     tabuleiro.limparSetor(vet1);
                                                     tabuleiro.totalInimigosP1 = 0;
+                                                    jogador1.ATK = 0;
+                                                    jogador1.DEF = 0;
+                                                    tabuleiro.position.posSetor1[0] = 0;
+                                                    tabuleiro.position.posSetor1[1] = 0;
                                                 } else {
                                                     if(jogador2.DEF <= 0){
                                                         tabuleiro.fimDeJogoP2();
                                                         tabuleiro.limparSetor(vetAuxP2);
                                                         tabuleiro.totalInimigosP2 = 0;
+                                                        jogador2.ATK = 0;
+                                                        jogador2.DEF = 0;
+                                                        tabuleiro.position.posSetor2[0] = 0;
+                                                        tabuleiro.position.posSetor2[1] = 0;
                                                     }
                                                 }
                                             }
@@ -393,11 +403,19 @@ public class GamePrincipal {
                                                 tabuleiro.fimDeJogoP1();
                                                 tabuleiro.limparSetor(vetAuxP1);
                                                 tabuleiro.totalInimigosP1 = 0;
+                                                jogador1.ATK = 0;
+                                                jogador1.DEF = 0;
+                                                tabuleiro.position.posSetor1[0] = 0;
+                                                tabuleiro.position.posSetor1[1] = 0;
                                             } else {
                                                 if(jogador2.DEF <= 0){
                                                     tabuleiro.fimDeJogoP2();
                                                     tabuleiro.limparSetor(vetAuxP2);
                                                     tabuleiro.totalInimigosP2 = 0;
+                                                    jogador2.ATK = 0;
+                                                    jogador2.DEF = 0;
+                                                    tabuleiro.position.posSetor2[0] = 0;
+                                                    tabuleiro.position.posSetor2[1] = 0;
                                                 }
                                             }
                                         }
@@ -428,11 +446,19 @@ public class GamePrincipal {
                                                 tabuleiro.fimDeJogoP1();
                                                 tabuleiro.limparSetor(vetAuxP1);
                                                 tabuleiro.totalInimigosP1 = 0;
+                                                jogador1.ATK = 0;
+                                                jogador1.DEF = 0;
+                                                tabuleiro.position.posSetor1[0] = 0;
+                                                tabuleiro.position.posSetor1[1] = 0;
                                             } else {
                                                 if(jogador2.DEF <= 0){
                                                     tabuleiro.fimDeJogoP2();
                                                     tabuleiro.limparSetor(vetAuxP2);
                                                     tabuleiro.totalInimigosP2 = 0;
+                                                    jogador2.ATK = 0;
+                                                    jogador2.DEF = 0;
+                                                    tabuleiro.position.posSetor2[0] = 0;
+                                                    tabuleiro.position.posSetor2[1] = 0;    
                                                 }
                                             }
                                         }
@@ -449,7 +475,9 @@ public class GamePrincipal {
                     }
                 } else {
                     if(contCiclos == 0 || (tabuleiro.verificarExistenciaInimigosP1() == false && tabuleiro.verificarExistenciaInimigosP2() == false)){
-
+                        if(contCiclos!= 0){
+                            tabuleiro.limparSetor(vetAuxP1);
+                        }
                         int vet1[] = jogador1.movimentar(contCiclos);
                         //jogador1.vetPosFuturaP1 = vet1;
                         //tabuleiro.verificarMovimento(jogador1.vetPosAtualP1, vet1, jogador1, jogador2);
@@ -458,6 +486,7 @@ public class GamePrincipal {
                         if(res1 == true){
                             tabuleiro.alterarSetor(vet1, "P1");
                             tabuleiro.gerarPortaParede(vet1);
+                            tabuleiro.tipoSetorP1();
                             if(vet1[0] == 3 && vet1[1] == 3){
                                 System.out.println("\n\nNão existe inimigos na posição central!\n");
                                 tabuleiro.totalInimigosP1 = 0;
@@ -513,10 +542,20 @@ public class GamePrincipal {
                                                 if(jogador1.DEF <= 0){
                                                     tabuleiro.fimDeJogoP1();
                                                     tabuleiro.limparSetor(vet1);
+                                                    tabuleiro.totalInimigosP1 = 0;
+                                                    jogador1.ATK = 0;
+                                                    jogador1.DEF = 0;
+                                                    tabuleiro.position.posSetor1[0] = 0;
+                                                    tabuleiro.position.posSetor1[1] = 0;
                                                 } else {
                                                     if(jogador2.DEF <= 0){
                                                         tabuleiro.fimDeJogoP2();
                                                         tabuleiro.limparSetor(vet2);
+                                                        tabuleiro.totalInimigosP2 = 0;
+                                                        jogador2.ATK = 0;
+                                                        jogador2.DEF = 0;
+                                                        tabuleiro.position.posSetor2[0] = 0;
+                                                        tabuleiro.position.posSetor2[1] = 0;
                                                     }
                                                 }
                                             }
@@ -538,6 +577,7 @@ public class GamePrincipal {
                                     } else {
                                         tabuleiro.alterarSetor(vet2, "P2");
                                         tabuleiro.gerarPortaParede(vet2);
+                                        tabuleiro.tipoSetorP2();
                                         // Compara a posição central para ver se tem inimigos
                                         if(vet2[0] == 3 && vet2[1] == 3){
                                             System.out.println("\n\nNão existe inimigos na posição central!\n");
@@ -584,10 +624,20 @@ public class GamePrincipal {
                                                 if(jogador1.DEF <= 0){
                                                     tabuleiro.fimDeJogoP1();
                                                     tabuleiro.limparSetor(vet1);
+                                                    tabuleiro.totalInimigosP1 = 0;
+                                                    jogador1.ATK = 0;
+                                                    jogador1.DEF = 0;
+                                                    tabuleiro.position.posSetor1[0] = 0;
+                                                    tabuleiro.position.posSetor1[1] = 0;
                                                 } else {
                                                     if(jogador2.DEF <= 0){
                                                         tabuleiro.fimDeJogoP2();
                                                         tabuleiro.limparSetor(vet2);
+                                                        tabuleiro.totalInimigosP2 = 0;
+                                                        jogador2.ATK = 0;
+                                                        jogador2.DEF = 0;
+                                                        tabuleiro.position.posSetor2[0] = 0;
+                                                        tabuleiro.position.posSetor2[1] = 0;
                                                     }
                                                 }
                                             }
@@ -624,6 +674,7 @@ public class GamePrincipal {
                 if(life1 == true && life2 == false){
                     if(tabuleiro.verificarExistenciaInimigosP1() == true){
                         System.out.println("O PL1 possui inimigos e não pode se movimentar!");
+                        tabuleiro.printarTabuleiro(jogador1, jogador2);
                         System.out.println("\nTudo ok? (1-sim / 2-não)");
                         key = input.nextInt();
                         if(key == 1){
@@ -641,6 +692,11 @@ public class GamePrincipal {
                             } else {
                                 if(jogador1.DEF <= 0){
                                     tabuleiro.fimDeJogoP1();
+                                    tabuleiro.totalInimigosP1 = 0;
+                                    jogador1.ATK = 0;
+                                    jogador1.DEF = 0;
+                                    tabuleiro.position.posSetor1[0] = 0;
+                                    tabuleiro.position.posSetor1[1] = 0;
                                 } 
                             }
 
@@ -658,6 +714,7 @@ public class GamePrincipal {
                             if(res1 == true){
                                 tabuleiro.alterarSetor(vet1, "P1");
                                 tabuleiro.gerarPortaParede(vet1);
+                                tabuleiro.tipoSetorP1();
                                 if(vet1[0] == 3 && vet1[1] == 3){
                                     System.out.println("\n\nNão existe inimigos na posição central!\n");
                                     tabuleiro.totalInimigosP1 = 0;
@@ -696,6 +753,11 @@ public class GamePrincipal {
                                         } else {
                                             if(jogador1.DEF <= 0){
                                                 tabuleiro.fimDeJogoP1();
+                                                tabuleiro.totalInimigosP1 = 0;
+                                                jogador1.ATK = 0;
+                                                jogador1.DEF = 0;
+                                                tabuleiro.position.posSetor1[0] = 0;
+                                                tabuleiro.position.posSetor1[1] = 0;
                                             } 
                                         }
 
@@ -715,6 +777,7 @@ public class GamePrincipal {
                     if(life2 == true && life1 == false) {
                         if(tabuleiro.verificarExistenciaInimigosP2() == true) {
                             System.out.println("O PL2 possui inimigos e não pode se movimentar!");
+                            tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
                             System.out.println("\nTudo ok? (1-sim / 2-não)");
                             key = input.nextInt();
                             if(key == 1){
@@ -730,12 +793,13 @@ public class GamePrincipal {
                                 if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
                                     tabuleiro.fimDeJogo();
                                 } else {
-                                    if(jogador1.DEF <= 0){
-                                        tabuleiro.fimDeJogoP1();
-                                    } else {
-                                        if(jogador2.DEF <= 0){
-                                            tabuleiro.fimDeJogoP2();
-                                        }
+                                    if(jogador2.DEF <= 0){
+                                        tabuleiro.fimDeJogoP2();
+                                        tabuleiro.totalInimigosP2 = 0;
+                                        jogador2.ATK = 0;
+                                        jogador2.DEF = 0;
+                                        tabuleiro.position.posSetor2[0] = 0;
+                                        tabuleiro.position.posSetor2[1] = 0;
                                     }
                                 }
 
@@ -757,6 +821,7 @@ public class GamePrincipal {
                                     if(res2 == true){
                                         tabuleiro.alterarSetor(vet2, "P2");
                                         tabuleiro.gerarPortaParede(vet2);
+                                        tabuleiro.tipoSetorP2();
                                         if(vet2[0] == 3 && vet2[1] == 3){
                                             System.out.println("\n\nNão existe inimigos na posição central!\n");
                                             tabuleiro.totalInimigosP2 = 0;
@@ -792,6 +857,11 @@ public class GamePrincipal {
                                             } else {
                                                 if(jogador2.DEF <= 0){
                                                     tabuleiro.fimDeJogoP2();
+                                                    tabuleiro.totalInimigosP2 = 0;
+                                                    jogador2.ATK = 0;
+                                                    jogador2.DEF = 0;
+                                                    tabuleiro.position.posSetor2[0] = 0;
+                                                    tabuleiro.position.posSetor2[1] = 0;
                                                 }
                                             }
 

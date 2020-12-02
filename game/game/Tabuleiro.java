@@ -240,104 +240,121 @@ public class Tabuleiro {
                     if(this.totalInimigosP1 == 0 && this.totalInimigosP2 == 0){
                         System.out.print("    |             |" + "    |             |");
                     } else {
-                        if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 0){
-                            System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    |             |");
-                        } else {
-                            if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 1){
-                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + "         |");
-                            }
-                            if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 2){
-                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + "     |");
-                            }
-                            if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 3){
-                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
-                            }
-                            if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 4){
-                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
-                            }
-                            if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 5){
-                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
-                            }
-
-                            if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 0){
-                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    |             |");
+                        if(this.totalInimigosP1 == 0 && this.totalInimigosP2 == 1){
+                            System.out.print("    |             |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + "         |");
+                        } 
+                        if(this.totalInimigosP1 == 0 && this.totalInimigosP2 == 2){
+                            System.out.print("    |             |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + "     |");
+                        }
+                        if(this.totalInimigosP1 == 0 && this.totalInimigosP2 == 3){
+                            System.out.print("    |             |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                        }
+                        if(this.totalInimigosP1 == 0 && this.totalInimigosP2 == 4){
+                            System.out.print("    |             |" +  "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                        }
+                        if(this.totalInimigosP1 == 0 && this.totalInimigosP2 == 5){
+                            System.out.print("    |             |" +"    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                        }
+                        else{
+                            if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 0){
+                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    |             |");
                             } else {
-                                if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 1){
-                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + "         |");
+                                if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 1){
+                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + "         |");
                                 }
-                                if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 2){
-                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + "     |");
+                                if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 2){
+                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + "     |");
                                 }
-                                if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 3){
-                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 3){
+                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
                                 }
-                                if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 4){
-                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 4){
+                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
                                 }
-                                if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 5) {
-                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                if(this.totalInimigosP1 == 1 && this.totalInimigosP2 == 5){
+                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + "         |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
                                 }
-
-                                if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 0){
-                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    |             |");
+    
+                                if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 0){
+                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    |             |");
                                 } else {
-                                    if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 1){
-                                        System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + "         |");
+                                    if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 1){
+                                        System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + "         |");
                                     }
-                                    if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 2){
-                                        System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + "     |");
+                                    if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 2){
+                                        System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + "     |");
                                     }
-                                    if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 3){
-                                        System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
-
+                                    if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 3){
+                                        System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
                                     }
-                                    if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 4){
-                                        System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                    if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 4){
+                                        System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
                                     }
-                                    if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 5){
-                                        System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                    if(this.totalInimigosP1 == 2 && this.totalInimigosP2 == 5) {
+                                        System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + "     |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
                                     }
-
-                                    if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 0){
+    
+                                    if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 0){
                                         System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    |             |");
                                     } else {
-                                        if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 1){
+                                        if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 1){
                                             System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + "         |");
                                         }
-                                        if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 2){
+                                        if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 2){
                                             System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + "     |");
                                         }
-                                        if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 3){
-                                            System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" +  "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                        if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 3){
+                                            System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+    
                                         }
-                                        if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 4){
-                                            System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" +  "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                        if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 4){
+                                            System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
                                         }
-                                        if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 5){
-                                            System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" +  "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                        if(this.totalInimigosP1 == 3 && this.totalInimigosP2 == 5){
+                                            System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
                                         }
-
-                                        if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 0){
+    
+                                        if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 0){
                                             System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    |             |");
                                         } else {
-                                            if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 1){
-                                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + "      | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + "         |");
+                                            if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 1){
+                                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + "         |");
                                             }
-                                            if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 2){
-                                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + "      | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + "     |");
+                                            if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 2){
+                                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + "     |");
                                             }
-                                            if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 3){
-                                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + "      | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                            if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 3){
+                                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" +  "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
                                             }
-                                            if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 4){
-                                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + "      | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                            if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 4){
+                                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" +  "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
                                             }
-                                            if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 5){
-                                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + "      | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                            if(this.totalInimigosP1 == 4 && this.totalInimigosP2 == 5){
+                                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" +  "    | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                            }
+    
+                                            if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 0){
+                                                System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + " |" + "    |             |");
+                                            } else {
+                                                if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 1){
+                                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + "      | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + "         |");
+                                                }
+                                                if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 2){
+                                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + "      | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + "     |");
+                                                }
+                                                if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 3){
+                                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + "      | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                                }
+                                                if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 4){
+                                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + "      | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                                }
+                                                if(this.totalInimigosP1 == 5 && this.totalInimigosP2 == 5){
+                                                    System.out.print("    | " + turno.vetInimigoP1[0].ATK + "/" + turno.vetInimigoP1[0].DEF + " " + turno.vetInimigoP1[1].ATK + "/" + turno.vetInimigoP1[1].DEF + " " +  turno.vetInimigoP1[2].ATK + "/" + turno.vetInimigoP1[2].DEF + "      | " + turno.vetInimigoP2[0].ATK + "/" + turno.vetInimigoP2[0].DEF + " " + turno.vetInimigoP2[1].ATK + "/" + turno.vetInimigoP2[1].DEF + " " +  turno.vetInimigoP2[2].ATK + "/" + turno.vetInimigoP2[2].DEF + " |");
+                                                }
                                             }
                                         }
+                                        
                                     }
-                                    
                                 }
                             }
                         }
@@ -564,6 +581,7 @@ public class Tabuleiro {
                             System.out.println("\nNão é mostrado o jogador na posição central!\n");
                             position.posSetor1[0] = 3;
                             position.posSetor1[1] = 3;
+                            this.totalInimigosP1 = 0;
                         }
                     }
                 } else {
@@ -618,6 +636,7 @@ public class Tabuleiro {
                                 System.out.println("\nNão é mostrado o jogador na posição central!\n");
                                 position.posSetor1[0] = 3;
                                 position.posSetor1[1] = 3;
+                                this.totalInimigosP2 = 0;
                             }
                         }
                     } else {
@@ -666,6 +685,8 @@ public class Tabuleiro {
                                 System.out.println("\nNão é mostrado o jogador na posição central!\n");
                                 position.posSetor2[0] = 3;
                                 position.posSetor2[1] = 3;
+                                this.totalInimigosP1 = 0;
+                                this.totalInimigosP2 = 0;
                             }
                         }
                     }
@@ -1192,5 +1213,21 @@ public class Tabuleiro {
             movimentosP1[vet[0] - 1][vet[1] - 1] = true;
             movimentosP2[vet[0] - 1][vet[1] - 1] = true;
         }
+    }
+
+    public int tipoSetor(){
+        int tipo = 0;
+        tipo = posicao.nextInt(3);
+        return tipo;
+    }
+
+    public void tipoSetorP1(){
+        int tipo = tipoSetor();
+        turno.tipoSetorP1 = tipo;
+    }
+
+    public void tipoSetorP2(){
+        int tipo = tipoSetor();
+        turno.tipoSetorP2 = tipo;
     }
 }
