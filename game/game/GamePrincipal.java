@@ -92,142 +92,178 @@ public class GamePrincipal {
                         } else {
                             System.exit(0);
                         }
-
-                        int vet2[] = jogador2.movimentar(contCiclos);
-                        boolean res2 = tabuleiro.verificarMovimento(vet2);
-                        tabuleiro.verificaVitoria(vet2, "P2");
-                        if(res2 == true){
-                            if(vet2[0] == vetAuxP1[0] && vet2[1] == vetAuxP1[1]){
-                                tabuleiro.limparSetor(vetAuxP1);
-                                tabuleiro.alterarSetor(vet2, "P");
-                                tabuleiro.visitaSetor(vet2, "P");
-                                tabuleiro.printarTabuleiro(jogador1, jogador2);
-                                //tabuleiro.limparSetor(vet2);
-                                System.out.println("\nTudo ok? (1-sim / 2-não)");
-                                key = input.nextInt();
-                                if(key == 1){
-                                    int contador2 = 1;
+                        try{
+                            int vet2[] = new int[2];
+                            boolean res2 = false;
+                            boolean repetir = true;
+                            do{
+                                int vet[] = jogador2.movimentar(contCiclos);
+                                boolean res = tabuleiro.verificarMovimento(vet);
+                                if(res = true){
+                                    vet2 = vet;
+                                    res2 = res;
+                                    repetir = false;
+                                } else {
+                                    System.out.println("Digite uma posição onde haja portas adjacentes a sua posição atual!");
+                                }
                                 
-                                    while(contador2 <= 2){
-                                        tabuleiro.turnoP2(jogador1, jogador2, vetAuxP1, vet2, contador2);
-                                        tabuleiro.printarTabuleiro(jogador1, jogador2);
-                                        contador2 ++;
-                                    }
+                            } while(repetir);
+                            
+                            tabuleiro.verificaVitoria(vet2, "P2");
+                            if(res2 == true){
+                                if(vet2[0] == vetAuxP1[0] && vet2[1] == vetAuxP1[1]){
+                                    tabuleiro.limparSetor(vetAuxP1);
+                                    tabuleiro.alterarSetor(vet2, "P");
+                                    tabuleiro.visitaSetor(vet2, "P");
+                                    tabuleiro.printarTabuleiro(jogador1, jogador2);
+                                    //tabuleiro.limparSetor(vet2);
+                                    System.out.println("\nTudo ok? (1-sim / 2-não)");
+                                    key = input.nextInt();
+                                    if(key == 1){
+                                        int contador2 = 1;
                                     
-                                    tabuleiro.turnoInimigos(jogador2, vet2);
-
-                                    if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
-                                        tabuleiro.fimDeJogo();
-                                    } else {
-                                        if(jogador1.DEF <= 0){
-                                            tabuleiro.fimDeJogoP1();
-                                            tabuleiro.limparSetor(vetAuxP1);
-                                            tabuleiro.totalInimigosP1 = 0;
-                                            jogador1.ATK = 0;
-                                            jogador1.DEF = 0;
-                                            tabuleiro.position.posSetor1[0] = 0;
-                                            tabuleiro.position.posSetor1[1] = 0;
+                                        while(contador2 <= 2){
+                                            tabuleiro.turnoP2(jogador1, jogador2, vetAuxP1, vet2, contador2);
+                                            tabuleiro.printarTabuleiro(jogador1, jogador2);
+                                            contador2 ++;
+                                        }
+                                        
+                                        tabuleiro.turnoInimigos(jogador2, vet2);
+    
+                                        if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
+                                            tabuleiro.fimDeJogo();
                                         } else {
-                                            if(jogador2.DEF <= 0){
-                                                tabuleiro.fimDeJogoP2();
-                                                tabuleiro.limparSetor(vet2);
-                                                tabuleiro.totalInimigosP2 = 0;
-                                                jogador2.ATK = 0;
-                                                jogador2.DEF = 0;
-                                                tabuleiro.position.posSetor2[0] = 0;
-                                                tabuleiro.position.posSetor2[1] = 0;
+                                            if(jogador1.DEF <= 0){
+                                                tabuleiro.fimDeJogoP1();
+                                                tabuleiro.limparSetor(vetAuxP1);
+                                                tabuleiro.totalInimigosP1 = 0;
+                                                jogador1.ATK = 0;
+                                                jogador1.DEF = 0;
+                                                tabuleiro.position.posSetor1[0] = 0;
+                                                tabuleiro.position.posSetor1[1] = 0;
+                                            } else {
+                                                if(jogador2.DEF <= 0){
+                                                    tabuleiro.fimDeJogoP2();
+                                                    tabuleiro.limparSetor(vet2);
+                                                    tabuleiro.totalInimigosP2 = 0;
+                                                    jogador2.ATK = 0;
+                                                    jogador2.DEF = 0;
+                                                    tabuleiro.position.posSetor2[0] = 0;
+                                                    tabuleiro.position.posSetor2[1] = 0;
+                                                }
                                             }
                                         }
+    
+                                        tabuleiro.printarTabuleiro(jogador1, jogador2);
+    
+                                        vetAux[0] = vet2[0];
+                                        vetAux[1] = vet2[1];
+                                        vetAuxP2 = vet2;
+                                        contCiclos ++;
+                                    } else {
+                                        System.exit(0);
                                     }
-
-                                    tabuleiro.printarTabuleiro(jogador1, jogador2);
-
-                                    vetAux[0] = vet2[0];
-                                    vetAux[1] = vet2[1];
-                                    vetAuxP2 = vet2;
-                                    contCiclos ++;
+    
                                 } else {
-                                    System.exit(0);
-                                }
-
-                            } else {
-                                tabuleiro.limparSetor(vetAuxP2);
-                                tabuleiro.alterarSetor(vet2, "P2");
-                                tabuleiro.gerarPortaParede(vet2);
-                                tabuleiro.tipoSetorP2();
-                                if(vet2[0] == 3 && vet2[1] == 3){
-                                    System.out.println("\n\nNão existe inimigos na posição central!\n\nMas você pode procurar itens na posição central!\n");
-                                    tabuleiro.totalInimigosP2 = 0;
-                                } else {
-                                    boolean resVisit = tabuleiro.verificarVisitaP2(vet2);
-                                    if(resVisit == true){
-                                        // Não gera inimigos novamente
+                                    tabuleiro.limparSetor(vetAuxP2);
+                                    tabuleiro.alterarSetor(vet2, "P2");
+                                    tabuleiro.gerarPortaParede(vet2);
+                                    tabuleiro.tipoSetorP2();
+                                    if(vet2[0] == 3 && vet2[1] == 3){
+                                        System.out.println("\n\nNão existe inimigos na posição central!\n\nMas você pode procurar itens na posição central!\n");
                                         tabuleiro.totalInimigosP2 = 0;
                                     } else {
-                                        tabuleiro.gerarInimigosP2();
-                                    }
-                                }
-                                tabuleiro.visitaSetor(vet2, "P2");
-                                tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-    
-                                System.out.println("\nTudo ok? (1-sim / 2-não)");
-                                key = input.nextInt();
-                                if(key == 1){
-                                
-                                    tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                    int contador2 = 1;
-                                    while(contador2 <= 2){
-                                        tabuleiro.turnoP2(jogador1, jogador2, vetAuxP1, vet2, contador2);
-                                        tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-                                        contador2 ++;
-                                    }
-                                    tabuleiro.turnoInimigos(jogador2, vet2);
-
-                                    if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
-                                        tabuleiro.fimDeJogo();
-                                    } else {
-                                        if(jogador1.DEF <= 0){
-                                            tabuleiro.fimDeJogoP1();
-                                            tabuleiro.limparSetor(vetAuxP1);
-                                            tabuleiro.totalInimigosP1 = 0;
-                                            jogador1.ATK = 0;
-                                            jogador1.DEF = 0;
-                                            tabuleiro.position.posSetor1[0] = 0;
-                                            tabuleiro.position.posSetor1[1] = 0;
+                                        boolean resVisit = tabuleiro.verificarVisitaP2(vet2);
+                                        if(resVisit == true){
+                                            // Não gera inimigos novamente
+                                            tabuleiro.totalInimigosP2 = 0;
                                         } else {
-                                            if(jogador2.DEF <= 0){
-                                                tabuleiro.fimDeJogoP2();
-                                                tabuleiro.limparSetor(vet2);
-                                                tabuleiro.totalInimigosP2 = 0;
-                                                jogador2.ATK = 0;
-                                                jogador2.DEF = 0;
-                                                tabuleiro.position.posSetor2[0] = 0;
-                                                tabuleiro.position.posSetor2[1] = 0;
-                                            }
+                                            tabuleiro.gerarInimigosP2();
                                         }
                                     }
-                                
+                                    tabuleiro.visitaSetor(vet2, "P2");
                                     tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
-
-                                    vetAux[0] = vet2[0];
-                                    vetAux[1] = vet2[1];
-                                    vetAuxP2 = vet2;
-                                    contCiclos ++;
-                                }
-                            }
+        
+                                    System.out.println("\nTudo ok? (1-sim / 2-não)");
+                                    key = input.nextInt();
+                                    if(key == 1){
+                                    
+                                        tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
+                                        int contador2 = 1;
+                                        while(contador2 <= 2){
+                                            tabuleiro.turnoP2(jogador1, jogador2, vetAuxP1, vet2, contador2);
+                                            tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
+                                            contador2 ++;
+                                        }
+                                        tabuleiro.turnoInimigos(jogador2, vet2);
     
-                        } else {
-                            System.out.println("Digite uma posição onde haja portas adjacentes a sua posição atual!");
+                                        if(jogador1.DEF <= 0 && jogador2.DEF <= 0){
+                                            tabuleiro.fimDeJogo();
+                                        } else {
+                                            if(jogador1.DEF <= 0){
+                                                tabuleiro.fimDeJogoP1();
+                                                tabuleiro.limparSetor(vetAuxP1);
+                                                tabuleiro.totalInimigosP1 = 0;
+                                                jogador1.ATK = 0;
+                                                jogador1.DEF = 0;
+                                                tabuleiro.position.posSetor1[0] = 0;
+                                                tabuleiro.position.posSetor1[1] = 0;
+                                            } else {
+                                                if(jogador2.DEF <= 0){
+                                                    tabuleiro.fimDeJogoP2();
+                                                    tabuleiro.limparSetor(vet2);
+                                                    tabuleiro.totalInimigosP2 = 0;
+                                                    jogador2.ATK = 0;
+                                                    jogador2.DEF = 0;
+                                                    tabuleiro.position.posSetor2[0] = 0;
+                                                    tabuleiro.position.posSetor2[1] = 0;
+                                                }
+                                            }
+                                        }
+                                    
+                                        tabuleiro.printarTabuleiro(jogador1, jogador2, 0);
+    
+                                        vetAux[0] = vet2[0];
+                                        vetAux[1] = vet2[1];
+                                        vetAuxP2 = vet2;
+                                        contCiclos ++;
+                                    }
+                                }
+        
+                            } else {
+                                System.out.println("Digite uma posição onde haja portas adjacentes a sua posição atual!");
+                            }
+                        } catch(InputMismatchException e){
+                            System.err.println(e);
+                            System.out.println("Digite um valor inteiro: ");
                         }
+                        
                                 
                     } else {
                         if(tabuleiro.verificarExistenciaInimigosP1() == false && tabuleiro.verificarExistenciaInimigosP2() == true){
                             // P1 não tem inimigos mas P2 simp
                             tabuleiro.limparSetor(vetAuxP1);
-                            int vet1[] = jogador1.movimentar(contCiclos);
-                            jogador1.vetPosFuturaP1 = vet1;
+                            //int vet1[] = jogador1.movimentar(contCiclos);
+                            //jogador1.vetPosFuturaP1 = vet1;
                             //tabuleiro.verificarMovimento(jogador1.vetPosAtualP1, vet1, jogador1, jogador2);
-                            boolean res1 = tabuleiro.verificarMovimento(vet1);
+                            //boolean res1 = tabuleiro.verificarMovimento(vet1);
+                            boolean continuar = true;
+                            int vet1[] = new int[2];
+                            boolean res1 = false;
+                            do{
+                                int vet[] = jogador1.movimentar(contCiclos);
+                                //jogador1.vetPosFuturaP1 = vet1;
+                                //tabuleiro.verificarMovimento(jogador1.vetPosAtualP1, vet1, jogador1, jogador2);
+                                boolean res = tabuleiro.verificarMovimento(vet);
+                                if(res == true){
+                                    vet1 = vet;
+                                    res1 = res;
+                                    continuar = false;
+                                } else{
+                                    System.out.println("Digite uma posição onde haja portas adjacentes a sua posição atual!");
+                                }
+                            } while(continuar);
+
                             tabuleiro.verificaVitoria(vet1, "P1");
                             if(res1 == true){
                                 tabuleiro.alterarSetor(vet1, "P1");
@@ -478,10 +514,23 @@ public class GamePrincipal {
                         if(contCiclos!= 0){
                             tabuleiro.limparSetor(vetAuxP1);
                         }
-                        int vet1[] = jogador1.movimentar(contCiclos);
-                        //jogador1.vetPosFuturaP1 = vet1;
-                        //tabuleiro.verificarMovimento(jogador1.vetPosAtualP1, vet1, jogador1, jogador2);
-                        boolean res1 = tabuleiro.verificarMovimento(vet1);
+                        boolean continuar = true;
+                        int vet1[] = new int[2];
+                        boolean res1 = false;
+                        do{
+                            int vet[] = jogador1.movimentar(contCiclos);
+                            //jogador1.vetPosFuturaP1 = vet1;
+                            //tabuleiro.verificarMovimento(jogador1.vetPosAtualP1, vet1, jogador1, jogador2);
+                            boolean res = tabuleiro.verificarMovimento(vet);
+                            if(res == true){
+                                vet1 = vet;
+                                res1 = res;
+                                continuar = false;
+                            } else{
+                                System.out.println("Digite uma posição onde haja portas adjacentes a sua posição atual!");
+                            }
+                        } while(continuar);
+                        
                         tabuleiro.verificaVitoria(vet1, "P1");
                         if(res1 == true){
                             tabuleiro.alterarSetor(vet1, "P1");
@@ -508,11 +557,26 @@ public class GamePrincipal {
                             System.out.println("\nTudo ok? (1-sim / 2-não)");
                             key = input.nextInt();
                             if(key == 1){
-                                int vet2[] = jogador2.movimentar(contCiclos);
-                                boolean res2 = tabuleiro.verificarMovimento(vet2);
-                                tabuleiro.verificaVitoria(vet2, "P2");
+                                int vet2[] = new int[2];
+                                boolean res2 = false;
+                                boolean repetir = true;
+                                do{
+                                    int vet[] = jogador2.movimentar(contCiclos);
+                                    boolean res = tabuleiro.verificarMovimento(vet);
+                                    if(res == true){
+                                        vet2 = vet;
+                                        res2 = res;
+                                        repetir = false;
+                                    } else{
+                                        System.out.println("Digite uma posição onde haja portas adjacentes a sua posição atual!");
+                                    }
+                                    
+                                } while(repetir);
+                                //int vet2[] = jogador2.movimentar(contCiclos);
+                                //boolean res2 = tabuleiro.verificarMovimento(vet2);
                                 if(res2 == true){
                                     if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
+                                        tabuleiro.verificaVitoria(vet2, "P2");
                                         tabuleiro.limparSetor(vet1);
                                         tabuleiro.alterarSetor(vet2, "P");
                                         tabuleiro.visitaSetor(vet2, "P");
@@ -575,6 +639,7 @@ public class GamePrincipal {
                                         }
     
                                     } else {
+                                        tabuleiro.verificaVitoria(vet2, "P2");
                                         tabuleiro.alterarSetor(vet2, "P2");
                                         tabuleiro.gerarPortaParede(vet2);
                                         tabuleiro.tipoSetorP2();
@@ -708,8 +773,27 @@ public class GamePrincipal {
                         }
                     } else  {
                         if(tabuleiro.verificarExistenciaInimigosP1() == false){
-                            int vet1[] = jogador1.movimentar(contCiclos);
-                            boolean res1 = tabuleiro.verificarMovimento(vet1);
+
+                            //int vet1[] = jogador1.movimentar(contCiclos);
+                            //boolean res1 = tabuleiro.verificarMovimento(vet1);
+
+                            boolean continuar = true;
+                            int vet1[] = new int[2];
+                            boolean res1 = false;
+                            do{
+                                int vet[] = jogador1.movimentar(contCiclos);
+                                //jogador1.vetPosFuturaP1 = vet1;
+                                //tabuleiro.verificarMovimento(jogador1.vetPosAtualP1, vet1, jogador1, jogador2);
+                                boolean res = tabuleiro.verificarMovimento(vet);
+                                if(res == true){
+                                    vet1 = vet;
+                                    res1 = res;
+                                    continuar = false;
+                                } else{
+                                    System.out.println("Digite uma posição onde haja portas adjacentes a sua posição atual!");
+                                }
+                            } while(continuar);
+
                             tabuleiro.verificaVitoria(vet1, "P1");
                             if(res1 == true){
                                 tabuleiro.alterarSetor(vet1, "P1");
@@ -815,8 +899,25 @@ public class GamePrincipal {
                                 System.out.println("\nTudo ok? (1-sim / 2-não)");
                                 key = input.nextInt();
                                 if(key == 1){
-                                    int vet2[] = jogador2.movimentar(contCiclos);
-                                    boolean res2 = tabuleiro.verificarMovimento(vet2);
+                                    //int vet2[] = jogador2.movimentar(contCiclos);
+                                    //boolean res2 = tabuleiro.verificarMovimento(vet2);
+
+                                    int vet2[] = new int[2];
+                                    boolean res2 = false;
+                                    boolean repetir = true;
+                                    do{
+                                        int vet[] = jogador2.movimentar(contCiclos);
+                                        boolean res = tabuleiro.verificarMovimento(vet);
+                                        if(res == true){
+                                            vet2 = vet;
+                                            res2 = res;
+                                            repetir = false;
+                                        } else{
+                                            System.out.println("Digite uma posição onde haja portas adjacentes a sua posição atual!");
+                                        }
+                                        
+                                    } while(repetir);
+
                                     tabuleiro.verificaVitoria(vet2, "P2");
                                     if(res2 == true){
                                         tabuleiro.alterarSetor(vet2, "P2");

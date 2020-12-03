@@ -1,5 +1,6 @@
 package game;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -95,20 +96,27 @@ public class Jogador2 extends Jogador {
     }
 
     public int[] movimentar(int contadorCiclos){
-
-        
         if(contadorCiclos<25){
-            
-            int posLin, posCol;
-            System.out.println("");
-            System.out.println("Digite a linha para onde o jogador 2 (PL2) deseja ir: ");
-            posLin = input.nextInt();
-            System.out.println("Digite a coluna para onde o jogador 2 (PL2) deseja ir: ");
-            posCol = input.nextInt();
-             int vet[] = {posLin, posCol};
-            return vet;
+            boolean repeat = true;
+            do{
+                try{
+                    int posLin, posCol;
+                    System.out.println("");
+                    System.out.println("Digite o número da linha para onde o jogador 2 (PL2) deseja ir: ");
+                    posLin = input.nextInt();
+                    System.out.println("Digite o número da coluna para onde o jogador 2 (PL2) deseja ir: ");
+                    posCol = input.nextInt();
+                    int vet[] = {posLin, posCol};
+                    repeat = false;
+                    return vet;
+                } catch(InputMismatchException e){
+                    System.err.println(e);
+                    System.out.println("Digite um valor inteiro!");
+                    input.nextLine();
+                }
+            } while(repeat);
+            return null;
         } else{
-    
             System.out.println("Você Já chegou no limite de 25 ciclos!");
             return null;
         }

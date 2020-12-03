@@ -96,9 +96,9 @@ public class Jogador1 extends Jogador {
         if(contadorCiclos<25){
             int posLin, posCol;
             System.out.println("");
-            System.out.println("Digite a linha para onde o jogador 1 (PL1) deseja ir: ");
+            System.out.println("Digite o número da linha para onde o jogador 1 (PL1) deseja ir: ");
             posLin = input.nextInt();
-            System.out.println("Digite a coluna para onde o jogador 1 (PL1) deseja ir: ");
+            System.out.println("Digite o número da coluna para onde o jogador 1 (PL1) deseja ir: ");
             posCol = input.nextInt();
             int vet[] = {posLin, posCol};
             return vet;

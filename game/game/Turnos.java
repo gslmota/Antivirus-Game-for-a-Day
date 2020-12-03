@@ -103,19 +103,23 @@ public class Turnos {
             int opcao = 0, inimigo = 0;
             opcao = input.nextInt();
             if(opcao == 1){
-    
-                do{
-                    System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-                    inimigo = input.nextInt();
-                } while(inimigo < 1 || inimigo > totalIniP2);
                 
-                //vetInimigoP2[inimigo - 1].DEF -= jogador2.ATK;
                 if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
+                   // do{
+                        System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                        inimigo = input.nextInt();
+                    //} while(inimigo < 1 || inimigo > totalIniP1);
+
                     jogador2.atacar(vetInimigoP1, inimigo, 2);
                 } else {
+                    do{
+                        System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                        inimigo = input.nextInt();
+                    } while(inimigo < 1 || inimigo > totalIniP2);
+
                     jogador2.atacar(vetInimigoP2, inimigo, 2);
                 }
-    
+                
             } else {
             
                 if(opcao == 2){
@@ -159,28 +163,31 @@ public class Turnos {
             int opcao = 0, inimigo = 0;
             opcao = input.nextInt();
             if(opcao == 1){
-    
-                do{
-                    System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-                    inimigo = input.nextInt();
-                } while(inimigo < 1 || inimigo > totalIniP2);
-                
-                //vetInimigoP2[inimigo - 1].DEF -= jogador2.ATK;
                 if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
+                    do{
+                        System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                        inimigo = input.nextInt();
+                    } while(inimigo < 1 || inimigo > totalIniP1);
+
                     if(this.tipoSetorP2 == 1){
                         jogador2.atacar(vetInimigoP1, inimigo, 1);
                     } else {
                         jogador2.atacar(vetInimigoP1, inimigo, 0);
                     }
-                   
-                } else {
+                    
+                } else{
+                    do{
+                        System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                        inimigo = input.nextInt();
+                    } while(inimigo < 1 || inimigo > totalIniP2);
+
                     if(this.tipoSetorP2 == 1){
                         jogador2.atacar(vetInimigoP2, inimigo, 1);
                     } else {
                         jogador2.atacar(vetInimigoP2, inimigo, 0);
                     }
                 }
-    
+
             } else {
                 if (opcao == 2){
                     System.out.println("Será realizada uma procura no setor!");
