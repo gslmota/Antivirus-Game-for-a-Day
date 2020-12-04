@@ -1,10 +1,10 @@
 package game;
 public class Setor {
-    String parede = "|";
+    public String parede = "|";
     //String [] vetorSetor = {"|", " ", parede, " ", parede, " ", parede, " ", parede, " ", "|"};
-    protected String [] vetorSetor = {"|", " ", " ", " ",parede, " ", " ", " ",parede, " ", " ", " ",parede, " ", " ", " ",parede, " ", " ", " ","|"};
-    protected int posSetor1[] = new int[2];
-    protected int posSetor2[] = new int[2];
+    public String [] vetorSetor = {"|", " ", " ", " ",parede, " ", " ", " ",parede, " ", " ", " ",parede, " ", " ", " ",parede, " ", " ", " ","|"};
+    public int posSetor1[] = new int[2];
+    public int posSetor2[] = new int[2];
     
     public Setor() {
         this.posSetor1[0] = 3;

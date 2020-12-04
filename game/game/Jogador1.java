@@ -1,14 +1,14 @@
 package game;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 public class Jogador1 extends Jogador {
     // Atributos
-    protected String tipoJogador;
-    protected int numAcoes;
-    protected int contadorCiclos = 0;
-    int[] vetPosAtualP1 = {3,3};
+    public String tipoJogador;
+    public int numAcoes;
+    public int contadorCiclos = 0;
+
     Random sort = new Random();
-    int[] vetPosFuturaP1 = new int[2];
     Scanner input = new Scanner(System.in);
 
     // Métodos
@@ -92,21 +92,30 @@ public class Jogador1 extends Jogador {
     }
 
     public int[] movimentar(int contadorCiclos){
-
         if(contadorCiclos<25){
-            int posLin, posCol;
-            System.out.println("");
-            System.out.println("Digite o número da linha para onde o jogador 1 (PL1) deseja ir: ");
-            posLin = input.nextInt();
-            System.out.println("Digite o número da coluna para onde o jogador 1 (PL1) deseja ir: ");
-            posCol = input.nextInt();
-            int vet[] = {posLin, posCol};
-            return vet;
-        } else{
-    
-             System.out.println("Você Já chegou no limite de 25 ciclos!");
+            boolean repeat = true;
+            do{
+                try{
+                    int posLin, posCol;
+                    System.out.println("");
+                    System.out.println("Digite o número da linha para onde o jogador 1 (PL1) deseja ir: ");
+                    posLin = input.nextInt();
+                    System.out.println("Digite o número da coluna para onde o jogador 1 (PL1) deseja ir: ");
+                    posCol = input.nextInt();
+                    int vet[] = {posLin, posCol};
+                    repeat = false;
+                    return vet;
+                } catch(InputMismatchException e){
+                    System.err.println(e);
+                    System.out.println("Digite um valor inteiro!");
+                    input.nextLine();
+                }
+            } while(repeat);
             return null;
-            }
+        } else{
+            System.out.println("Você Já chegou no limite de 25 ciclos!");
+            return null;
+        }
     }
 
     public boolean verificaVida(){

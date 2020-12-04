@@ -4,20 +4,21 @@ import java.util.Random;
 import java.util.Scanner;
 public class Tabuleiro {
 
-    String [][] tabuleiro = new String[5][5]; // Cria a matriz 5 X 5
     Setor [] criaSetor = new Setor[5]; // Vetor de setor
     Setor position = new Setor();
     Random posicao = new Random(); // Aleatoriedade para posicionar o virus
     Turnos turno = new Turnos();
-    int posLinha = 2;//posicao.nextInt(5);
-    int posColuna = 2;//posicao.nextInt(5);
-    int contPorta = 0, contParede = 0;
-    int totalInimigosP1 = 0;
-    int totalInimigosP2 = 0;
     Scanner input = new Scanner(System.in);
-    boolean [][] movimentosP1 = new boolean [5][5];
-    boolean [][] movimentosP2 = new boolean [5][5];
-    // Função para criar setores vazios
+    public String [][] tabuleiro = new String[5][5]; // Cria a matriz 5 X 5
+    public int posLinha = posicao.nextInt(5);
+    public int posColuna = posicao.nextInt(5);
+    public int contPorta = 0, contParede = 0;
+    public int totalInimigosP1 = 0;
+    public int totalInimigosP2 = 0;
+    public boolean [][] movimentosP1 = new boolean [5][5];
+    public boolean [][] movimentosP2 = new boolean [5][5];
+    
+    // Método para criar setores vazios
     public void gerarSetorVazio(){
         for(int i = 0; i < criaSetor.length; i++){
             criaSetor[i] = new Setor();
@@ -148,15 +149,13 @@ public class Tabuleiro {
         }
         System.out.print("     |---|---|---|---|---|\n\n"); // Cria a parede inferior do tabuleiro
     }
-
-    // Função para apagar a exibição no terminal
+    // Método para apagar a exibição no terminal
     public void apagarTela(){
         for(int i = 0; i<=50; i++){
             System.out.println("");
         }
     }
-
-    // Função para gerar tabuleiro de jogo
+    // Método para gerar tabuleiro de jogo
     public void gerarTabuleiroDeJogo(){
 
         gerarSetorVazio();
@@ -748,14 +747,14 @@ public class Tabuleiro {
                                             criaSetor[linha].vetorSetor[coluna + 13] = porta;
                                             
                                         } else {
-                                            System.out.println("Não pode haver porta nessas posições");
+                                            //System.out.println("Não pode haver porta nessas posições");
                                         }
                                     }
                                 }
                             }
                         }
                     } else {
-                        System.out.println("Não pode haver porta nessas posições");
+                        //System.out.println("Não pode haver porta nessas posições");
                     }
                 } 
             }
@@ -784,14 +783,14 @@ public class Tabuleiro {
                                                 criaSetor[linha].vetorSetor[coluna + 13] = parede;
                                                 
                                             } else {
-                                                System.out.println("Não pode haver paredes nessa posição!");
+                                                //System.out.println("Não pode haver paredes nessa posição!");
                                             }
                                         }
                                     }
                                 }
                             }
                         } else {
-                            System.out.println("Não pode haver paredes nessa posição!");
+                            //System.out.println("Não pode haver paredes nessa posição!");
                         }
                             
                     } 
@@ -957,7 +956,7 @@ public class Tabuleiro {
         return true;
     }
 
-    public boolean verificarMovimento(int[] posicoesAtual, int[] posicoesFuturas, Jogador1 jogador1, Jogador2 jogador2) {
+    public boolean verificarMovimento(int[] posicoesAtual, int[] posicoesFuturas) {
 
         for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
 

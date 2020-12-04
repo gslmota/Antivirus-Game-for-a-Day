@@ -6,11 +6,9 @@ import java.util.Scanner;
 
 public class Jogador2 extends Jogador {
     // Atributos
-    protected String tipoJogador;
-    protected int numAcoes;
-    protected int contadorCiclos = 0;
-    int[] vetPosAtualP2 = {3,3};
-    int[] vetPosFuturaP2 = new int[2];
+    public String tipoJogador;
+    public int numAcoes;
+    public int contadorCiclos = 0;
     Scanner input = new Scanner(System.in);
     Random sort = new Random();
 

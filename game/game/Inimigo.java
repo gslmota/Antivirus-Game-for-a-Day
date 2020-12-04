@@ -2,7 +2,7 @@ package game;
 import java.util.Random;
 public class Inimigo {
     // Atributos
-    int ATK, DEF;
+    public int ATK, DEF;
     Random inimigos = new Random();
     // Metodos
     public Inimigo() {
