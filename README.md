@@ -14,7 +14,7 @@
 ## 2. Ferramentas necessárias para execução
  Para executar esse jogo é necessário que se tenha o Java e suas dependências instaladas, além de um editor de código.
  * Por aqui você pode baixar  o Java caso não o tenha ainda. [Dowload JAVA](https://www.java.com/pt-BR/)
- Logo depois basta abrir a pasta e executar o método main da classe ``` GamePrincipal.java```.
+ * Logo depois basta abrir a pasta e executar o método main da classe ``` GamePrincipal.java```.
 
 ## 3. Licença
 Licenciado sob a Licença MIT. Você pode obter uma cópia da Licença em `https://opensource.org/licenses/MIT`.
