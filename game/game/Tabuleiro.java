@@ -731,7 +731,7 @@ public class Tabuleiro {
             for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
 
                 for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
-                    if(linha != 2 || coluna != 2){
+                    if(linha != 2 && coluna != 2){
                         if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
                             if(coluna == 0){
                                 criaSetor[linha].vetorSetor[coluna + 4] = porta;
@@ -767,7 +767,7 @@ public class Tabuleiro {
 
                     for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
                         // Esse for serve para modificar a matriz
-                        if(linha != 2 || coluna != 2){
+                        if(linha != 2 && coluna != 2){
                             if(linha == posicoes[0] - 1 && coluna == posicoes[1] - 1){
                                 if(coluna == 0){
                                     criaSetor[linha].vetorSetor[coluna + 4] = parede;
@@ -810,7 +810,7 @@ public class Tabuleiro {
                             tabuleiro[linha][coluna] = porta;
                         }
                     } else {
-                        System.out.println("Não é possível fazer alterações no centro do tabuleiro!");
+                        //System.out.println("Não é possível fazer alterações no centro do tabuleiro!");
                     }
                 }  
             }
@@ -829,7 +829,7 @@ public class Tabuleiro {
                             tabuleiro[linha][coluna] = porta;
                         }
                     } else {
-                        System.out.println("Não é possível fazer alterações no centro do tabuleiro!");
+                        //System.out.println("Não é possível fazer alterações no centro do tabuleiro!");
                     }
                 }  
             }
@@ -959,15 +959,51 @@ public class Tabuleiro {
     public boolean verificarMovimento(int[] posicoesAtual, int[] posicoesFuturas) {
 
         for (int linha = 0; linha < tabuleiro.length; linha ++)  {  
-
             for (int coluna = 0; coluna < tabuleiro[linha].length; coluna ++){ 
-
-                    if(linha == posicoesAtual[0] - 1 && coluna == posicoesAtual[1] - 1){
-
-                        if(linha == posicoesFuturas[0] - 1){
-
-                            if(posicoesFuturas[1] - 1 == posicoesAtual[1]){
-
+                if(posicoesAtual[0] - 1 == linha){ // linha igual a linha atual
+                    if(posicoesAtual[0] - 1 == posicoesFuturas[0] - 1){ // linha igual
+                        if(posicoesAtual[1] == posicoesFuturas[1] - 1){ // coluna diferente
+                            if(posicoesFuturas[1] - 1 == 0){
+                                if(criaSetor[linha].vetorSetor[4] == "*"){
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            } else {
+                                if(posicoesFuturas[1] - 1 == 1){
+                                    if(criaSetor[linha].vetorSetor[4] == "*"){
+                                        return true;
+                                    } else {
+                                        return false;
+                                    }
+                                } else {
+                                    if(posicoesFuturas[1] - 1 == 2){
+                                        if(criaSetor[linha].vetorSetor[8] == "*"){
+                                            return true;
+                                        } else {
+                                            return false;
+                                        }
+                                    } else {
+                                        if(posicoesFuturas[1] - 1 == 3){
+                                            if(criaSetor[linha].vetorSetor[12] == "*"){
+                                                return true;
+                                            } else {
+                                                return false;
+                                            }
+                                        } else {
+                                            if(posicoesFuturas[1] - 1 == 4){
+                                                if(criaSetor[linha].vetorSetor[16] == "*"){
+                                                    return true;
+                                                } else {
+                                                    return false;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else{
+                            if(posicoesAtual[1] - 1 == posicoesFuturas[1]){
                                 if(posicoesFuturas[1] - 1 == 0){
                                     if(criaSetor[linha].vetorSetor[4] == "*"){
                                         return true;
@@ -976,101 +1012,68 @@ public class Tabuleiro {
                                     }
                                 } else {
                                     if(posicoesFuturas[1] - 1 == 1){
-                                        if(criaSetor[linha].vetorSetor[4] == "*"){
+                                        if(criaSetor[linha].vetorSetor[8] == "*"){
                                             return true;
                                         } else {
                                             return false;
                                         }
                                     } else {
                                         if(posicoesFuturas[1] - 1 == 2){
-                                            if(criaSetor[linha].vetorSetor[8] == "*"){
+                                            if(criaSetor[linha].vetorSetor[12] == "*"){
                                                 return true;
                                             } else {
                                                 return false;
                                             }
                                         } else {
                                             if(posicoesFuturas[1] - 1 == 3){
-                                                if(criaSetor[linha].vetorSetor[12] == "*"){
+                                                if(criaSetor[linha].vetorSetor[16] == "*"){
                                                     return true;
                                                 } else {
                                                     return false;
-                                                }
-                                            } else {
-                                                if(posicoesFuturas[1] - 1 == 4){
-                                                    if(criaSetor[linha].vetorSetor[16] == "*"){
-                                                        return true;
-                                                    } else {
-                                                        return false;
-                                                    }
                                                 }
                                             }
                                         }
                                     }
                                 }
-                            } else {
-                                if(posicoesFuturas[1] == posicoesAtual[1] - 1){
-
-                                    if(posicoesFuturas[1] - 1 == 0){
-                                        if(criaSetor[linha].vetorSetor[4] == "*"){
-                                            return true;
-                                        } else {
-                                            return false;
-                                        }
-                                    } else {
-                                        if(posicoesFuturas[1] - 1 == 1){
-                                            if(criaSetor[linha].vetorSetor[8] == "*"){
-                                                return true;
-                                            } else {
-                                                return false;
-                                            }
-                                        } else {
-                                            if(posicoesFuturas[1] - 1 == 2){
-                                                if(criaSetor[linha].vetorSetor[12] == "*"){
-                                                    return true;
-                                                } else {
-                                                    return false;
-                                                }
-                                            } else {
-                                                if(posicoesFuturas[1] - 1 == 3){
-                                                    if(criaSetor[linha].vetorSetor[16] == "*"){
-                                                        return true;
-                                                    } else {
-                                                        return false;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                } else {
-                                    return false;
-                                }
+                            } else{
+                                return false;
                             }
-                        } else {
-                            if(coluna == posicoesFuturas[1] - 1){
-                                if(posicoesFuturas[0] == posicoesAtual[0] - 1){
-
-                                    if(tabuleiro[posicoesFuturas[0]][posicoesFuturas[1] - 1] == "*"){
+                        }
+                    } else{
+                        if(posicoesAtual[0] - 1 != posicoesFuturas[0] - 1){
+                            if(posicoesFuturas[0] - 1 == posicoesAtual[0]){
+                                if(posicoesFuturas[1] - 1 == posicoesAtual[1] - 1){
+                                    if(tabuleiro[posicoesAtual[0]][posicoesFuturas[1] - 1] == "*"){
                                         return true;
                                     } else{
                                         return false;
                                     }
-                                } else {
-                                    if(posicoesFuturas[0] - 1 == posicoesAtual[0]){
-                                        if(tabuleiro[posicoesAtual[0]][posicoesAtual[0] - 1] == "*"){
+                                } else{
+                                    return false;
+                                }
+                            } else {
+                                if(posicoesFuturas[0] == posicoesAtual[0] - 1){
+                                    if(posicoesFuturas[1] - 1 == posicoesAtual[1] - 1){
+                                        if(tabuleiro[posicoesFuturas[0]][posicoesFuturas[1] - 1] == "*"){
                                             return true;
-                                        } else {
+                                        } else{
                                             return false;
                                         }
                                     } else{
                                         return false;
                                     }
+                                } else{
+                                    return false;// linha diferente
                                 }
                             }
+                        } else{
+                            return false;
                         }
                     }
-            }
+                }
+            } 
         }
-        return true;
+        return false;
     }
 
     public void gerarInimigosP1(){

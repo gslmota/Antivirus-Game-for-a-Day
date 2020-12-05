@@ -99,16 +99,22 @@ public class Jogador2 extends Jogador {
             do{
                 try{
                     int posLin, posCol;
-                    System.out.println("");
-                    System.out.println("Digite o número da linha para onde o jogador 2 (PL2) deseja ir: ");
-                    posLin = input.nextInt();
-                    System.out.println("Digite o número da coluna para onde o jogador 2 (PL2) deseja ir: ");
-                    posCol = input.nextInt();
+                    do{
+                        System.out.println("");
+                        System.out.println("Digite o número da linha para onde o jogador 2 (PL2) deseja ir: ");
+                        posLin = input.nextInt();
+                    } while(posLin < 0 || posLin > 5);
+                    
+                    do{
+                        System.out.println("Digite o número da coluna para onde o jogador 2 (PL2) deseja ir: ");
+                        posCol = input.nextInt();
+                    } while(posCol < 0 || posCol > 5);
+                        
                     int vet[] = {posLin, posCol};
                     repeat = false;
                     return vet;
                 } catch(InputMismatchException e){
-                    System.err.println(e);
+                    System.out.println(e);
                     System.out.println("Digite um valor inteiro!");
                     input.nextLine();
                 }

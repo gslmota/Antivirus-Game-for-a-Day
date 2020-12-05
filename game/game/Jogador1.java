@@ -94,24 +94,30 @@ public class Jogador1 extends Jogador {
     public int[] movimentar(int contadorCiclos){
         if(contadorCiclos<25){
             boolean repeat = true;
-            do{
-                try{
-                    int posLin, posCol;
-                    System.out.println("");
-                    System.out.println("Digite o número da linha para onde o jogador 1 (PL1) deseja ir: ");
-                    posLin = input.nextInt();
-                    System.out.println("Digite o número da coluna para onde o jogador 1 (PL1) deseja ir: ");
-                    posCol = input.nextInt();
-                    int vet[] = {posLin, posCol};
-                    repeat = false;
-                    return vet;
-                } catch(InputMismatchException e){
-                    System.err.println(e);
-                    System.out.println("Digite um valor inteiro!");
-                    input.nextLine();
-                }
-            } while(repeat);
-            return null;
+                do{
+                    try{
+                        int posLin, posCol;
+                        do{
+                            System.out.println("");
+                            System.out.println("Digite o número da linha para onde o jogador 1 (PL1) deseja ir: ");
+                            posLin = input.nextInt();
+                        } while(posLin < 0 || posLin > 5);
+
+                        do{
+                            System.out.println("Digite o número da coluna para onde o jogador 1 (PL1) deseja ir: ");
+                            posCol = input.nextInt();
+                        } while(posCol < 0 || posCol > 5);
+                        
+                        int vet[] = {posLin, posCol};
+                        repeat = false;
+                        return vet;
+                    } catch(InputMismatchException e){
+                        System.out.println(e);
+                        System.out.println("Digite um valor inteiro!");
+                        input.nextLine();
+                    }
+                } while(repeat);
+                return null;
         } else{
             System.out.println("Você Já chegou no limite de 25 ciclos!");
             return null;

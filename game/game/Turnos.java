@@ -1,4 +1,6 @@
 package game;
+
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 public class Turnos {
@@ -41,15 +43,45 @@ public class Turnos {
             System.out.println("    -----------------------------");
             System.out.println("    | [1] -------------- ATACAR |");
             System.out.println("    -----------------------------");
-            System.out.println("Digite a opção que escolheu: ");
             int opcao = 0, inimigo = 0;
-            opcao = input.nextInt();
-            if(opcao == 1){
+            boolean rep = true;
+            do{
                 do{
-                    System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-                    inimigo = input.nextInt();
+                    try{
+                        System.out.println("Digite a opção que escolheu: ");
+                        opcao = input.nextInt();
+                        rep = false;
+                    } catch(InputMismatchException e){
+                        System.out.println(e);
+                        System.out.println("Digite um valor inteiro!");
+                        input.nextLine();
+                    }
+                } while (rep);
+            } while (opcao != 1);
+            
+            if(opcao == 1){
+                boolean x = true;
+                do{ 
+                    do{
+                        try{
+                            System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                            inimigo = input.nextInt();
+                            if(verificaLife(vetInimigoP1, inimigo) == true){
+                                x = false;
+                            } else{
+                                System.out.println("Digite um inimigo que esteja vivo!");
+                            }
+                        } catch(InputMismatchException e){
+                            System.out.println(e);
+                            System.out.println("Digite um valor inteiro!");
+                            input.nextLine();
+                        } catch(NullPointerException e){
+                            System.out.println(e);
+                            System.out.println("Digite um inimigo que exista!");
+                        }
+                    } while (x);
                 } while(inimigo < 1 || inimigo > totalIniP1);
-                //vetInimigoP1[inimigo - 1].DEF -= jogador1.ATK;
+
                 jogador1.atacar(vetInimigoP1, inimigo, 2);
             } else {
                 System.out.println("O setor é Privado, ou seja você só pode realizar ataques");
@@ -65,15 +97,45 @@ public class Turnos {
             System.out.println("    | [1] -------------- ATACAR |");
             System.out.println("    | [2] ------------ PROCURAR |");
             System.out.println("    -----------------------------");
-            System.out.println("Digite a opção que escolheu: ");
             int opcao = 0, inimigo = 0;
-            opcao = input.nextInt();
-            if(opcao == 1){
+            boolean rep = true;
+            do{
                 do{
-                    System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-                    inimigo = input.nextInt();
+                    try{
+                        System.out.println("Digite a opção que escolheu: ");
+                        opcao = input.nextInt();
+                        rep = false;
+                    } catch(InputMismatchException e){
+                        System.out.println(e);
+                        System.out.println("Digite um valor inteiro!");
+                        input.nextLine();
+                    }
+                } while (rep);
+            } while(opcao != 1 && opcao != 2);
+
+            if(opcao == 1){
+                boolean x = true;
+                do{ 
+                    do{
+                        try{
+                            System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                            inimigo = input.nextInt();
+                            if(verificaLife(vetInimigoP1, inimigo) == true){
+                                x = false;
+                            } else{
+                                System.out.println("Digite um inimigo que esteja vivo!");
+                            }
+                        } catch(InputMismatchException e){
+                            System.out.println(e);
+                            System.out.println("Digite um valor inteiro!");
+                            input.nextLine();
+                        } catch(NullPointerException e){
+                            System.out.println(e);
+                            System.out.println("Digite um inimigo que exista!");
+                        }
+                    } while (x);
                 } while(inimigo < 1 || inimigo > totalIniP1);
-                //vetInimigoP1[inimigo - 1].DEF -= jogador1.ATK;
+                
                 if(this.tipoSetorP1 == 1){
                     jogador1.atacar(vetInimigoP1, inimigo, 1);
                 } else {
@@ -91,30 +153,83 @@ public class Turnos {
 
     public void turnoP2(Jogador1 jogador1, Jogador2 jogador2, int[] vet1, int[] vet2, int contador){
         if(this.tipoSetorP2 == 2){
+            System.out.println("O setor é Privado");
             System.out.println("\n Começa agora o turno " + contador  + " de P2, escolha uma opção abaixo: ");
             System.out.println("\n    -----------------------------");
             System.out.println("    |         Turno P2           |");
             System.out.println("    -----------------------------");
             System.out.println("    -----------------------------");
             System.out.println("    | [1] -------------- ATACAR |");
-            System.out.println("    | [3] ---- RECUPERAR DEFESA |");
+            System.out.println("    | [2] ---- RECUPERAR DEFESA |");
             System.out.println("    -----------------------------");
-            System.out.println("Digite a opção que escolheu: ");
+    
             int opcao = 0, inimigo = 0;
-            opcao = input.nextInt();
+            boolean rep = true;
+
+            do{ 
+                try{
+                    System.out.println("Digite a opção que escolheu: ");
+                    opcao = input.nextInt();
+                    if(opcao == 1 || opcao == 2) {
+                        rep = false;
+                    }
+                } catch (InputMismatchException e){
+                    System.out.println(e);
+                    System.out.println("Digite um valor inteiro: ");
+                    input.nextLine();
+                }
+                
+            } while(rep);
+
             if(opcao == 1){
                 
                 if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
-                   // do{
-                        System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-                        inimigo = input.nextInt();
-                    //} while(inimigo < 1 || inimigo > totalIniP1);
-
+                    boolean x = true;
+                    do{
+                        do{
+                            try{
+                                System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                                inimigo = input.nextInt();
+                                if(verificaLife(vetInimigoP1, inimigo) == true){
+                                    x = false;
+                                } else{
+                                    System.out.println("Digite um inimigo que esteja vivo!");
+                                }
+                            } catch (InputMismatchException e){
+                                System.out.println(e);
+                                System.out.println("Digite um valor inteiro!");
+                                input.nextLine();
+                            } catch(NullPointerException e){
+                                System.out.println(e);
+                                System.out.println("Digite um inimigo que exista!");
+                            }
+                            
+                        } while(x);
+                    } while(inimigo < 1 || inimigo > totalIniP1);
+                    
                     jogador2.atacar(vetInimigoP1, inimigo, 2);
                 } else {
                     do{
-                        System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-                        inimigo = input.nextInt();
+                        boolean x = true;
+                        do{
+                            try{
+                                System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                                inimigo = input.nextInt();
+                                if(verificaLife(vetInimigoP2, inimigo) == true){
+                                    x = false;
+                                } else{
+                                    System.out.println("Digite um inimigo que esteja vivo!");
+                                }
+                            } catch (InputMismatchException e){
+                                System.out.println(e);
+                                System.out.println("Digite um valor inteiro!");
+                                input.nextLine();
+                            } catch(NullPointerException e){
+                                System.out.println(e);
+                                System.out.println("Digite um inimigo que exista!");
+                            }
+                            
+                        } while(x);
                     } while(inimigo < 1 || inimigo > totalIniP2);
 
                     jogador2.atacar(vetInimigoP2, inimigo, 2);
@@ -131,16 +246,33 @@ public class Turnos {
                     System.out.println("    | [2] ------------------ P2 |");
                     System.out.println("    -----------------------------");
                     int escolha = 0;
-                    escolha = input.nextInt();
-                    if(escolha == 1){
-                        if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
-                            jogador1.DEF += 2;
+                    boolean repe = true;
+                    do{
+                        try{
+                            escolha = input.nextInt();
+                            if(escolha == 1){
+                                if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
+                                    jogador1.DEF += 2;
+                                    repe = false;
+                                } else{
+                                    System.out.println("Você não pode recuperar defesa de P1!");
+                                    System.out.println("As posições de de PL1 e PL2 são diferentes!");
+                                    System.out.println("Digite outro jogador: ");
+                                }
+                            } else {
+                                if(escolha == 2){
+                                    jogador2.DEF += 2;
+                                    repe = false;
+                                }
+                            }
+                        } catch (InputMismatchException e){
+                            System.out.println(e);
+                            System.out.println("Digite um valor inteiro!");
+                            input.nextLine();
                         }
-                    } else {
-                        jogador2.DEF += 2;
-                    }
-                } else {
-                    System.out.println("O setor é Privado, ou seja você só pode realizar ataques");
+                        
+                    } while(repe);
+                    
                 }
             }
             if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
@@ -159,14 +291,46 @@ public class Turnos {
             System.out.println("    | [2] ------------ PROCURAR |");
             System.out.println("    | [3] ---- RECUPERAR DEFESA |");
             System.out.println("    -----------------------------");
-            System.out.println("Digite a opção que escolheu: ");
             int opcao = 0, inimigo = 0;
-            opcao = input.nextInt();
+            boolean rep = true;
+            do{ 
+                try{
+                    System.out.println("Digite a opção que escolheu: ");
+                    opcao = input.nextInt();
+                    if(opcao == 1 || opcao == 2 || opcao == 3) {
+                        rep = false;
+                    }
+                } catch (InputMismatchException e){
+                    System.out.println(e);
+                    System.out.println("Digite um valor inteiro!");
+                    input.nextLine();
+                }
+                
+            } while(rep);
+            
             if(opcao == 1){
                 if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
+                    boolean x = true;
                     do{
-                        System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-                        inimigo = input.nextInt();
+                        do{
+                            try{
+                                System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                                inimigo = input.nextInt();
+                                if(verificaLife(vetInimigoP1, inimigo) == true){
+                                    x = false;
+                                } else{
+                                    System.out.println("Digite um inimigo que esteja vivo!");
+                                }
+                            } catch (InputMismatchException e){
+                                System.out.println(e);
+                                System.out.println("Digite um valor inteiro!");
+                                input.nextLine();
+                            } catch(NullPointerException e){
+                                System.out.println(e);
+                                System.out.println("Digite um inimigo que exista!");
+                            }
+                            
+                        } while(x);
                     } while(inimigo < 1 || inimigo > totalIniP1);
 
                     if(this.tipoSetorP2 == 1){
@@ -176,9 +340,27 @@ public class Turnos {
                     }
                     
                 } else{
+                    boolean x = true;
                     do{
-                        System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-                        inimigo = input.nextInt();
+                        do{
+                            try{
+                                System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                                inimigo = input.nextInt();
+                                if(verificaLife(vetInimigoP2, inimigo) == true){
+                                    x = false;
+                                } else{
+                                    System.out.println("Digite um inimigo que esteja vivo!");
+                                }
+                            } catch (InputMismatchException e){
+                                System.out.println(e);
+                                System.out.println("Digite um valor inteiro!");
+                                input.nextLine();
+                            } catch(NullPointerException e){
+                                System.out.println(e);
+                                System.out.println("Digite um inimigo que exista!");
+                            }
+                            
+                        } while(x);
                     } while(inimigo < 1 || inimigo > totalIniP2);
 
                     if(this.tipoSetorP2 == 1){
@@ -203,14 +385,32 @@ public class Turnos {
                     System.out.println("    | [2] ------------------ P2 |");
                     System.out.println("    -----------------------------");
                     int escolha = 0;
-                    escolha = input.nextInt();
-                    if(escolha == 1){
-                        if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
-                            jogador1.DEF += 2;
+                    boolean repe = true;
+                    do{
+                        try{
+                            escolha = input.nextInt();
+                            if(escolha == 1){
+                                if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
+                                    jogador1.DEF += 2;
+                                    repe = false;
+                                } else{
+                                    System.out.println("Você não pode recuperar defesa de P1!");
+                                    System.out.println("As posições de de PL1 e PL2 são diferentes!");
+                                    System.out.println("Digite outro jogador: ");
+                                }
+                            } else {
+                                if(escolha == 2){
+                                    jogador2.DEF += 2;
+                                    repe = false;
+                                }
+                            }
+                        } catch (InputMismatchException e){
+                            System.out.println(e);
+                            System.out.println("Digite um valor inteiro!");
+                            input.nextLine();
                         }
-                    } else {
-                        jogador2.DEF += 2;
-                    }
+                        
+                    } while(repe);
                 }
             }
             if(vet2[0] == vet1[0] && vet2[1] == vet1[1]){
@@ -225,6 +425,7 @@ public class Turnos {
 
     public void turnoP2(Jogador1 jogador1, Jogador2 jogador2, int[] vet2, int contador){
         if(this.tipoSetorP2 == 2){
+            System.out.println("O setor é Privado");
             System.out.println("\n Começa agora o turno " + contador  + " de P2, escolha uma opção abaixo: ");
             System.out.println("\n    -----------------------------");
             System.out.println("    |         Turno P2           |");
@@ -233,15 +434,45 @@ public class Turnos {
             System.out.println("    | [1] -------------- ATACAR |");
             System.out.println("    | [2] ---- RECUPERAR DEFESA |");
             System.out.println("    -----------------------------");
-            System.out.println("Digite a opção que escolheu: ");
             int opcao = 0, inimigo = 0;
-            opcao = input.nextInt();
+            boolean rep = true;
+            do{ 
+                try{
+                    System.out.println("Digite a opção que escolheu: ");
+                    opcao = input.nextInt();
+                    if(opcao == 1 || opcao == 2) {
+                        rep = false;
+                    }
+                } catch (InputMismatchException e){
+                    System.out.println(e);
+                    System.out.println("Digite um valor inteiro!");
+                    input.nextLine();
+                }
+                
+            } while(rep);
             if(opcao == 1){
-                do{
-                    System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-                    inimigo = input.nextInt();
-                } while(inimigo < 1 || inimigo > totalIniP2);
-                //vetInimigoP2[inimigo - 1].DEF -= jogador2.ATK;
+                boolean x = true;
+                    do{
+                        do{
+                            try{
+                                System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                                inimigo = input.nextInt();
+                                if(verificaLife(vetInimigoP2, inimigo) == true){
+                                    x = false;
+                                } else{
+                                    System.out.println("Digite um inimigo que esteja vivo!");
+                                }
+                            } catch (InputMismatchException e){
+                                System.out.println(e);
+                                System.out.println("Digite um valor inteiro!");
+                                input.nextLine();
+                            } catch(NullPointerException e){
+                                System.out.println(e);
+                                System.out.println("Digite um inimigo que exista!");
+                            }
+                            
+                        } while(x);
+                    } while(inimigo < 1 || inimigo > totalIniP2);
                 jogador2.atacar(vetInimigoP2, inimigo, 2);
             } else {
             
@@ -253,13 +484,25 @@ public class Turnos {
                     System.out.println("    | [1] ------------------ P2 |");
                     System.out.println("    -----------------------------");
                     int escolha = 0;
-                    escolha = input.nextInt();
+                    boolean rp = true;
+                    do{
+                        do{
+                            try{
+                                System.out.println("Digite a opção que escolheu: ");
+                                escolha = input.nextInt();
+                                rp = false;
+                            } catch (InputMismatchException e){
+                                System.out.println(e);
+                                System.out.println("Digite um valor inteiro!");
+                                input.nextLine();
+                            }
+                        } while(rp);
+                    } while(escolha != 1);
+                    
                     if(escolha == 1){
                         jogador2.DEF += 2;
                     }
-                } else {
-                    System.out.println("O setor é Privado, ou seja você só pode realizar ataques");
-                }
+                } 
             }
             verificarDefP2(vetInimigoP2);
             contador ++;
@@ -273,15 +516,45 @@ public class Turnos {
             System.out.println("    | [2] ------------ PROCURAR |");
             System.out.println("    | [3] ---- RECUPERAR DEFESA |");
             System.out.println("    -----------------------------");
-            System.out.println("Digite a opção que escolheu: ");
             int opcao = 0, inimigo = 0;
-            opcao = input.nextInt();
+            boolean rep = true;
+            do{ 
+                try{
+                    System.out.println("Digite a opção que escolheu: ");
+                    opcao = input.nextInt();
+                    if(opcao == 1 || opcao == 2 || opcao == 3) {
+                        rep = false;
+                    }
+                } catch (InputMismatchException e){
+                    System.out.println(e);
+                    System.out.println("Digite um valor inteiro!");
+                    input.nextLine();
+                }
+                
+            } while(rep);
             if(opcao == 1){
-                do{
-                    System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
-                    inimigo = input.nextInt();
-                } while(inimigo < 1 || inimigo > totalIniP2);
-                //vetInimigoP2[inimigo - 1].DEF -= jogador2.ATK;
+                boolean x = true;
+                    do{
+                        do{
+                            try{
+                                System.out.println("Digite qual inimigo deseja atacar: (Os inimigos vão de 1 até 5)");
+                                inimigo = input.nextInt();
+                                if(verificaLife(vetInimigoP2, inimigo) == true){
+                                    x = false;
+                                } else{
+                                    System.out.println("Digite um inimigo que esteja vivo!");
+                                }
+                            } catch (InputMismatchException e){
+                                System.out.println(e);
+                                System.out.println("Digite um valor inteiro!");
+                                input.nextLine();
+                            } catch(NullPointerException e){
+                                System.out.println(e);
+                                System.out.println("Digite um inimigo que exista!");
+                            }
+                            
+                        } while(x);
+                    } while(inimigo < 1 || inimigo > totalIniP2);
                 if(this.tipoSetorP2 == 1){
                     jogador2.atacar(vetInimigoP2, inimigo, 1);
                 } else {
@@ -301,7 +574,20 @@ public class Turnos {
                     System.out.println("    | [1] ------------------ P2 |");
                     System.out.println("    -----------------------------");
                     int escolha = 0;
-                    escolha = input.nextInt();
+                    boolean rp = true;
+                    do{
+                        do{
+                            try{
+                                System.out.println("Digite a opção que escolheu: ");
+                                escolha = input.nextInt();
+                                rp = false;
+                            } catch (InputMismatchException e){
+                                System.out.println(e);
+                                System.out.println("Digite um valor inteiro!");
+                                input.nextLine();
+                            }
+                        } while(rp);
+                    } while(escolha != 1);
                     if(escolha == 1){
                         jogador2.DEF += 2;
                     }
@@ -413,6 +699,14 @@ public class Turnos {
                 return true;
             }
         }
+        return false;
+    }
+
+    public boolean verificaLife(Inimigo[] vet, int pos){
+        
+        if(vet[pos - 1].DEF > 0){
+            return true;
+        } 
         return false;
     }
 
